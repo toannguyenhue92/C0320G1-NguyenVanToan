@@ -1,5 +1,0 @@
-BEGIN
-    INPUT dollar
-    vnd = dollar * 23000
-    DISPLAY vnd
-END
