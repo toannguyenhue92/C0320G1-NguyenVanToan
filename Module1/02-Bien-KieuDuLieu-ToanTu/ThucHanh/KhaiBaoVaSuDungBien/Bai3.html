@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 3</title>
+</head>
+<body>
+<script type="text/javascript">
+    let a, b;
+    do {
+        a = parseInt(prompt("Nhập vào một số nguyên a"));
+    } while (isNaN(a));
+    do {
+        b = parseInt(prompt("Nhập vào một số nguyên b"));
+    } while (isNaN(b));
+    if (a % b == 0) {
+        alert(a + " là bội số của " + b);
+    }
+</script>
+</body>
+</html>
