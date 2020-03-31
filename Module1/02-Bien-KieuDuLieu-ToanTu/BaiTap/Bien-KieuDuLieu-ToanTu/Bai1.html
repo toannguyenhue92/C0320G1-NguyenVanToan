@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai 1</title>
+</head>
+<body>
+<script type="text/javascript">
+    let vatLy, hoaHoc, sinhHoc;
+    do {
+        vatLy = parseFloat(prompt("Nhập điểm môn vật lý"));
+    } while (isNaN(vatLy));
+    do {
+        hoaHoc = parseFloat(prompt("Nhập điểm môn hoá học"));
+    } while (isNaN(hoaHoc));
+    do {
+        sinhHoc = parseFloat(prompt("Nhập điểm môn sinh học"));
+    } while (isNaN(sinhHoc));
+    let tong = vatLy + hoaHoc + sinhHoc;
+    let trungBinh = tong/3;
+    document.write("Vật lý: " + vatLy);
+    document.write("<br>");
+    document.write("Hoá học: " + hoaHoc);
+    document.write("<br>");
+    document.write("Sinh học: " + sinhHoc);
+    document.write("<br>");
+    document.write("Điểm trung bình: " + trungBinh);
+    document.write("<br>");
+    document.write("Tổng điểm ba môn: " + tong);
+    document.write("<br>");
+</script>
+</body>
+</html>

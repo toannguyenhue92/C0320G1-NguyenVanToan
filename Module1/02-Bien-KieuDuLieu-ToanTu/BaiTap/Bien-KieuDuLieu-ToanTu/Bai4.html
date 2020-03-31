@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai 4</title>
+</head>
+<body>
+<script type="text/javascript">
+    const PI = 3.14;
+    let radius;
+    do {
+        radius = parseFloat(prompt("Nhập bán kính của hình tròn"));
+    } while (isNaN(radius));
+    let circuit = 2 * PI * radius;
+    document.write("Chu vi của hình tròn có bán kính " + radius + " là: " + circuit);
+</script>
+</body>
+</html>

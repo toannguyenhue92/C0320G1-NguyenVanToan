@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai 3</title>
+</head>
+<body>
+<script type="text/javascript">
+    const PI = 3.14;
+    let radius;
+    do {
+        radius = parseFloat(prompt("Nhập bán kính của hình tròn"));
+    } while (isNaN(radius));
+    let area = PI * radius * radius;
+    document.write("Diện tích của hình tròn có bán kính " + radius + " là: " + area);
+</script>
+</body>
+</html>
