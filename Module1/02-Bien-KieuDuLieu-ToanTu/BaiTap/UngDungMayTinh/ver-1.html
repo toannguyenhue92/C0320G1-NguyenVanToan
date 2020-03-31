@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+</head>
+<body>
+<form action="">
+    <input type="number" name="leftNumber" id="leftNumber">
+    <input type="number" name="rightNumber" id="rightNumber">
+    <br>
+    <br>
+    <button type="button" onclick="add()">Addition (+)</button>
+    <button type="button" onclick="sub()">Subtraction (-)</button>
+    <button type="button" onclick="multiply()">Multiplication (X)</button>
+    <button type="button" onclick="divide()">Division (/)</button>
+</form>
+<br>
+<div id="result"></div>
+<script type="text/javascript">
+    function add() {
+        let leftNumber = parseFloat(document.getElementById("leftNumber").value);
+        let rightNumber = parseFloat(document.getElementById("rightNumber").value);
+        let result = leftNumber + rightNumber;
+        document.getElementById("result").innerText = "Result addition: " + result;
+    }
+    function sub() {
+        let leftNumber = parseFloat(document.getElementById("leftNumber").value);
+        let rightNumber = parseFloat(document.getElementById("rightNumber").value);
+        let result = leftNumber - rightNumber;
+        document.getElementById("result").innerText = "Result subtraction: " + result;
+    }
+    function multiply() {
+        let leftNumber = parseFloat(document.getElementById("leftNumber").value);
+        let rightNumber = parseFloat(document.getElementById("rightNumber").value);
+        let result = leftNumber * rightNumber;
+        document.getElementById("result").innerText = "Result multiplication: " + result;
+    }
+    function divide() {
+        let leftNumber = parseFloat(document.getElementById("leftNumber").value);
+        let rightNumber = parseFloat(document.getElementById("rightNumber").value);
+        let result = leftNumber / rightNumber;
+        document.getElementById("result").innerText = "Result division: " + result;
+    }
+</script>
+</body>
+</html>

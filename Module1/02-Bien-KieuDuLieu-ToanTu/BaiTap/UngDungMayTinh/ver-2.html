@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+</head>
+<body>
+<form action="">
+    <input type="number" name="leftNumber" id="leftNumber">
+    <input type="number" name="rightNumber" id="rightNumber">
+    <br>
+    <br>
+    <button type="button" onclick="calculate(1)">Addition (+)</button>
+    <button type="button" onclick="calculate(2)">Subtraction (-)</button>
+    <button type="button" onclick="calculate(3)">Multiplication (X)</button>
+    <button type="button" onclick="calculate(4)">Division (/)</button>
+</form>
+<br>
+<div id="result"></div>
+<script type="text/javascript">
+    function calculate(i) {
+        let leftNumber = parseFloat(document.getElementById("leftNumber").value);
+        let rightNumber = parseFloat(document.getElementById("rightNumber").value);
+        let result;
+        switch (i) {
+            case 1:
+                result = leftNumber + rightNumber;
+                document.getElementById("result").innerText = "Result addition: " + result;
+                break;
+            case 2:
+                result = leftNumber - rightNumber;
+                document.getElementById("result").innerText = "Result subtraction: " + result;
+                break;
+            case 3:
+                result = leftNumber * rightNumber;
+                document.getElementById("result").innerText = "Result multiplication: " + result;
+                break;
+            case 4:
+                result = leftNumber / rightNumber;
+                document.getElementById("result").innerText = "Result division: " + result;
+                break;
+        }
+    }
+</script>
+</body>
+</html>
