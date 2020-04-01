@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Amount: <input type="text" id="amount">
+    From current: <select id="fromCurrency">
+        <option value="1">USD</option>
+        <option value="23000">VND</option>
+        <option value="0.9">EUR</option>
+    </select>
+    To current: <select id="toCurrency">
+        <option value="1">USD</option>
+        <option value="23000">VND</option>
+        <option value="0.9">EUR</option>
+    </select>
+    <button type="button" onclick="convert()">Convert</button>
+    <p id="result"></p>
+    <script>
+        let amount = document.getElementById("amount");
+        let fromCurrency = document.getElementById("fromCurrency");
+        let toCurrency = document.getElementById("toCurrency");
+        function convert() {
+            let result;
+            let fromCurrencyValue = fromCurrency.value;
+            let toCurrencyValue = toCurrency.value;
+            if (fromCurrencyValue === toCurrencyValue) {
+                result = "Yeu cau nguoi chon loai tien";
+            } else {
+                result = parseFloat(toCurrency.value) / parseFloat(fromCurrency.value) * parseFloat(amount.value);
+            }
+            document.getElementById("result").innerText = result;
+        }
+    </script>
+</body>
+
+</html>
