@@ -10,10 +10,10 @@
     <input type="number" name="rightNumber" id="rightNumber">
     <br>
     <br>
-    <button type="button" onclick="calculate(1)">Addition (+)</button>
-    <button type="button" onclick="calculate(2)">Subtraction (-)</button>
-    <button type="button" onclick="calculate(3)">Multiplication (X)</button>
-    <button type="button" onclick="calculate(4)">Division (/)</button>
+    <button type="button" onclick="calculate('add')">Addition (+)</button>
+    <button type="button" onclick="calculate('sub')">Subtraction (-)</button>
+    <button type="button" onclick="calculate('mul')">Multiplication (X)</button>
+    <button type="button" onclick="calculate('div')">Division (/)</button>
 </form>
 <br>
 <div id="result"></div>
@@ -23,20 +23,24 @@
         let rightNumber = parseFloat(document.getElementById("rightNumber").value);
         let result;
         switch (i) {
-            case 1:
+            case "add":
                 result = leftNumber + rightNumber;
                 document.getElementById("result").innerText = "Result addition: " + result;
                 break;
-            case 2:
+            case "sub":
                 result = leftNumber - rightNumber;
                 document.getElementById("result").innerText = "Result subtraction: " + result;
                 break;
-            case 3:
+            case "mul":
                 result = leftNumber * rightNumber;
                 document.getElementById("result").innerText = "Result multiplication: " + result;
                 break;
-            case 4:
-                result = leftNumber / rightNumber;
+            case "div":
+                if (rightNumber == 0) {
+                    result = "Cannot divided by zero."
+                } else{
+                    result = leftNumber / rightNumber;
+                }
                 document.getElementById("result").innerText = "Result division: " + result;
                 break;
         }
