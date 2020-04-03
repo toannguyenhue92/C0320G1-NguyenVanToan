@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="">
+      <input type="number" name="month" id="month" />
+      <button type="button" onclick="show()">Tính số ngày</button>
+    </form>
+    <br />
+    <br />
+    <h3 id="result"></h3>
+    <script>
+      function show() {
+        let month = parseInt(document.getElementById("month").value);
+        let result = document.getElementById("result");
+        switch (month) {
+          case 2:
+            result.innerText = "Tháng 2 có 28 hoặc 29 ngày.";
+            break;
+          case 1:
+          case 3:
+          case 5:
+          case 7:
+          case 8:
+          case 10:
+          case 12:
+            result.innerText = "Tháng " + month + " có 31 ngày.";
+            break;
+          case 4:
+          case 6:
+          case 9:
+          case 11:
+            result.innerText = "Tháng " + month + " có 30 ngày.";
+            break;
+          default:
+            result.innerText = "Vui lòng nhập tháng 1-12";
+            break;
+        }
+      }
+    </script>
+  </body>
+</html>
