@@ -4,82 +4,86 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Account</title>
+    <style>
+      * {
+        font-size: 16px;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+    </style>
   </head>
   <body>
-    <form action="#">
-      <label for="fullName">Họ và tên:</label>
-      <input type="text" name="fullName" id="fullName" />
+    <form action="" id="bookingForm">
+      <table>
+        <tr>
+          <td><label for="fullName">Họ và tên:</label></td>
+          <td><input type="text" name="fullName" id="fullName" /></td>
+        </tr>
+        <tr>
+          <td><label for="identityNumber">Số CMND:</label></td>
+          <td>
+            <input type="number" name="identityNumber" id="identityNumber" />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="birthDay">Ngày sinh:</label></td>
+          <td><input type="date" name="birthDay" id="birthDay" /></td>
+        </tr>
+        <tr>
+          <td><label for="email">E-mail:</label></td>
+          <td><input type="email" name="email" id="email" /></td>
+        </tr>
+        <tr>
+          <td><label for="address">Địa chỉ:</label></td>
+          <td><input type="text" name="address" id="address" /></td>
+        </tr>
+        <tr>
+          <td><label for="customerType">Hạng thành viên:</label></td>
+          <td>
+            <select name="customerType" id="customerType">
+              <option>Member</option>
+              <option>Silver</option>
+              <option>Gold</option>
+              <option>Platinum</option>
+              <option>Dimond</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="discoutRate">Giảm giá:</label></td>
+          <td><input type="number" name="discoutRate" id="discoutRate" /></td>
+        </tr>
+        <tr>
+          <td><label for="guestCount">Số lượng đi kèm:</label></td>
+          <td><input type="number" name="guestCount" id="guestCount" /></td>
+        </tr>
+        <tr>
+          <td><label for="rentDays">Số ngày thuê:</label></td>
+          <td><input type="number" name="rentDays" id="rentDays" /></td>
+        </tr>
+        <tr>
+          <td><label for="serviceType">Loại dịch vụ:</label></td>
+          <td>
+            <select name="serviceType" id="serviceType">
+              <option>Room ($100/day)</option>
+              <option>House ($300/day)</option>
+              <option>Villa ($500/day)</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="roomType">Loại phòng:</label></td>
+          <td>
+            <select name="roomType" id="roomType">
+              <option>Normal</option>
+              <option>Business</option>
+              <option>VIP</option>
+            </select>
+          </td>
+        </tr>
+      </table>
       <br />
-      <br />
-      <label for="identityNumber">Số CMND:</label>
-      <input type="number" name="identityNumber" id="identityNumber" />
-      <br />
-      <br />
-      <label for="birthDay">Ngày sinh:</label>
-      <input type="date" name="birthDay" id="birthDay" />
-      <br />
-      <br />
-      <label for="email">E-mail:</label>
-      <input type="email" name="email" id="email" />
-      <br />
-      <br />
-      <label for="address">Địa chỉ:</label>
-      <input type="text" name="address" id="address" />
-      <br />
-      <br />
-      <label for="customerType">Hạng thành viên:</label>
-      <select name="customerType" id="customerType">
-        <option value="1">Member</option>
-        <option value="2">Silver</option>
-        <option value="3">Gold</option>
-        <option value="4">Platinum</option>
-        <option value="5">Dimond</option>
-      </select>
-      <br />
-      <br />
-      <label for="discoutRate">Giảm giá:</label>
-      <input type="number" name="discoutRate" id="discoutRate" />
-      <br />
-      <br />
-      <label for="guestCount">Số lượng đi kèm:</label>
-      <input type="number" name="guestCount" id="guestCount" />
-      <br />
-      <br />
-      <label for="rentDays">Số ngày thuê:</label>
-      <input type="number" name="rentDays" id="rentDays" />
-      <br />
-      <br />
-      <label for="serviceType">Loại dịch vụ:</label>
-      <select name="serviceType" id="serviceType">
-        <option value="100">Room</option>
-        <option value="300">House</option>
-        <option value="500">Villa</option>
-      </select>
-      <br />
-      <br />
-      <label for="roomType">Loại phòng:</label>
-      <select name="roomType" id="serviceType">
-        <option value="1">Normal</option>
-        <option value="2">Business</option>
-        <option value="3">VIP</option>
-      </select>
-      <br>
-      <br>
-      <button type="button" onclick="showPrice()">Tạm tính</button>
+      <button type="button" onclick="showBookingInfo()">Tạm tính</button>
     </form>
-    <br>
-    <div id="guestInfo"></div>
-    <script>
-      function showPrice() {
-        // let fullName = document.getElementById("fullName").value;
-        // let identityNumber = document.getElementById("identityNumber").value;
-        let serviceType = document.getElementById("serviceType");
-        let servicePrice = parseInt(serviceType.value);
-        let rentDays = parseInt(document.getElementById("rentDays").value);
-        let discoutRate = parseInt(document.getElementById("discoutRate").value);
-        let price = servicePrice * rentDays * (1 - discoutRate/100);
-        document.getElementById("guestInfo").innerText = price; 
-      }
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
