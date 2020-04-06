@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #screen {
+        width: 203px;
+        padding-right: 5px;
+        font-size: xx-large;
+        text-align: right;
+      }
+      .numpad {
+        font-size: larger;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="">
+      <table>
+        <tr>
+          <td colspan="4">
+            <input type="text" id="screen" value="0" disabled />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button type="button" class="numpad" onclick="numberClicked('7')">7</button>
+          </td>
+          <td>
+            <button type="button" class="numpad" onclick="numberClicked('8')">8</button>
+          </td>
+          <td>
+            <button type="button" class="numpad" onclick="numberClicked('9')">9</button>
+          </td>
+          <td>
+            <button type="button" class="numpad" onclick="opratorClicked('add')">+</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button type="button" class="numpad" onclick="numberClicked('4')">4</button>
+          </td>
+          <td>
+            <button type="button" class="numpad" onclick="numberClicked('5')">5</button>
+          </td>
+          <td>
+            <button type="button" class="numpad" onclick="numberClicked('6')">6</button>
+          </td>
+          <td>
+            <button type="button" class="numpad" onclick="opratorClicked('sub')">-</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button type="button" class="numpad" onclick="numberClicked('1')">1</button>
+          </td>
+          <td>
+            <button type="button" class="numpad" onclick="numberClicked('2')">2</button>
+          </td>
+          <td>
+            <button type="button" class="numpad" onclick="numberClicked('3')">3</button>
+          </td>
+          <td>
+            <button type="button" class="numpad" onclick="opratorClicked('mul')">*</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button type="button" class="numpad" onclick="clearScreen()">C</button>
+          </td>
+          <td>
+            <button type="button" class="numpad" onclick="numberClicked('0')">0</button>
+          </td>
+          <td>
+            <button type="button" class="numpad" onclick="showResult()">=</button>
+          </td>
+          <td>
+            <button type="button" class="numpad" onclick="opratorClicked('div')">/</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+    <script>
+      let screen = document.getElementById("screen");
+      let lastNumber;
+      let currentOperator;
+      let isTypedNextNum = false;
+      let result;
+      function numberClicked(number) {
+        if (parseInt(screen.value) == 0) {
+          screen.value = "";
+        }
+        if (!isTypedNextNum) {
+          screen.value = number;
+          isTypedNextNum = true;
+        } else {
+          screen.value = screen.value + number;
+        }
+      }
+      function clearScreen() {
+        screen.value = "0";
+        result = undefined;
+        lastNumber = undefined;
+        currentOperator = undefined;
+      }
+      function opratorClicked(operator) {
+        if (isTypedNextNum) {
+          if (lastNumber == undefined) {
+            lastNumber = parseInt(screen.value);
+            result = lastNumber;
+          } else {
+            lastNumber = parseInt(screen.value);
+            calculate();
+          }
+          isTypedNextNum = false;
+        }
+        currentOperator = operator;
+      }
+      function showResult() {
+        if (lastNumber != undefined || currentOperator != undefined) {
+          calculate();
+          lastNumber = undefined;
+          currentOperator = undefined;
+        }
+      }
+      function calculate() {
+        switch (currentOperator) {
+          case "add":
+            result += parseInt(screen.value);
+            break;
+          case "sub":
+            result -= parseInt(screen.value);
+            break;
+          case "mul":
+            result *= parseInt(screen.value);
+            break;
+          case "div":
+            result /= parseInt(screen.value);
+            break;
+        }
+        screen.value = result;
+      }
+    </script>
+  </body>
+</html>
