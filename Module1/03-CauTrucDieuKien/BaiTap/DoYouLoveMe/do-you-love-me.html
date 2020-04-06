@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Do you love me?</h1>
+    <button type="button" onclick="agree()">Yes</button>
+    <button type="button" id="buttonNo" onmouseover="randomRelocate()">No</button>
+    <script>
+      function agree() {
+        alert("<3");
+      }
+      function randomRelocate() {
+        let maxWitdh = window.innerWidth;
+        let maxHeight = window.innerHeight;
+        let buttonNo = document.getElementById("buttonNo");
+        let x = Math.random() * (maxWitdh - 300) + 100;
+        let y = Math.random() * (maxHeight - 300) + 100;
+        buttonNo.style.position = "absolute";
+        buttonNo.style.left = x + "px";
+        buttonNo.style.top = y + "px";
+      }
+    </script>
+  </body>
+</html>
