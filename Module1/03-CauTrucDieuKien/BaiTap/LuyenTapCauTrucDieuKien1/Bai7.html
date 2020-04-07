@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let mins = parseInt(prompt("Nhập số phút đã sử dụng:"));
+      let result = 25000;
+      if (mins > 50) {
+        result += 50 * 600;
+        mins -= 50;
+        if (mins > 150) {
+          result += 150 * 400;
+          mins -= 150;
+          result += mins * 200;
+        } else {
+          result += mins * 400;
+        }
+      } else {
+        result += mins * 600;
+      }
+      alert("Số tiền phải trả: " + result);
+    </script>
+  </body>
+</html>
