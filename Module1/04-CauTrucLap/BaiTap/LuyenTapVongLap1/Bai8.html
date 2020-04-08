@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let from = parseInt(prompt("Nhập khoảng dưới: "));
+      let to = parseInt(prompt("Nhập khoảng trên: "));
+      let bingo = Math.floor(Math.random() * (to - from) + from);
+      let count = 0;
+      let guestNumber;
+      do {
+        guestNumber = parseInt(prompt("Đoán số trong khoảng (" + from + ", " + to + ")"));
+        if (guestNumber == bingo) {
+          alert(`Chúc mừng! Bạn đã đoán đúng! Số bí mật: ${bingo}`);
+          break;
+        } else {
+          if (guestNumber > bingo) {
+            alert(`Đoán sai rồi! Còn ${2 - count} lần còn lại. Số bí mật nhỏ hơn ${guestNumber}.`);
+          } else {
+            alert(`Đoán sai rồi! Còn ${2 - count} lần còn lại. Số bí mật lớn hơn ${guestNumber}.`);
+          }
+          count++;
+        }
+      } while (count < 3);
+      alert(`Số bí mật là ${bingo}`);
+    </script>
+  </body>
+</html>

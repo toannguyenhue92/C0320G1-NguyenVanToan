@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let n1 = 0;
+      let n2 = 1;
+      let n3;
+      let result = 0;
+      for (let i = 1; i <= 20; i++) {
+        n3 = n1 + n2;
+        n1 = n2;
+        n2 = n3;
+        result += n3;
+      }
+      alert("Tổng của 20 số đầu tiên trong dãy fibonacci :" + result);
+    </script>
+  </body>
+</html>

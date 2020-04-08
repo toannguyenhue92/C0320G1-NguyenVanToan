@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let temperature;
+      let message;
+      do {
+        if (temperature > 100) {
+          message = "Hãy giảm nhiệt độ!";
+        }
+        if (temperature < 20) {
+          message = "Hãy tăng nhiệt độ!";
+        }
+        if (message != undefined) {
+          alert(message);
+        }
+        temperature = parseInt(prompt("Nhập nhiệt độ: "));
+      } while (temperature > 100 || temperature < 20);
+    </script>
+  </body>
+</html>
