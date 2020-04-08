@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <table>
+        <tr>
+          <td><label for="amount">Số tiền vay</label></td>
+          <td><input type="number" name="amount" id="amount" /></td>
+        </tr>
+        <tr>
+          <td><label for="rate">Lãi suất hàng tháng (%)</label></td>
+          <td><input type="number" name="rate" id="rate" /></td>
+        </tr>
+        <tr>
+          <td><label for="months">Số tháng vay</label></td>
+          <td><input type="number" name="months" id="months" /></td>
+        </tr>
+        <tr>
+          <td colspan="2" style="text-align: center;">
+            <button type="button" onclick="showResult()">Tính tiền lãi phải trả</button>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="result">Tiền lãi phải trả</label></td>
+          <td><input type="number" name="result" id="result" disabled /></td>
+        </tr>
+      </table>
+    </form>
+    <script>
+      let amount = document.getElementById("amount");
+      let rate = document.getElementById("rate");
+      let months = document.getElementById("months");
+      function showResult() {
+        let result = 0;
+        let lastAmount = Number(amount.value);
+        for (let i = 1; i <= Number(months.value); i++) {
+          result += lastAmount * (Number(rate.value) / 100);
+          lastAmount += result;
+        }
+        document.getElementById("result").value = Math.floor(result);
+      }
+    </script>
+  </body>
+</html>
