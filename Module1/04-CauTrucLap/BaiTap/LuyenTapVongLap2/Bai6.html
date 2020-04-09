@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: monospace;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      // https://pastebin.com/GrXAUhUq
+      let i, j;
+      let rows = 6;
+      /* printing top semi circular shapes of heart */
+      for (i = rows / 2; i <= rows; i += 2) {
+        /* Printing Spaces */
+        for (j = 1; j < rows - i; j += 2) {
+          document.write("-");
+        }
+        /* printing stars for left semi circle */
+        for (j = 1; j <= i; j++) {
+          document.write("*");
+        }
+        /* Printing Spaces */
+        for (j = 1; j <= rows - i; j++) {
+          document.write("-");
+        }
+        /* printing stars for right semi circle */
+        for (j = 1; j <= i; j++) {
+          document.write("*");
+        }
+        /* move to next row */
+        document.write("<br>");
+      }
+
+      /* printing inverted start pyramid */
+      for (i = rows; i >= 1; i--) {
+        for (j = i; j < rows; j++) {
+          document.write("-");
+        }
+        for (j = 1; j <= i * 2 - 1; j++) {
+          document.write("*");
+        }
+        /* move to next row */
+        document.write("<br>");
+      }
+    </script>
+  </body>
+</html>

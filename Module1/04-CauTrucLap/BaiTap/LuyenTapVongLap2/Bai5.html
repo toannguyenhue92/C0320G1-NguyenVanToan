@@ -38,7 +38,7 @@
       function showResult() {
         let result = 0;
         let lastAmount = Number(amount.value);
-        for (let i = 1; i <= Number(months.value); i++) {
+        for (let i = 1; i <= parseInt(months.value); i++) {
           result += lastAmount * (Number(rate.value) / 100);
           lastAmount += result;
         }
