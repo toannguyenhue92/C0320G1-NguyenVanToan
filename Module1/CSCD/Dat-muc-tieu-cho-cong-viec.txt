@@ -1,0 +1,47 @@
+Luyện tập 1:
+- Tăng năng suất làm việc 5% vào tuần tới
+	+ S: 2
+	+ M: 3
+	+ A: 3
+	+ R: 3
+	+ T: 4
+- Tặng cho vợ một chiếc máy tính mới nếu trúng xổ số
+	+ S: 2
+	+ M: 2
+	+ A: 1
+	+ R: 1
+	+ T: 1
+- Tiết kiệm đủ tiền để mua một chiếc máy tính mới
+	+ S: 2
+	+ M: 2
+	+ A: 2
+	+ R: 2
+	+ T: 1
+- Tuần tới sẽ dọn dẹp lại khu vườn
+	+ S: 2
+	+ M: 2
+	+ A: 3
+	+ R: 3
+	+ T: 2
+- Tự thành lập một công ty riêng cho mình
+	+ S: 2
+	+ M: 2
+	+ A: 1
+	+ R: 1
+	+ T: 1
+
+
+
+	
+Luyện tập 2
+- Tiết kiệm 24tr để mua một chiếc máy tính trong vòng 12 tháng tới.  
+	+ S: 4
+	+ M: 4
+	+ A: 3
+	+ R: 3
+	+ T: 4
+
+Luyện tập 3
+- Hoàn thành CaseStudy (yêu cầu 2) lúc 5h chiều 9/4/2020
+- Đọc slide bài mảng trước 10/4/2020
+- Pass module 1 vào cuối tháng này
