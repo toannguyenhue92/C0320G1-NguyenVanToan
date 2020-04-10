@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="searchText" />
+    <button type="button" onclick="search()">Tra từ</button>
+    <br />
+    <p id="result"></p>
+    <script>
+      let english = ["hello", "title", "head", "body", "input", "button", "script"];
+      let vietnamese = ["xin chào", "tiêu đề", "đầu", "thân", "nhập vào", "nút bấm", "kịch bản"];
+      let searchText = document.getElementById("searchText");
+      let result = document.getElementById("result");
+      function search() {
+        let index = english.indexOf(searchText.value);
+        if (index !== -1) {
+          result.innerText = vietnamese[index];
+        } else {
+          result.innerText = "Không tìm thấy";
+        }
+      }
+    </script>
+  </body>
+</html>
