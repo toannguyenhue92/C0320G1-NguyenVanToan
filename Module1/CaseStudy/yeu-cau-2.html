@@ -14,29 +14,56 @@
   </head>
   <body>
     <div>
-      <button type="button" onclick="showBookingInfo()">Show Information</button>
-      <button type="button" onclick="editBooking()">Edit Information</button>
-      <button type="button" onclick="showPrice()">Show the amount to be paid after discount</button>
+      <button type="button" onclick="showBookingInfo()">
+        Show Information
+      </button>
+      <button type="button" onclick="editBooking()">
+        Edit Information
+      </button>
+      <button type="button" onclick="showPrice()">
+        Show the amount to be paid after discount
+      </button>
     </div>
     <form action="" id="bookingForm" hidden>
       <table>
         <tr>
           <td><label for="fullName">Họ và tên:</label></td>
-          <td><input type="text" name="fullName" id="fullName" value="Toàn" /></td>
+          <td>
+            <input type="text" name="fullName" id="fullName" value="Toàn" />
+          </td>
         </tr>
         <tr>
           <td><label for="identityNumber">Số CMND:</label></td>
           <td>
-            <input type="number" name="identityNumber" id="identityNumber" value="191733445" />
+            <input
+              type="number"
+              name="identityNumber"
+              id="identityNumber"
+              value="191733445"
+            />
           </td>
         </tr>
         <tr>
           <td><label for="birthDay">Ngày sinh:</label></td>
-          <td><input type="date" name="birthDay" id="birthDay" value="1990-08-04" /></td>
+          <td>
+            <input
+              type="date"
+              name="birthDay"
+              id="birthDay"
+              value="1990-08-04"
+            />
+          </td>
         </tr>
         <tr>
           <td><label for="email">E-mail:</label></td>
-          <td><input type="email" name="email" id="email" value="toannguyen.hue92@gmail.com" /></td>
+          <td>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              value="toannguyen.hue92@gmail.com"
+            />
+          </td>
         </tr>
         <tr>
           <td><label for="address">Địa chỉ:</label></td>
@@ -56,15 +83,26 @@
         </tr>
         <tr>
           <td><label for="discoutRate">Giảm giá:</label></td>
-          <td><input type="number" name="discoutRate" id="discoutRate" value="10" /></td>
+          <td>
+            <input
+              type="number"
+              name="discoutRate"
+              id="discoutRate"
+              value="10"
+            />
+          </td>
         </tr>
         <tr>
           <td><label for="guestCount">Số lượng đi kèm:</label></td>
-          <td><input type="number" name="guestCount" id="guestCount" value="3" /></td>
+          <td>
+            <input type="number" name="guestCount" id="guestCount" value="3" />
+          </td>
         </tr>
         <tr>
           <td><label for="rentDays">Số ngày thuê:</label></td>
-          <td><input type="number" name="rentDays" id="rentDays" value="2" /></td>
+          <td>
+            <input type="number" name="rentDays" id="rentDays" value="2" />
+          </td>
         </tr>
         <tr>
           <td><label for="serviceType">Loại dịch vụ:</label></td>
