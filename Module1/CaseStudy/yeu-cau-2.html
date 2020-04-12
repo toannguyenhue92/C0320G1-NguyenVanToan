@@ -16,7 +16,7 @@
     <div>
       <button type="button" onclick="showBookingInfo()">Show Information</button>
       <button type="button" onclick="editBooking()">Edit Information</button>
-      <button type="button">Show the amount to be paid after discount</button>
+      <button type="button" onclick="showPrice()">Show the amount to be paid after discount</button>
     </div>
     <form action="" id="bookingForm" hidden>
       <table>
@@ -40,7 +40,7 @@
         </tr>
         <tr>
           <td><label for="address">Địa chỉ:</label></td>
-          <td><input type="text" name="address" id="address" value="Huế" /></td>
+          <td><input type="text" name="address" id="address" value="Hue" /></td>
         </tr>
         <tr>
           <td><label for="customerType">Hạng thành viên:</label></td>
@@ -50,7 +50,7 @@
               <option>Silver</option>
               <option selected>Gold</option>
               <option>Platinum</option>
-              <option>Dimond</option>
+              <option>Diamond</option>
             </select>
           </td>
         </tr>
@@ -112,7 +112,7 @@
         result += "<p>E-mail: " + email.value + "</p>";
         result += "<p>Địa chỉ: " + address.value + "</p>";
         result += "<p>Hạng thành viên: " + customerType.value + "</p>";
-        result += "<p>Giảm giá: " + discoutRate.vlaue + "%</p>";
+        result += "<p>Giảm giá: " + discoutRate.value + "%</p>";
         result += "<p>Số lượng đi kèm: " + guestCount.value + "</p>";
         result += "<p>Số ngày thuê: " + rentDays.value + "</p>";
         result += "<p>Loại dịch vụ: " + serviceType.value + "</p>";
@@ -127,6 +127,8 @@
       }
 
       function showPrice() {
+        let discount = 0;
+        let rentDaysValue = parseInt(rentDays.value);
         let servicePrice;
         switch (serviceType.value) {
           case "Room ($100/day)":
@@ -139,9 +141,43 @@
             servicePrice = 500;
             break;
         }
-        discoutRate = isNaN(discoutRate) ? 0 : discoutRate;
-        rentDays = isNaN(rentDays) ? 0 : rentDays;
-        let price = servicePrice * rentDays * (1 - discoutRate / 100);
+        switch (address.value) {
+          case "Quang Nam":
+            discount += 5;
+            break;
+          case "Hue":
+            discount += 10;
+            break;
+          case "Da nang":
+            discount += 20;
+            break;
+        }
+        if (rentDaysValue >= 7) {
+          discount += 30;
+        } else if (rentDays >= 5) {
+          discount += 20;
+        } else if (rentDays >= 2) {
+          discount += 10;
+        }
+        switch (customerType.value) {
+          case "Member":
+            break;
+          case "Silver":
+            discount += 2;
+            break;
+          case "Gold":
+            discount += 5;
+            break;
+          case "Platinum":
+            discount += 10;
+            break;
+          case "Diamond":
+            discount += 15;
+            break;
+        }
+        let price = servicePrice * rentDaysValue - discount;
+        bookingForm.hidden = true;
+        resultInfo.innerHTML = `<h3>Số tiền phải trả: ${price}</h3>`;
       }
     </script>
   </body>
