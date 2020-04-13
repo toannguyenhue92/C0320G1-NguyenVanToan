@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let array = [1, 2, 22, 21, 10, 11, 15, 14, 12, 9];
+      document.write(array.join(", "));
+      document.write("<br>");
+      let num = parseInt(prompt("Input a number: "));
+      let position = array.indexOf(num);
+      if (position !== -1) {
+        for (let index = position; index < array.length; index++) {
+          array[index] = array[index + 1];
+        }
+        array[array.length - 1] = 0;
+        document.write(array.join(", "));
+      } else {
+        document.write(`${num} is not in the array.`);
+      }
+    </script>
+  </body>
+</html>

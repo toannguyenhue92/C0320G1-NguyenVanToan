@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let array = [1, 2, 22, 21, 10, 11, 15, 14, 12, 9];
+      document.write(array.join(", "));
+      document.write("<br>");
+      array.sort(function (a, b) {
+        return b - a;
+      });
+      document.write(array.join(", "));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let array = [1, 2, 22, 21, 10, 11, 15, 14, 12, 9];
+      let max = array[0];
+      let maxPosition = 0;
+      for (let index = 1; index < array.length; index++) {
+        let element = array[index];
+        if (element > max) {
+          max = element;
+          maxPosition = index;
+        }
+      }
+      document.write(`Số lớn nhất là ${max} ở vị trí ${maxPosition}.`);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let array = [1, 2, 22, 21, 10, 11, 15, 14, 12, 9];
+      let count = 0;
+      for (let index = 0; index < array.length; index++) {
+        let element = array[index];
+        if (element >= 10) {
+          document.writeln(element);
+          count++;
+        }
+      }
+      document.write(`Có ${count} số lớn hơn 10.`);
+    </script>
+  </body>
+</html>
