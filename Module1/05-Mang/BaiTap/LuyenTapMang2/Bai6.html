@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let array = ["xin", "-", "chao", "ban", "-", "alo", "alo", "-"];
+      document.write(array.join(", "));
+      document.write("<br>");
+      for (let index = 0; index < array.length; index++) {
+        if (array[index] === "-") {
+          array[index] = "_";
+        }
+      }
+      document.write(array.join(", "));
+    </script>
+  </body>
+</html>

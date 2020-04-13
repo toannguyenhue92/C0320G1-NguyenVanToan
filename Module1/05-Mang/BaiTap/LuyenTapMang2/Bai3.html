@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const number = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+      let str = prompt("Input a string:");
+      let count = 0;
+      for (let index = 0; index < str.length; index++) {
+        if (number.indexOf(str[index]) !== -1) {
+          count++;
+        }
+      }
+      document.write(`The string "${str}" has ${count} numeric characters.`);
+    </script>
+  </body>
+</html>
