@@ -27,14 +27,44 @@
           data += board[i][j] + "&nbsp;&nbsp;";
         }
       }
-      data +=
-        "<br/><br/><input type='button' value='Change Value' onclick='changeValue()'>";
+      data += "<br/><br/><input type='button' value='Change Value' onclick='changeValue()'>";
       b.innerHTML = data;
 
       let playerX = true;
 
       function switchPlayer() {
         playerX = !playerX;
+      }
+
+      function getWinner() {
+        for (let x = 0; x < 5; x++) {
+          for (let y = 0; y < 5; y++) {
+            if (board[x][y] !== ".") {
+              if (
+                // Hàng dọc
+                (board[x - 1] !== undefined &&
+                  board[x + 1] !== undefined &&
+                  board[x][y] === board[x - 1][y] &&
+                  board[x][y] === board[x + 1][y]) ||
+                // Đường chéo thuận
+                (board[x - 1] !== undefined &&
+                  board[x + 1] !== undefined &&
+                  board[x][y] === board[x - 1][y - 1] &&
+                  board[x][y] === board[x + 1][y + 1]) ||
+                // Đường chéo ngược
+                (board[x - 1] !== undefined &&
+                  board[x + 1] !== undefined &&
+                  board[x][y] === board[x - 1][y + 1] &&
+                  board[x][y] === board[x + 1][y - 1]) ||
+                // Hàng ngang
+                (board[x][y] === board[x][y - 1] && board[x][y] === board[x][y + 1])
+              ) {
+                return board[x][y];
+              }
+            }
+          }
+        }
+        return "";
       }
 
       function changeValue() {
@@ -47,7 +77,7 @@
         do {
           positionX = parseInt(prompt("X: "));
           positionY = parseInt(prompt("Y: "));
-          availableCell = board[positionX][positionY] == ".";
+          availableCell = board[positionX][positionY] === ".";
           if (!availableCell) {
             alert(`Ô (${positionX},${positionY}) đã được chọn!`);
           }
@@ -65,12 +95,13 @@
             data += board[i][j] + "&nbsp;&nbsp;";
           }
         }
-        data +=
-          "<br/><br/><input type='button' value='Change Value' onclick='changeValue()'>";
+        data += "<br/><br/><input type='button' value='Change Value' onclick='changeValue()'>";
         b.innerHTML = data;
-        
-        // Winner
-        
+
+        let winner = getWinner();
+        if (winner !== "") {
+          alert(` Player ${winner} is the winner!`);
+        }
 
         switchPlayer();
       }
