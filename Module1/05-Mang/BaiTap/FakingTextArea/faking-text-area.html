@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <textarea id="fakingText" cols="30" rows="10" onkeyup="faking()"></textarea>
+    <script>
+      const str = "What the hell?";
+      let fakingText = document.getElementById("fakingText");
+      let count = 0;
+      let currentStr = "";
+      function faking() {
+        if (count <= str.length) {
+          fakingText.value = currentStr;
+          currentStr += str[count];
+          count++;
+        } else {
+          fakingText.value = "";
+          currentStr = "";
+          count = 0;
+        }
+      }
+    </script>
+  </body>
+</html>
