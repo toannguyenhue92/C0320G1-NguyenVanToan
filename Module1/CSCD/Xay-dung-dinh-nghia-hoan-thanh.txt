@@ -1,0 +1,19 @@
+Công việc : Học bài hàm trong javascript
+
+a. Đặc điểm:
+ - 7h45: chuẩn bị những mục sẽ học 
+ - 8h-12h: giờ học buổi sáng
+ - 12h-13h30: nghỉ trưa
+ - 13h30-17h00: giờ học buổi chiều
+ - 17h00: tổng kết trong ngày
+ - 17h30: kết thúc
+
+b. Các quy định
+ - Mỗi tiếng nghỉ ngơi 5'
+ - Giải quyết một vấn đề trong vòng 30', nếu không được thì hỏi tutor
+
+c. Những việc cần làm
+ - Xem slide bài giảng
+ - Xem các bài đọc trong phần hàm trên james
+ - Làm các bài tập 
+ - Làm các bài tập *
