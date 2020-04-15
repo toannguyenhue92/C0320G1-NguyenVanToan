@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let stars = ["Polaris", "Aldebaran", "Deneb", "Vega", "Altair", "Dubhe", "Regulus"];
+        let constellations = ["Ursa Minor", "Tarurus", "Cygnus", "Lyra", "Aquila", "Ursa Major", "Leo"];
+        function findByStar(star) {
+            let index = stars.indexOf(star);
+            if (index === -1) {
+                return -1;
+            } else {
+                return constellations[index];
+            }
+
+        }
+        let inputStar = prompt("Input name of star: ");
+        let constellation = findByStar(inputStar);
+        if (constellation === -1) {
+            alert("Not found!")
+        } else {
+            alert(constellation);
+        }
+    </script>
+</body>
+
+</html>
