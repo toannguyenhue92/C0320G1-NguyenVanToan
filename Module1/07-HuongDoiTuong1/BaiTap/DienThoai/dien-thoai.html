@@ -52,6 +52,8 @@
         let iPhone = new Phone("iPhone");
         nokia.sentMessage("Hello!", iPhone);
         alert(iPhone.getInbox().join());
+        iPhone.sentMessage("What's up?", nokia);
+        alert(iPhone.getSent().join());
     </script>
 </body>
 
