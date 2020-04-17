@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Phone {
+            constructor(name, battery, drafts, inbox, sent, status) {
+                this.name = name;
+                this.battery = 5 || battery;
+                this.status = true || status;
+                this.drafts = [] || drafts;
+                this.inbox = [] || inbox;
+                this.sent = [] || sent;
+            }
+            getStatus() {
+                return this.status;
+            }
+            setStatus(status) {
+                this.status = status;
+            }
+            chagger(number) {
+                this.battery = number;
+            }
+            saveDraft(message) {
+                drafts.push(message);
+            }
+            sentMessage(message, destination) {
+                if (this.status && destination.getStatus()) {
+                    destination.inbox.push(message);
+                    destination.battery--;
+                    this.sent.push(message);
+                    this.battery--;
+                    this.status = this.battery > 0;
+                    return true;
+                }
+                return false;
+            }
+            getInbox() {
+                return this.inbox;
+            }
+            getSent() {
+                return this.sent;
+            }
+        }
+        let nokia = new Phone("nokia");
+        let iPhone = new Phone("iPhone");
+        nokia.sentMessage("Hello!", iPhone);
+        alert(iPhone.getInbox().join());
+    </script>
+</body>
+
+</html>
