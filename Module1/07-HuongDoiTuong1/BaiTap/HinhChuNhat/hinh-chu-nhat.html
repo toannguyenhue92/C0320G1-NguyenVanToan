@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <center>
+        <canvas id="myCanvas" width="1280px" height="720px" style="border:1px solid #d3d3d3;">
+    </center>
+    <script>
+        class MyRectangle {
+            constructor(width, height) {
+                this.width = width;
+                this.height = height;
+            }
+            getArea() {
+                return this.width * this.height;
+            }
+            drawToScreen() {
+                let context = document.getElementById("myCanvas").getContext("2d");
+                context.fillRect(0, 0, this.width, this.height);
+            }
+        }
+        let rectangle = new MyRectangle(200, 120);
+        rectangle.drawToScreen();
+        rectangle.width = 500;
+        rectangle.height = 300;
+        console.log(`Area ${rectangle.getArea()}`);
+    </script>
+</body>
+
+</html>
