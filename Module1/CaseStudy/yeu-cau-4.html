@@ -6,9 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        body,
-        button {
+        body {
             font-size: larger;
+        }
+
+        button {
+            font-size: medium;
         }
     </style>
 </head>
@@ -18,6 +21,7 @@
     <br>
     <button onclick="addCustomers()">Add</button>
     <button onclick="deleteCustomers()">Delete</button>
+    <button onclick="sortByName()">Sort by customer's name</button>
     <br>
     <br>
     <div id="customers"></div>
@@ -50,6 +54,10 @@
             } else {
                 alert(`Không tìm thấy khách hàng ${name}`);
             }
+        }
+        function sortByName() {
+            arrNameCustomers.sort();
+            displayCustomers();
         }
         function displayCustomers() {
             let s = "<table><tr><th>STT</th><th>Tên</th></tr>";
