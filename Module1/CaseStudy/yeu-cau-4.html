@@ -29,8 +29,10 @@
             let count = parseInt(prompt("Nhập số lượng khách cần thêm", "2"));
             if (count > 0) {
                 for (let i = 0; i < count; i++) {
-                    let name = prompt(`Nhập tên của khách thứ ${i + 1}`);
-                    arrNameCustomers.push(name);
+                    let name = prompt(`Nhập tên của khách thứ ${i + 1}`).trim();
+                    if (name.length > 0) {
+                        arrNameCustomers.push(name);
+                    }
                 }
                 displayCustomers();
             } else {
