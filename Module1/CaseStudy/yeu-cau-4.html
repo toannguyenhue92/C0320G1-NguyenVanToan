@@ -1,74 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        body {
-            font-size: larger;
-        }
+      body {
+        font-size: larger;
+      }
 
-        button {
-            font-size: medium;
-        }
+      button {
+        font-size: medium;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-    <br>
-    <br>
+  <body>
+    <br />
+    <br />
     <button onclick="addCustomers()">Add</button>
     <button onclick="deleteCustomers()">Delete</button>
     <button onclick="sortByName()">Sort by customer's name</button>
-    <br>
-    <br>
+    <br />
+    <br />
     <div id="customers"></div>
     <script>
-        let list = document.getElementById("customers");
-        let arrNameCustomers = ["Toan", "Phong", "Tien"];
-        displayCustomers();
-        function addCustomers() {
-            let count = parseInt(prompt("Nhập số lượng khách cần thêm", "2"));
-            if (count > 0) {
-                for (let i = 0; i < count; i++) {
-                    let name = prompt(`Nhập tên của khách thứ ${i + 1}`).trim();
-                    if (name.length > 0) {
-                        arrNameCustomers.push(name);
-                    }
-                }
-                displayCustomers();
-            } else {
-                alert("Số lượng khách là số nguyên lớn hơn 0");
-            }
-        }
-        function deleteCustomers() {
-            let name = prompt("Nhập tên của khách hàng");
-            let index = arrNameCustomers.indexOf(name)
-            if (index != -1) {
-                if (confirm(`Xóa khách hàng ${name} khỏi danh sách?`)) {
-                    arrNameCustomers.splice(index, 1);
-                    displayCustomers();
-                }
-            } else {
-                alert(`Không tìm thấy khách hàng ${name}`);
-            }
-        }
-        function sortByName() {
-            arrNameCustomers.sort();
-            displayCustomers();
-        }
-        function displayCustomers() {
-            let s = "<table><tr><th>STT</th><th>Tên</th></tr>";
-            for (let index = 0; index < arrNameCustomers.length; index++) {
-                const element = arrNameCustomers[index];
-                s += `<tr><td>${index + 1}</td><td>${element}</td></tr>`;
-            }
-            s += "</table>";
-            list.innerHTML = s;
-        }
-    </script>
-</body>
+      let list = document.getElementById("customers");
+      let arrNameCustomers = ["Toan", "Phong", "Tien"];
+      displayCustomers();
 
+      function addCustomer(name) {
+        arrNameCustomers.push(name);
+      }
+
+      function addCustomers() {
+        let count = parseInt(prompt("Nhập số lượng khách cần thêm", "2"));
+        if (count > 0) {
+          for (let i = 0; i < count; i++) {
+            let name = prompt(`Nhập tên của khách thứ ${i + 1}`).trim();
+            if (name.length > 0) {
+              addCustomer(name);
+            }
+          }
+          displayCustomers();
+        } else {
+          alert("Số lượng khách là số nguyên lớn hơn 0");
+        }
+      }
+
+      function deleteCustomer() {
+        let name = prompt("Nhập tên của khách hàng");
+        let index = arrNameCustomers.indexOf(name);
+        if (index != -1) {
+          if (confirm(`Xóa khách hàng ${name} khỏi danh sách?`)) {
+            arrNameCustomers.splice(index, 1);
+            displayCustomers();
+          }
+        } else {
+          alert(`Không tìm thấy khách hàng ${name}`);
+        }
+      }
+
+      function sortByName() {
+        arrNameCustomers.sort();
+        displayCustomers();
+      }
+
+      function displayCustomers() {
+        let s = "<table><tr><th>STT</th><th>Tên</th></tr>";
+        for (let index = 0; index < arrNameCustomers.length; index++) {
+          const element = arrNameCustomers[index];
+          s += `<tr><td>${index + 1}</td><td>${element}</td></tr>`;
+        }
+        s += "</table>";
+        list.innerHTML = s;
+      }
+    </script>
+  </body>
 </html>
