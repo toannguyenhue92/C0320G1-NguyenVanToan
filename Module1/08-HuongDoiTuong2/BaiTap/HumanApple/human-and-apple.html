@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="demo" onclick="demo()">Demo</button>
+    <script>
+      class Apple {
+        constructor() {
+          this.weight = 10;
+        }
+        decrease() {
+          this.weight--;
+        }
+        isEmpty() {
+          return this.weight <= 0;
+        }
+        getWeight() {
+          return this.weight;
+        }
+      }
+      class Human {
+        constructor(name, gender, weight) {
+          this.name = name;
+          this.gender = gender;
+          this.weight = weight;
+        }
+        getName() {
+          return this.name;
+        }
+        getWeight() {
+          return this.weight;
+        }
+        setName(name) {
+          this.name = name;
+        }
+        setWeight(weight) {
+          this.weight = weight;
+        }
+        isMale() {
+          return gender;
+        }
+        setGender(gender) {
+          this.gender = gender;
+        }
+        eat(apple) {
+          apple.decrease();
+          console.log(`${this.name} eat. Apple's weight left: ${apple.getWeight()}`);
+        }
+        say(s) {
+          console.log(s);
+        }
+        checkApple(apple) {
+          return apple.getWeight() > 0;
+        }
+      }
+      function demo() {
+        let adam = new Human("Adam", true, 60);
+        let eva = new Human("Eva", false, 45);
+        let apple = new Apple();
+        while (!apple.isEmpty()) {
+          if (apple.getWeight() % 2 == 0) {
+            eva.eat(apple);
+          } else {
+            adam.eat(apple);
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
