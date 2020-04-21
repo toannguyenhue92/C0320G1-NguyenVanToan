@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="demo()">Demo</button>
+    <script>
+      class ElectricLamp {
+        constructor(status) {
+          this.status = false || status;
+        }
+        turnOn() {
+          this.status = true;
+          console.log("The lamp had been turned on!");
+        }
+        turnOff() {
+          this.status = false;
+          console.log("The lamp had been turned off!");
+        }
+      }
+
+      class SwitchButton {
+        constructor(lamp) {
+          this.lamp = lamp;
+        }
+        connectToLamp(lamp) {
+          this.lamp = lamp;
+        }
+        switchOn() {
+          if (this.lamp != undefined) {
+            this.lamp.turnOn();
+          }
+        }
+        switchOff() {
+          if (this.lamp != undefined) {
+            this.lamp.turnOff();
+          }
+        }
+      }
+
+      function demo() {
+        let electircLamp = new ElectricLamp();
+        let switchButton = new SwitchButton();
+        switchButton.connectToLamp(electircLamp);
+        for (let i = 0; i < 10; i++) {
+          if (i % 2 == 0) {
+            switchButton.switchOff();
+          } else {
+            switchButton.switchOn();
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
