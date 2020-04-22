@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    #game-board {
+      position: relative;
+      margin-top: 50px;
+    }
+
+    .cell {
+      border: solid 1px blue;
+      text-align: center;
+      font-size: 20pt;
+      cursor: pointer;
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="game-board"></div>
+  <script type="text/javascript">
+    const DEFAULT_COLS = 10;
+    const DEFAULT_ROWS = 10;
+    const DEFAULT_CELL_SIZE = 40;
+    const PLAYER_1_VALUE = "X";
+    const PLAYER_2_VALUE = "O";
+
+    class Cell {
+      constructor(row, col) {
+        this.row = row;
+        this.col = col;
+        this.available = true;
+        this.value = "";
+      }
+
+      isAvailable() {
+        return this.available;
+      }
+
+      setValue(value) {
+        this.available = false;
+        this.value = value;
+        let cellDiv = document.getElementById(`cell-${this.row}-${this.col}`);
+        cellDiv.innerHTML = value;
+      }
+
+      getValue() {
+        return this.value;
+      }
+
+      getHtml() {
+        let top = this.row * DEFAULT_CELL_SIZE;
+        let left = this.col * DEFAULT_CELL_SIZE;
+        let html = `<div class="cell" id="cell-${this.row}-${this.col}" onclick="play(${this.row},${this.col})" style="position: absolute; width: ${DEFAULT_CELL_SIZE}px; height: ${DEFAULT_CELL_SIZE}px; line-height: ${DEFAULT_CELL_SIZE}px; top: ${top}px; left: ${left}px;">${this.value}</div>`;
+        return html;
+      }
+
+    }
+
+    function createEmptyBoard() {
+      let board = new Array();
+      for (let i = 0; i < DEFAULT_ROWS; i++) {
+        let row = new Array();
+        for (let j = 0; j < DEFAULT_COLS; j++) {
+          row.push(new Cell(i, j));
+        }
+        board.push(row);
+      }
+      return board;
+    }
+
+    class Game {
+      constructor() {
+        this.currentPlayer = PLAYER_1_VALUE;
+        this.board = createEmptyBoard();
+      }
+
+      drawBoard() {
+        let gameBoard = document.getElementById("game-board");
+        let html = "<table>";
+        for (let i = 0; i < DEFAULT_ROWS; i++) {
+          html += "<tr>";
+          for (let j = 0; j < DEFAULT_COLS; j++) {
+            html += `<td>${this.board[i][j].getHtml()}</td>`;
+          }
+          html += "</tr>";
+        }
+        html += "</table>";
+        gameBoard.innerHTML = html;
+      }
+
+      getCell(row, col) {
+        return this.board[row][col];
+      }
+
+      getValue(row, col) {
+        if (row < 0 || row >= DEFAULT_ROWS) {
+          return undefined;
+        }
+        if (col < 0 || col >= DEFAULT_COLS) {
+          return undefined;
+        }
+        return this.board[row][col].getValue();
+      }
+
+      switchPlayer() {
+        if (this.currentPlayer == PLAYER_1_VALUE) {
+          this.currentPlayer = PLAYER_2_VALUE;
+        } else {
+          this.currentPlayer = PLAYER_1_VALUE;
+        }
+      }
+
+      isAvailable(row, col) {
+        return this.getCell(row, col).isAvailable();
+      }
+
+      pickCell(row, col, player) {
+        this.getCell(row, col).setValue(player);
+      }
+
+      isWin() {
+        for (let row = 0; row < DEFAULT_ROWS; row++) {
+          for (let col = 0; col < DEFAULT_COLS; col++) {
+            if (this.getValue(row, col) == this.getValue(row, col - 1)
+              && this.getValue(row, col) == this.getValue(row, col - 2)
+              && this.getValue(row, col) == this.getValue(row, col + 1)
+              && this.getValue(row, col) == this.getValue(row, col + 2)
+              && this.getValue(row, col) != "") {
+              return true;
+            }
+            if (this.getValue(row, col) == this.getValue(row - 1, col)
+              && this.getValue(row, col) == this.getValue(row - 2, col)
+              && this.getValue(row, col) == this.getValue(row + 1, col)
+              && this.getValue(row, col) == this.getValue(row + 2, col)
+              && this.getValue(row, col) != "") {
+              return true;
+            }
+            if (this.getValue(row, col) == this.getValue(row - 1, col + 1)
+              && this.getValue(row, col) == this.getValue(row - 2, col + 2)
+              && this.getValue(row, col) == this.getValue(row + 1, col - 1)
+              && this.getValue(row, col) == this.getValue(row + 2, col - 2)
+              && this.getValue(row, col) != "") {
+              return true;
+            }
+            if (this.getValue(row, col) == this.getValue(row - 1, col - 1)
+              && this.getValue(row, col) == this.getValue(row - 2, col - 2)
+              && this.getValue(row, col) == this.getValue(row + 1, col + 1)
+              && this.getValue(row, col) == this.getValue(row + 2, col + 2)
+              && this.getValue(row, col) != "") {
+              return true;
+            }
+          }
+        }
+        return false;
+      }
+    }
+
+    let game = new Game();
+    game.drawBoard();
+
+    function play(row, col) {
+      if (game.isWin()) {
+        alert("Press 'F5' for new game!");
+      } else {
+        if (game.isAvailable(row, col)) {
+          game.pickCell(row, col, game.currentPlayer);
+          game.switchPlayer();
+          if (game.isWin()) {
+            alert('Has winner!');
+          }
+        } else {
+          alert(`This cell has been picked!`);
+        }
+      }
+
+    }
+  </script>
+</body>
+
+</html>

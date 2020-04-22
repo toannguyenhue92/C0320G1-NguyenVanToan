@@ -34,7 +34,7 @@ function Hero(image, top, left, size, speed) {
   }
 }
 
-var hero = new Hero('pika2.jpg', 20, 30, 200, 50);
+let hero = new Hero('pika2.jpg', 20, 30, 200, 50);
 
 function start() {
   if (hero.left < window.innerWidth - hero.size) {
