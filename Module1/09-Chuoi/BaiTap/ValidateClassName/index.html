@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validate class name</title>
+</head>
+
+<body>
+  <script>
+    const regex = /^[CAP][0-9]{4}[GHIKLM]$/;
+
+    function checkClassName(name) {
+      console.log(`${name} : ${regex.test(name)}`);
+    }
+
+    checkClassName('C0318G');
+    checkClassName('M0318G');
+    checkClassName('P0323A');
+  </script>
+</body>
+
+</html>
