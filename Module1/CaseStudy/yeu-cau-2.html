@@ -1,222 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      #bookingForm {
-        margin-top: 30px;
-        font-size: large;
-        font-family: "Times New Roman", Times, serif;
-      }
-    </style>
-  </head>
-  <body>
-    <div>
-      <button type="button" onclick="showBookingInfo()">
-        Show Information
-      </button>
-      <button type="button" onclick="editBooking()">
-        Edit Information
-      </button>
-      <button type="button" onclick="showPrice()">
-        Show the amount to be paid after discount
-      </button>
-    </div>
-    <form action="" id="bookingForm" hidden>
-      <table>
-        <tr>
-          <td><label for="fullName">Họ và tên:</label></td>
-          <td>
-            <input type="text" name="fullName" id="fullName" value="Toàn" />
-          </td>
-        </tr>
-        <tr>
-          <td><label for="identityNumber">Số CMND:</label></td>
-          <td>
-            <input
-              type="number"
-              name="identityNumber"
-              id="identityNumber"
-              value="191733445"
-            />
-          </td>
-        </tr>
-        <tr>
-          <td><label for="birthDay">Ngày sinh:</label></td>
-          <td>
-            <input
-              type="date"
-              name="birthDay"
-              id="birthDay"
-              value="1990-08-04"
-            />
-          </td>
-        </tr>
-        <tr>
-          <td><label for="email">E-mail:</label></td>
-          <td>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              value="toannguyen.hue92@gmail.com"
-            />
-          </td>
-        </tr>
-        <tr>
-          <td><label for="address">Địa chỉ:</label></td>
-          <td><input type="text" name="address" id="address" value="Hue" /></td>
-        </tr>
-        <tr>
-          <td><label for="customerType">Hạng thành viên:</label></td>
-          <td>
-            <select name="customerType" id="customerType">
-              <option>Member</option>
-              <option>Silver</option>
-              <option selected>Gold</option>
-              <option>Platinum</option>
-              <option>Diamond</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td><label for="discoutRate">Giảm giá:</label></td>
-          <td>
-            <input
-              type="number"
-              name="discoutRate"
-              id="discoutRate"
-              value="10"
-            />
-          </td>
-        </tr>
-        <tr>
-          <td><label for="guestCount">Số lượng đi kèm:</label></td>
-          <td>
-            <input type="number" name="guestCount" id="guestCount" value="3" />
-          </td>
-        </tr>
-        <tr>
-          <td><label for="rentDays">Số ngày thuê:</label></td>
-          <td>
-            <input type="number" name="rentDays" id="rentDays" value="2" />
-          </td>
-        </tr>
-        <tr>
-          <td><label for="serviceType">Loại dịch vụ:</label></td>
-          <td>
-            <select name="serviceType" id="serviceType">
-              <option>Room ($100/day)</option>
-              <option selected>House ($300/day)</option>
-              <option>Villa ($500/day)</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td><label for="roomType">Loại phòng:</label></td>
-          <td>
-            <select name="roomType" id="roomType">
-              <option selected>Normal</option>
-              <option>Business</option>
-              <option>VIP</option>
-            </select>
-          </td>
-        </tr>
-      </table>
-    </form>
-    <div id="resultInfo"></div>
-    <script>
-      let resultInfo = document.getElementById("resultInfo");
-      let bookingForm = document.getElementById("bookingForm");
-      let fullName = document.getElementById("fullName");
-      let identityNumber = document.getElementById("identityNumber");
-      let birthDay = document.getElementById("birthDay");
-      let email = document.getElementById("email");
-      let address = document.getElementById("address");
-      let customerType = document.getElementById("customerType");
-      let discoutRate = document.getElementById("discoutRate");
-      let guestCount = document.getElementById("guestCount");
-      let rentDays = document.getElementById("rentDays");
-      let serviceType = document.getElementById("serviceType");
-      let roomType = document.getElementById("roomType");
 
-      function showBookingInfo() {
-        let result = "<h2>Thông tin đặt phòng:</h2>";
-        result += "<p>Họ và tên: " + fullName.value + "</p>";
-        result += "<p>Số CMND: " + identityNumber.value + "</p>";
-        result += "<p>Ngày sinh: " + birthDay.value + "</p>";
-        result += "<p>E-mail: " + email.value + "</p>";
-        result += "<p>Địa chỉ: " + address.value + "</p>";
-        result += "<p>Hạng thành viên: " + customerType.value + "</p>";
-        result += "<p>Giảm giá: " + discoutRate.value + "%</p>";
-        result += "<p>Số lượng đi kèm: " + guestCount.value + "</p>";
-        result += "<p>Số ngày thuê: " + rentDays.value + "</p>";
-        result += "<p>Loại dịch vụ: " + serviceType.value + "</p>";
-        result += "<p>Loại phòng: " + roomType.value + "</p>";
-        resultInfo.innerHTML = result;
-        bookingForm.hidden = true;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    #bookingForm {
+      margin-top: 30px;
+      font-size: large;
+      font-family: "Times New Roman", Times, serif;
+    }
+  </style>
+</head>
 
-      function editBooking() {
-        bookingForm.hidden = false;
-        resultInfo.innerHTML = "";
-      }
+<body>
+  <div>
+    <button type="button" onclick="showBookingInfo()">
+      Show Information
+    </button>
+    <button type="button" onclick="editBooking()">
+      Edit Information
+    </button>
+    <button type="button" onclick="showPrice()">
+      Show the amount to be paid after discount
+    </button>
+  </div>
+  <form action="" id="bookingForm" hidden>
+    <table>
+      <tr>
+        <td><label for="fullName">Họ và tên:</label></td>
+        <td>
+          <input type="text" name="fullName" id="fullName" value="Toàn" />
+        </td>
+      </tr>
+      <tr>
+        <td><label for="identityNumber">Số CMND:</label></td>
+        <td>
+          <input type="number" name="identityNumber" id="identityNumber" value="191733445" />
+        </td>
+      </tr>
+      <tr>
+        <td><label for="birthDay">Ngày sinh:</label></td>
+        <td>
+          <input type="date" name="birthDay" id="birthDay" value="1990-08-04" />
+        </td>
+      </tr>
+      <tr>
+        <td><label for="email">E-mail:</label></td>
+        <td>
+          <input type="email" name="email" id="email" value="toannguyen.hue92@gmail.com" />
+        </td>
+      </tr>
+      <tr>
+        <td><label for="address">Địa chỉ:</label></td>
+        <td><input type="text" name="address" id="address" value="Hue" /></td>
+      </tr>
+      <tr>
+        <td><label for="customerType">Hạng thành viên:</label></td>
+        <td>
+          <select name="customerType" id="customerType">
+            <option>Member</option>
+            <option>Silver</option>
+            <option selected>Gold</option>
+            <option>Platinum</option>
+            <option>Diamond</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td><label for="discountRate">Giảm giá:</label></td>
+        <td>
+          <input type="number" name="discountRate" id="discountRate" value="10" />
+        </td>
+      </tr>
+      <tr>
+        <td><label for="guestCount">Số lượng đi kèm:</label></td>
+        <td>
+          <input type="number" name="guestCount" id="guestCount" value="3" />
+        </td>
+      </tr>
+      <tr>
+        <td><label for="rentDays">Số ngày thuê:</label></td>
+        <td>
+          <input type="number" name="rentDays" id="rentDays" value="2" />
+        </td>
+      </tr>
+      <tr>
+        <td><label for="serviceType">Loại dịch vụ:</label></td>
+        <td>
+          <select name="serviceType" id="serviceType">
+            <option>Room ($100/day)</option>
+            <option selected>House ($300/day)</option>
+            <option>Villa ($500/day)</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td><label for="roomType">Loại phòng:</label></td>
+        <td>
+          <select name="roomType" id="roomType">
+            <option selected>Normal</option>
+            <option>Business</option>
+            <option>VIP</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+  </form>
+  <div id="resultInfo"></div>
+  <script>
+    let resultInfo = document.getElementById("resultInfo");
+    let bookingForm = document.getElementById("bookingForm");
+    let fullName = document.getElementById("fullName");
+    let identityNumber = document.getElementById("identityNumber");
+    let birthDay = document.getElementById("birthDay");
+    let email = document.getElementById("email");
+    let address = document.getElementById("address");
+    let customerType = document.getElementById("customerType");
+    let discountRate = document.getElementById("discountRate");
+    let guestCount = document.getElementById("guestCount");
+    let rentDays = document.getElementById("rentDays");
+    let serviceType = document.getElementById("serviceType");
+    let roomType = document.getElementById("roomType");
 
-      function showPrice() {
-        let discount = 0;
-        let rentDaysValue = parseInt(rentDays.value);
-        let servicePrice;
-        switch (serviceType.value) {
-          case "Room ($100/day)":
-            servicePrice = 100;
-            break;
-          case "House ($300/day)":
-            servicePrice = 300;
-            break;
-          case "Villa ($500/day)":
-            servicePrice = 500;
-            break;
-        }
-        switch (address.value) {
-          case "Quang Nam":
-            discount += 5;
-            break;
-          case "Hue":
-            discount += 10;
-            break;
-          case "Da nang":
-            discount += 20;
-            break;
-        }
-        if (rentDaysValue >= 7) {
-          discount += 30;
-        } else if (rentDays >= 5) {
-          discount += 20;
-        } else if (rentDays >= 2) {
+    function showBookingInfo() {
+      let result = "<h2>Thông tin đặt phòng:</h2>";
+      result += "<p>Họ và tên: " + fullName.value + "</p>";
+      result += "<p>Số CMND: " + identityNumber.value + "</p>";
+      result += "<p>Ngày sinh: " + birthDay.value + "</p>";
+      result += "<p>E-mail: " + email.value + "</p>";
+      result += "<p>Địa chỉ: " + address.value + "</p>";
+      result += "<p>Hạng thành viên: " + customerType.value + "</p>";
+      result += "<p>Giảm giá: " + discountRate.value + "%</p>";
+      result += "<p>Số lượng đi kèm: " + guestCount.value + "</p>";
+      result += "<p>Số ngày thuê: " + rentDays.value + "</p>";
+      result += "<p>Loại dịch vụ: " + serviceType.value + "</p>";
+      result += "<p>Loại phòng: " + roomType.value + "</p>";
+      resultInfo.innerHTML = result;
+      bookingForm.hidden = true;
+    }
+
+    function editBooking() {
+      bookingForm.hidden = false;
+      resultInfo.innerHTML = "";
+    }
+
+    function showPrice() {
+      let discount = 0;
+      let rentDaysValue = parseInt(rentDays.value);
+      let servicePrice;
+      switch (serviceType.value) {
+        case "Room ($100/day)":
+          servicePrice = 100;
+          break;
+        case "House ($300/day)":
+          servicePrice = 300;
+          break;
+        case "Villa ($500/day)":
+          servicePrice = 500;
+          break;
+      }
+      switch (address.value) {
+        case "Quang Nam":
+          discount += 5;
+          break;
+        case "Hue":
           discount += 10;
-        }
-        switch (customerType.value) {
-          case "Member":
-            break;
-          case "Silver":
-            discount += 2;
-            break;
-          case "Gold":
-            discount += 5;
-            break;
-          case "Platinum":
-            discount += 10;
-            break;
-          case "Diamond":
-            discount += 15;
-            break;
-        }
-        let price = servicePrice * rentDaysValue - discount;
-        bookingForm.hidden = true;
-        resultInfo.innerHTML = `<h3>Số tiền phải trả: ${price}</h3>`;
+          break;
+        case "Da nang":
+          discount += 20;
+          break;
       }
-    </script>
-  </body>
+      if (rentDaysValue >= 7) {
+        discount += 30;
+      } else if (rentDays >= 5) {
+        discount += 20;
+      } else if (rentDays >= 2) {
+        discount += 10;
+      }
+      switch (customerType.value) {
+        case "Member":
+          break;
+        case "Silver":
+          discount += 2;
+          break;
+        case "Gold":
+          discount += 5;
+          break;
+        case "Platinum":
+          discount += 10;
+          break;
+        case "Diamond":
+          discount += 15;
+          break;
+      }
+      let price = servicePrice * rentDaysValue - discount;
+      bookingForm.hidden = true;
+      resultInfo.innerHTML = `<h3>Số tiền phải trả: ${price}</h3>`;
+    }
+  </script>
+</body>
+
 </html>
