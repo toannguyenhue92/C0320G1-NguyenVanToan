@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let string = 'Tôi yêu ngôn ngữ lập trình Javascript';
+    console.log(string);
+
+    function count() {
+      let regexp = /a{1}/g;
+      return [...string.matchAll(regexp)].length;
+    }
+    console.log(count());
+
+    let array = string.split(" ");
+    console.log(array.length);
+
+    string = string.replace('Javascript', 'Typescript');
+    console.log(string);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Built-in Date Class</title>
+</head>
+
+<body>
+  <button id='showAge'>Show my age</button>
+  <script>
+    const showAge = document.getElementById('showAge');
+    const birthday = new Date('1992-4-24');
+    const now = new Date();
+
+    function showMyAge() {
+      let years = now.getFullYear() - birthday.getFullYear();
+      let months = years * 12;
+      let days = years * 365;
+      let hours = days * 24;
+      let minutes = hours * 60;
+      let seconds = minutes * 60;
+      console.log(`${years} years`);
+      console.log(`${months} months`);
+      console.log(`${days} days`);
+      console.log(`${hours} hours`);
+      console.log(`${minutes} minutes`);
+      console.log(`${seconds} seconds`);
+    }
+
+    showAge.addEventListener('click', showMyAge);
+  </script>
+</body>
+
+</html>
