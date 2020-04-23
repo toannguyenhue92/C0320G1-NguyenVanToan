@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Furama Resort</title>
+</head>
+
+<body>
+  <table id="mainMenu">
+    <tr>
+      <td><button id="mainButton">Main menu</button></td>
+    </tr>
+    <tr>
+      <td><button id="addButton" hidden>Add new Customer</button></td>
+      <td><button id="displayButton" hidden>Display Information Customer</button></td>
+      <td><button id="editButton" hidden>Edit Information</button></td>
+      <td><button id="deleteButton" hidden>Delete Customer</button></td>
+      <td><button id="exitButton" hidden>Exit</button></td>
+    </tr>
+  </table>
+  <form action="" id="customerForm" hidden>
+    <table>
+      <tr>
+        <td><label for="fullName">Họ và tên:</label></td>
+        <td><input type="text" name="fullName" id="fullName" /></td>
+      </tr>
+      <tr>
+        <td><label for="identityNumber">Số CMND:</label></td>
+        <td>
+          <input type="number" name="identityNumber" id="identityNumber" />
+        </td>
+      </tr>
+      <tr>
+        <td><label for="birthDay">Ngày sinh:</label></td>
+        <td><input type="date" name="birthDay" id="birthDay" /></td>
+      </tr>
+      <tr>
+        <td><label for="email">E-mail:</label></td>
+        <td><input type="email" name="email" id="email" /></td>
+      </tr>
+      <tr>
+        <td><label for="address">Địa chỉ:</label></td>
+        <td><input type="text" name="address" id="address" /></td>
+      </tr>
+      <tr>
+        <td><label for="customerType">Hạng thành viên:</label></td>
+        <td>
+          <select name="customerType" id="customerType">
+            <option>Member</option>
+            <option>Silver</option>
+            <option>Gold</option>
+            <option>Platinum</option>
+            <option>Diamond</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td><label for="discountRate">Giảm giá:</label></td>
+        <td><input type="number" name="discountRate" id="discountRate" /></td>
+      </tr>
+      <tr>
+        <td><label for="guestCount">Số lượng đi kèm:</label></td>
+        <td><input type="number" name="guestCount" id="guestCount" /></td>
+      </tr>
+      <tr>
+        <td><label for="rentDays">Số ngày thuê:</label></td>
+        <td><input type="number" name="rentDays" id="rentDays" /></td>
+      </tr>
+      <tr>
+        <td><label for="serviceType">Loại dịch vụ:</label></td>
+        <td>
+          <select name="serviceType" id="serviceType">
+            <option>Room ($100/day)</option>
+            <option>House ($300/day)</option>
+            <option>Villa ($500/day)</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td><label for="roomType">Loại phòng:</label></td>
+        <td>
+          <select name="roomType" id="roomType">
+            <option>Normal</option>
+            <option>Business</option>
+            <option>VIP</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+    <br>
+    <button id="addToList">Add</button>
+  </form>
+  <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validate email</title>
+</head>
+
+<body>
+  <script>
+    const regex = /^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\.[A-Za-z0-9]+)$/;
+    const goodEmails = ['a@gmail.com', 'ab@yahoo.com', 'abc@hotmail.com'];
+    const badEmails = ['@gmail.com', 'ab@gmail.', '@#abc@gmail.com'];
+
+    function checkMails(mails) {
+      mails.forEach(mail => {
+        console.log(`${mail} : ${regex.test(mail)}`);
+      });
+    }
+
+    checkMails(goodEmails);
+    checkMails(badEmails);
+  </script>
+</body>
+
+</html>
