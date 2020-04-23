@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Regular expression</title>
+</head>
+
+<body>
+  <script>
+    function validateDate(string) {
+      const regexp = /^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{1,4}$/;
+      return regexp.test(string);
+    }
+    let date1 = '1,2,3';
+    let date2 = '11/2/1992'
+    let date3 = '1/6/880';
+    console.log(`${date1} ${validateDate(date1)}`);
+    console.log(`${date2} ${validateDate(date2)}`);
+    console.log(`${date3} ${validateDate(date3)}`);
+
+    function countNumberOfWords(string) {
+      return string.split(" ").length;
+    }
+    let sample = "Just do it!";
+    console.log(`${sample} ${countNumberOfWords(sample)}`);
+
+    function countConsonant(string) {
+      const regexp = /[a,e,i,o,u]{1}/g;
+      return [...string.matchAll(regexp)].length;
+    }
+    sample = 'Hello everyone!'
+    console.log(`${sample} ${countConsonant(sample)}`);
+  </script>
+</body>
+
+</html>
