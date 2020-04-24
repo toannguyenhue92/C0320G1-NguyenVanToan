@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const array = [4, 2, 4, 6, 1, -2, 0, 1, 8, -5];
+
+    function findMaxValue(array) {
+      let max = array[0];
+      for (let index = 1; index < array.length; index++) {
+        const element = array[index];
+        if (max < element) {
+          max = element;
+        }
+      }
+      return max;
+    }
+
+    function findMinValue(array) {
+      let min = array[0];
+      for (let index = 1; index < array.length; index++) {
+        const element = array[index];
+        if (min > element) {
+          min = element;
+        }
+      }
+      return min;
+    }
+
+    console.log(`array: \[${array.join(", ")}\]`);
+    console.log(`max value: ${findMaxValue(array)}`);
+    console.log(`min value: ${findMinValue(array)}`);
+  </script>
+</body>
+
+</html>
