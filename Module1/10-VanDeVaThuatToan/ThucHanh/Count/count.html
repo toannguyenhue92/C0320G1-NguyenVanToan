@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const array = [4, 2, 4, 6, 1, -2, 0, 1, 8, -5];
+
+    function count(array, value) {
+      let count = 0;
+      for (let index = 0; index < array.length; index++) {
+        const element = array[index];
+        if (element == value) {
+          count++;
+        }
+      }
+      return count;
+    }
+
+    let sampleValue = 4;
+
+    console.log(`array: \[${array.join(", ")}\]`);
+    console.log(`Value ${sampleValue} : ${count(array, sampleValue)} times.`);
+  </script>
+</body>
+
+</html>
