@@ -1,8 +1,12 @@
 module.exports = {
-  // "extends": "standard"
-  "extends": "airbnb-base",
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "ecmaVersion": 6
+  },
   "env": {
-    "browser": true,
-    "node": true
+    "browser": true
+  },
+  "rules": {
+    "semi": "error"
   }
 };
