@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Furama Resort</title>
+    <style>
+      #customersTable table {
+        border-collapse: collapse;
+        border: 1px solid black;
+      }
+
+      #customersTable th {
+        border: 1px solid black;
+        padding: 15px;
+        text-align: left;
+      }
+
+      #customersTable td {
+        border: 1px solid black;
+        padding: 15px;
+        text-align: left;
+      }
+
+      button {
+        font-size: medium;
+      }
+    </style>
+  </head>
+
+  <body>
+    <table id="mainMenu">
+      <tr>
+        <td><button id="mainButton">Main menu</button></td>
+      </tr>
+      <tr>
+        <td><button id="addButton" hidden>Add new Customer</button></td>
+        <td>
+          <button id="displayButton" hidden>
+            Display Information Customer
+          </button>
+        </td>
+      </tr>
+    </table>
+    <form action="" id="customerForm" action="javascript:0" hidden>
+      <table>
+        <tr>
+          <td><label for="fullName">Họ và tên:</label></td>
+          <td>
+            <input type="text" name="fullName" id="fullName" value="Toàn" required />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="identityNumber">Số CMND:</label></td>
+          <td>
+            <input
+              type="number"
+              name="identityNumber"
+              id="identityNumber"
+              maxlength="9"
+              oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+              value="123456789"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="birthDay">Ngày sinh:</label></td>
+          <td>
+            <input type="date" name="birthDay" id="birthDay" value="1990-08-04" />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="email">E-mail:</label></td>
+          <td>
+            <input type="email" name="email" id="email" value="toannguyen.hue92@gmail.com" />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="address">Địa chỉ:</label></td>
+          <td><input type="text" name="address" id="address" value="Hue" /></td>
+        </tr>
+        <tr>
+          <td><label for="customerType">Hạng thành viên:</label></td>
+          <td>
+            <select name="customerType" id="customerType">
+              <option>Member</option>
+              <option>Silver</option>
+              <option selected>Gold</option>
+              <option>Platinum</option>
+              <option>Diamond</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="discountRate">Giảm giá:</label></td>
+          <td>
+            <input type="number" name="discountRate" id="discountRate" value="10" />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="guestCount">Số lượng đi kèm:</label></td>
+          <td>
+            <input type="number" name="guestCount" id="guestCount" value="3" />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="rentDays">Số ngày thuê:</label></td>
+          <td>
+            <input type="number" name="rentDays" id="rentDays" value="2" />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="serviceType">Loại dịch vụ:</label></td>
+          <td>
+            <select name="serviceType" id="serviceType">
+              <option>Room ($100/day)</option>
+              <option selected>House ($300/day)</option>
+              <option>Villa ($500/day)</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="roomType">Loại phòng:</label></td>
+          <td>
+            <select name="roomType" id="roomType">
+              <option selected>Normal</option>
+              <option>Business</option>
+              <option>VIP</option>
+            </select>
+          </td>
+        </tr>
+      </table>
+      <br />
+      <input type="submit" id="submitForValidate" hidden>
+    </form>
+    <button type="button" id="addToListButton" hidden>Add to list</button>
+    <button type="button" id="updateCustomerInfoButton" hidden>Update</button>
+    <br />
+    <br />
+    <div id="customersTable"></div>
+    <script src="yeu-cau-6.js"></script>
+  </body>
+</html>
