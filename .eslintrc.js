@@ -1,12 +1,19 @@
 module.exports = {
-  "extends": "eslint:recommended",
-  "parserOptions": {
-    "ecmaVersion": 6
+  extends: "eslint:recommended",
+  parserOptions: {
+    ecmaVersion: 6,
   },
-  "env": {
-    "browser": true
+  env: {
+    browser: true,
   },
-  "rules": {
-    "semi": "error"
-  }
+  rules: {
+    "prefer-const": [
+      "error",
+      {
+        destructuring: "any",
+        ignoreReadBeforeAssign: true,
+      },
+    ],
+    semi: "error",
+  },
 };
