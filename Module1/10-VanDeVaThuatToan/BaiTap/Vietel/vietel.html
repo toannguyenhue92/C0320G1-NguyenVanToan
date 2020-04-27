@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find Viettel phone number</title>
+  </head>
+  <body>
+    <script>
+      function getViettelPhoneNumbers(phoneNumbers) {
+        const viettel = ["096", "097", "098", "086", "032", "033", "034", "035", "036", "037", "039"];
+        let result = [];
+        for (let index = 0; index < phoneNumbers.length; index++) {
+          const element = phoneNumbers[index];
+          const firstThreeDigits = element.substr(0, 3);
+          if (viettel.indexOf(firstThreeDigits) !== -1) {
+            result.push(element);
+          }
+        }
+        return result;
+      }
+
+      console.log(getViettelPhoneNumbers(["096123123", "092123123", "036123123"]));
+    </script>
+  </body>
+</html>
