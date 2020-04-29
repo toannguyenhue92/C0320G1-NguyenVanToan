@@ -1,26 +1,30 @@
-const mainMenu = document.getElementById('mainMenu');
-const mainButton = document.getElementById('mainButton');
-const addButton = document.getElementById('addButton');
-const displayButton = document.getElementById('displayButton');
-const mainMenuButtons = [addButton, displayButton];
+const mainMenu = document.getElementById("mainMenu");
+const mainButton = document.getElementById("mainButton");
+const addButton = document.getElementById("addButton");
+const displayButton = document.getElementById("displayButton");
+const addEmployeeButton = document.getElementById("addEmployeeButton");
+const displayEmployeeButton = document.getElementById("displayEmployeeButton");
+const mainMenuButtons = [addButton, displayButton, addEmployeeButton, displayEmployeeButton];
 
-const customerForm = document.getElementById('customerForm');
-const fullName = document.getElementById('fullName');
-const identityNumber = document.getElementById('identityNumber');
-const birthDay = document.getElementById('birthDay');
-const email = document.getElementById('email');
-const address = document.getElementById('address');
-const customerType = document.getElementById('customerType');
-const discountRate = document.getElementById('discountRate');
-const guestCount = document.getElementById('guestCount');
-const rentDays = document.getElementById('rentDays');
-const serviceType = document.getElementById('serviceType');
-const roomType = document.getElementById('roomType');
+const customerForm = document.getElementById("customerForm");
+const fullName = document.getElementById("fullName");
+const identityNumber = document.getElementById("identityNumber");
+const birthDay = document.getElementById("birthDay");
+const email = document.getElementById("email");
+const address = document.getElementById("address");
+const customerType = document.getElementById("customerType");
+const discountRate = document.getElementById("discountRate");
+const guestCount = document.getElementById("guestCount");
+const rentDays = document.getElementById("rentDays");
+const serviceType = document.getElementById("serviceType");
+const roomType = document.getElementById("roomType");
 
-const addToListButton = document.getElementById('addToListButton');
-const updateCustomerInfoButton = document.getElementById('updateCustomerInfoButton');
+const addToListButton = document.getElementById("addToListButton");
+const updateCustomerInfoButton = document.getElementById("updateCustomerInfoButton");
 
-const customersTable = document.getElementById('customersTable');
+const customersTable = document.getElementById("customersTable");
+
+const formEmployee = document.getElementById("formEmployee");
 
 const customersList = [];
 
@@ -31,7 +35,7 @@ function displayMainMenu() {
   mainButton.hidden = true;
 }
 
-mainButton.addEventListener('click', displayMainMenu);
+mainButton.addEventListener("click", displayMainMenu);
 
 function addNewCustomer() {
   customerForm.hidden = false;
@@ -40,7 +44,7 @@ function addNewCustomer() {
   customersTable.hidden = true;
 }
 
-addButton.addEventListener('click', addNewCustomer);
+addButton.addEventListener("click", addNewCustomer);
 
 function getCurrentInfo() {
   return {
@@ -91,7 +95,7 @@ function getCustomersTableHTML() {
     <td><button type="button" onclick="deleteCustomer(${customersList.indexOf(customer)})">Delete</td>
     </tr>`;
   });
-  html += '</table>';
+  html += "</table>";
   return html;
 }
 
@@ -105,9 +109,9 @@ function addCustomerToList() {
   customersTable.hidden = false;
 }
 
-addToListButton.addEventListener('click', addCustomerToList);
+addToListButton.addEventListener("click", addCustomerToList);
 
-displayButton.addEventListener('click', () => {
+displayButton.addEventListener("click", () => {
   customersTable.innerHTML = getCustomersTableHTML();
   customersTable.hidden = false;
 });

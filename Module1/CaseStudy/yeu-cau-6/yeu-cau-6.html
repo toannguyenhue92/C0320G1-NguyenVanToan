@@ -5,20 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Furama Resort</title>
     <style>
-      #customersTable table {
+      #customerTable table {
         border-collapse: collapse;
         border: 1px solid black;
       }
 
-      #customersTable th {
+      #customerTable th {
         border: 1px solid black;
-        padding: 15px;
+        padding: 3px;
         text-align: left;
       }
 
-      #customersTable td {
+      #customerTable td {
         border: 1px solid black;
-        padding: 15px;
+        padding: 3px;
+        text-align: left;
+      }
+
+      #employeeTable table {
+        border-collapse: collapse;
+        border: 1px solid black;
+      }
+
+      #employeeTable th {
+        border: 1px solid black;
+        padding: 3px;
+        text-align: left;
+      }
+
+      #employeeTable td {
+        border: 1px solid black;
+        padding: 3px;
         text-align: left;
       }
 
@@ -34,24 +51,21 @@
         <td><button id="mainButton">Main menu</button></td>
       </tr>
       <tr>
-        <td><button id="addButton" hidden>Add new Customer</button></td>
-        <td>
-          <button id="displayButton" hidden>
-            Display Information Customer
-          </button>
-        </td>
+        <td><button id="addButton" hidden>Add new customer</button></td>
+        <td><button id="displayButton" hidden>Display customer information</button></td>
+        <td><button id="addEmployeeButton" hidden>Add new employee</button></td>
+        <td><button id="displayEmployeeButton" hidden>Display employee information</button></td>
       </tr>
     </table>
+    <br />
     <form action="" id="customerForm" action="javascript:0" hidden>
       <table>
         <tr>
-          <td><label for="fullName">Họ và tên:</label></td>
-          <td>
-            <input type="text" name="fullName" id="fullName" value="Toàn" required />
-          </td>
+          <td><label for="fullName">Họ và tên</label></td>
+          <td><input type="text" name="fullName" id="fullName" value="Toàn" required /></td>
         </tr>
         <tr>
-          <td><label for="identityNumber">Số CMND:</label></td>
+          <td><label for="identityNumber">Số CMND</label></td>
           <td>
             <input
               type="number"
@@ -64,23 +78,19 @@
           </td>
         </tr>
         <tr>
-          <td><label for="birthDay">Ngày sinh:</label></td>
-          <td>
-            <input type="date" name="birthDay" id="birthDay" value="1990-08-04" />
-          </td>
+          <td><label for="birthDay">Ngày sinh</label></td>
+          <td><input type="date" name="birthDay" id="birthDay" value="1990-08-04" /></td>
         </tr>
         <tr>
-          <td><label for="email">E-mail:</label></td>
-          <td>
-            <input type="email" name="email" id="email" value="toannguyen.hue92@gmail.com" />
-          </td>
+          <td><label for="email">E-mail</label></td>
+          <td><input type="email" name="email" id="email" value="toannguyen.hue92@gmail.com" /></td>
         </tr>
         <tr>
-          <td><label for="address">Địa chỉ:</label></td>
+          <td><label for="address">Địa chỉ</label></td>
           <td><input type="text" name="address" id="address" value="Hue" /></td>
         </tr>
         <tr>
-          <td><label for="customerType">Hạng thành viên:</label></td>
+          <td><label for="customerType">Hạng thành viên</label></td>
           <td>
             <select name="customerType" id="customerType">
               <option>Member</option>
@@ -92,25 +102,19 @@
           </td>
         </tr>
         <tr>
-          <td><label for="discountRate">Giảm giá:</label></td>
-          <td>
-            <input type="number" name="discountRate" id="discountRate" value="10" />
-          </td>
+          <td><label for="discountRate">Giảm giá</label></td>
+          <td><input type="number" name="discountRate" id="discountRate" value="10" /></td>
         </tr>
         <tr>
-          <td><label for="guestCount">Số lượng đi kèm:</label></td>
-          <td>
-            <input type="number" name="guestCount" id="guestCount" value="3" />
-          </td>
+          <td><label for="guestCount">Số lượng đi kèm</label></td>
+          <td><input type="number" name="guestCount" id="guestCount" value="3" /></td>
         </tr>
         <tr>
-          <td><label for="rentDays">Số ngày thuê:</label></td>
-          <td>
-            <input type="number" name="rentDays" id="rentDays" value="2" />
-          </td>
+          <td><label for="rentDays">Số ngày thuê</label></td>
+          <td><input type="number" name="rentDays" id="rentDays" value="2" /></td>
         </tr>
         <tr>
-          <td><label for="serviceType">Loại dịch vụ:</label></td>
+          <td><label for="serviceType">Loại dịch vụ</label></td>
           <td>
             <select name="serviceType" id="serviceType">
               <option>Room ($100/day)</option>
@@ -120,7 +124,7 @@
           </td>
         </tr>
         <tr>
-          <td><label for="roomType">Loại phòng:</label></td>
+          <td><label for="roomType">Loại phòng</label></td>
           <td>
             <select name="roomType" id="roomType">
               <option selected>Normal</option>
@@ -131,13 +135,63 @@
         </tr>
       </table>
       <br />
-      <input type="submit" id="submitForValidate" hidden>
+      <input type="submit" id="submitForValidate" hidden />
+      <button type="button" id="addCustomerButton" hidden>Add new customer</button>
+      <button type="button" id="updateCustomerInfoButton" hidden>Update</button>
     </form>
-    <button type="button" id="addToListButton" hidden>Add to list</button>
-    <button type="button" id="updateCustomerInfoButton" hidden>Update</button>
+    <form action="" id="employeeForm" action="javascript:0" hidden>
+      <table>
+        <tr>
+          <td><label for="employeeFullName">Họ và tên</label></td>
+          <td><input type="text" name="employeeFullName" id="employeeFullName" value="Toàn" required /></td>
+        </tr>
+        <tr>
+          <td><label for="employeeIdentityNumber">Số CMND</label></td>
+          <td>
+            <input
+              type="number"
+              name="employeeIdentityNumber"
+              id="employeeIdentityNumber"
+              maxlength="9"
+              oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+              value="123456789"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="employeeBirthDay">Ngày sinh</label></td>
+          <td><input type="date" name="birthDay" id="employeeBirthDay" value="1990-08-04" /></td>
+        </tr>
+        <tr>
+          <td><label for="employeeEmail">E-mail</label></td>
+          <td><input type="email" name="employeeEmail" id="employeeEmail" value="toannguyen.hue92@gmail.com" /></td>
+        </tr>
+        <tr>
+          <td><label for="employeeAddress">Địa chỉ</label></td>
+          <td><input type="text" name="employeeAddress" id="employeeAddress" value="Hue" /></td>
+        </tr>
+        <tr>
+          <td><label for="employeePosition">Bộ phận</label></td>
+          <td>
+            <select name="employeePosition" id="employeePosition">
+              <option>Manager</option>
+              <option>Sale</option>
+              <option selected>Marketing</option>
+            </select>
+          </td>
+        </tr>
+      </table>
+      <br />
+      <input type="submit" id="submitForValidateEmployee" hidden />
+      <button type="button" id="addEmployeeToListButton" hidden>Add new employee</button>
+      <button type="button" id="updateEmployeeInfoButton" hidden>Update</button>
+    </form>
     <br />
     <br />
-    <div id="customersTable"></div>
+    <div id="customerTable"></div>
+    <br />
+    <div id="employeeTable"></div>
+    <canvas id="34"></canvas>
     <script src="yeu-cau-6.js"></script>
   </body>
 </html>

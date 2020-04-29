@@ -107,11 +107,70 @@ class Customer {
   }
 }
 
+class Employee {
+  constructor(fullName, identityNumber, birthDay, email, address, employeePosition) {
+    this.fullName = fullName;
+    this.identityNumber = identityNumber;
+    this.birthDay = birthDay;
+    this.email = email;
+    this.address = address;
+    this.employeePosition = employeePosition;
+  }
+  getFullName() {
+    return this.fullName;
+  }
+  getIdentityNumber() {
+    return this.identityNumber;
+  }
+  getBirthDay() {
+    return this.birthDay;
+  }
+  getEmail() {
+    return this.email;
+  }
+  getAddress() {
+    return this.address;
+  }
+  getEmployeePosition() {
+    return this.employeePosition;
+  }
+  setFullName(fullName) {
+    this.fullName = fullName;
+  }
+  setIdentityNumber(identityNumber) {
+    this.identityNumber = identityNumber;
+  }
+  setBirthDay(birthDay) {
+    this.birthDay = birthDay;
+  }
+  setEmail(email) {
+    this.email = email;
+  }
+  setAddress(address) {
+    this.address = address;
+  }
+  setEmployeePosition(employeePosition) {
+    this.employeePosition = employeePosition;
+  }
+  getBounty() {
+    switch (this.employeePosition) {
+      case "Manager":
+        return 500;
+      case "Sale":
+        return 300;
+      case "Marketing":
+        return 200;
+    }
+  }
+}
+
 const mainMenu = document.getElementById("mainMenu");
 const mainButton = document.getElementById("mainButton");
 const addButton = document.getElementById("addButton");
 const displayButton = document.getElementById("displayButton");
-const mainMenuButtons = [addButton, displayButton];
+const addEmployeeButton = document.getElementById("addEmployeeButton");
+const displayEmployeeButton = document.getElementById("displayEmployeeButton");
+const mainMenuButtons = [addButton, displayButton, addEmployeeButton, displayEmployeeButton];
 const customerForm = document.getElementById("customerForm");
 const fullName = document.getElementById("fullName");
 const identityNumber = document.getElementById("identityNumber");
@@ -124,11 +183,23 @@ const guestCount = document.getElementById("guestCount");
 const rentDays = document.getElementById("rentDays");
 const serviceType = document.getElementById("serviceType");
 const roomType = document.getElementById("roomType");
-const addToListButton = document.getElementById("addToListButton");
+const addCustomerButton = document.getElementById("addCustomerButton");
 const updateCustomerInfoButton = document.getElementById("updateCustomerInfoButton");
-const customersTable = document.getElementById("customersTable");
+const customerTable = document.getElementById("customerTable");
 const submitForValidate = document.getElementById("submitForValidate");
+const addEmployeeToListButton = document.getElementById("addEmployeeToListButton");
+const updateEmployeeInfoButton = document.getElementById("updateEmployeeInfoButton");
+const employeeFullName = document.getElementById("employeeFullName");
+const employeeIdentityNumber = document.getElementById("employeeIdentityNumber");
+const employeeBirthDay = document.getElementById("employeeBirthDay");
+const employeeEmail = document.getElementById("employeeEmail");
+const employeeAddress = document.getElementById("employeeAddress");
+const employeePosition = document.getElementById("employeePosition");
+const employeeTable = document.getElementById("employeeTable");
+const employeeForm = document.getElementById("employeeForm");
+
 const customersList = [];
+const employeeList = [];
 
 function displayMainMenu() {
   for (let index = 0; index < mainMenuButtons.length; index += 1) {
@@ -139,9 +210,9 @@ function displayMainMenu() {
 
 function addNewCustomer() {
   customerForm.hidden = false;
-  addToListButton.hidden = false;
+  addCustomerButton.hidden = false;
   mainMenu.hidden = true;
-  customersTable.hidden = true;
+  customerTable.hidden = true;
 }
 
 function getCurrentInfo() {
@@ -161,7 +232,11 @@ function getCurrentInfo() {
 }
 
 function getCustomersTableHTML() {
-  let html = `<table id="customersTable"><tr>
+  if (customersList.length <= 0) {
+    return "<h3>We have 0 customer!</h3>";
+  }
+  let html = `<h3>Customer List</h3>
+  <table id="customersTable"><tr>
   <th>Full name</th>
   <th>Identity Number</th>
   <th>Birthday</th>
@@ -212,9 +287,9 @@ function addCustomerToList() {
   customersList.push(customer);
   customerForm.hidden = true;
   mainMenu.hidden = false;
-  addToListButton.hidden = true;
-  customersTable.innerHTML = getCustomersTableHTML();
-  customersTable.hidden = false;
+  addCustomerButton.hidden = true;
+  customerTable.innerHTML = getCustomersTableHTML();
+  customerTable.hidden = false;
 }
 
 function updateCustomerInfo(position) {
@@ -236,19 +311,19 @@ function updateCustomerInfo(position) {
   customer.setRoomType(roomType.value);
   customerForm.hidden = true;
   updateCustomerInfoButton.hidden = true;
-  addToListButton.hidden = true;
+  addCustomerButton.hidden = true;
   mainMenu.hidden = false;
-  customersTable.innerHTML = getCustomersTableHTML();
-  customersTable.hidden = false;
+  customerTable.innerHTML = getCustomersTableHTML();
+  customerTable.hidden = false;
 }
 
 function editCustomerInfo(position) {
   const customer = customersList[position];
   customerForm.hidden = false;
   updateCustomerInfoButton.hidden = false;
-  addToListButton.hidden = true;
+  addCustomerButton.hidden = true;
   mainMenu.hidden = true;
-  customersTable.hidden = true;
+  customerTable.hidden = true;
   fullName.value = customer.getFullName();
   identityNumber.value = customer.getIdentityNumber();
   birthDay.value = customer.getBirthDay();
@@ -269,7 +344,7 @@ function deleteCustomerInfo(position) {
   if (confirm(`Do you want to delete the info of ${customer.getFullName()}?`)) {
     customersList.splice(position, 1);
   }
-  customersTable.innerHTML = getCustomersTableHTML();
+  customerTable.innerHTML = getCustomersTableHTML();
 }
 
 function showPrice(position) {
@@ -279,11 +354,109 @@ function showPrice(position) {
 }
 
 function displayCustomerTable() {
-  customersTable.innerHTML = getCustomersTableHTML();
-  customersTable.hidden = false;
+  customerTable.innerHTML = getCustomersTableHTML();
+  customerTable.hidden = false;
 }
 
 mainButton.addEventListener("click", displayMainMenu);
 addButton.addEventListener("click", addNewCustomer);
-addToListButton.addEventListener("click", addCustomerToList);
+addCustomerButton.addEventListener("click", addCustomerToList);
 displayButton.addEventListener("click", displayCustomerTable);
+
+function getEmployeeTableHTML() {
+  if (employeeList.length <= 0) {
+    return "<h3>We have 0 employee!</h3>";
+  }
+  let html = `<h3>Employee List</h3>
+  <table id="customersTable"><tr>
+  <th>Full name</th>
+  <th>Identity Number</th>
+  <th>Birthday</th>
+  <th>Email</th>
+  <th>Address</th>
+  <th>Employee position</th>
+  <th>Bounty</th>
+  <th>Edit</th>
+  <th>Delete</th>
+  </tr>`;
+  employeeList.forEach((employee) => {
+    html += `<tr>
+    <td>${employee.getFullName()}</td>
+    <td>${employee.getIdentityNumber()}</td>
+    <td>${employee.getBirthDay()}</td>
+    <td>${employee.getEmail()}</td>
+    <td>${employee.getAddress()}</td>
+    <td>${employee.getEmployeePosition()}</td>
+    <td>${employee.getBounty()}</td>
+    <td><button type="button" onclick="editEmployeeInfo(${employeeList.indexOf(employee)})">Edit</td>
+    <td><button type="button" onclick="deleteEmployeeInfo(${employeeList.indexOf(employee)})">Delete</td>
+    </tr>`;
+  });
+  html += "</table>";
+  return html;
+}
+
+displayEmployeeButton.addEventListener("click", () => {
+  employeeTable.hidden = false;
+  employeeTable.innerHTML = getEmployeeTableHTML();
+});
+
+addEmployeeButton.addEventListener("click", () => {
+  employeeForm.hidden = false;
+  addEmployeeToListButton.hidden = false;
+  updateEmployeeInfoButton.hidden = true;
+  customerTable.hidden = true;
+  employeeTable.hidden = true;
+});
+
+addEmployeeToListButton.addEventListener("click", () => {
+  if (employeeForm.reportValidity()) {
+    const employee = new Employee();
+    employee.setFullName(employeeFullName.value);
+    employee.setIdentityNumber(employeeIdentityNumber.value);
+    employee.setBirthDay(employeeBirthDay.value);
+    employee.setEmail(employeeEmail.value);
+    employee.setAddress(employeeAddress.value);
+    employee.setEmployeePosition(employeePosition.value);
+    employeeList.push(employee);
+    employeeForm.hidden = true;
+    addEmployeeToListButton.hidden = true;
+    employeeTable.innerHTML = getEmployeeTableHTML();
+    employeeTable.hidden = false;
+  }
+});
+
+function editEmployeeInfo(position) {
+  const employee = employeeList[position];
+  employeeFullName.value = employee.getFullName();
+  employeeIdentityNumber.value = employee.getIdentityNumber();
+  employeeBirthDay.value = employee.getBirthDay();
+  employeeEmail.value = employee.getEmail();
+  employeeAddress.value = employee.getAddress();
+  employeePosition.value = employee.getEmployeePosition();
+  employeeForm.hidden = false;
+  updateEmployeeInfoButton.hidden = false;
+  employeeTable.hidden = true;
+  addEmployeeToListButton.hidden = true;
+  updateEmployeeInfoButton.onclick = () => {
+    employee.setFullName(employeeFullName.value);
+    employee.setIdentityNumber(employeeIdentityNumber.value);
+    employee.setBirthDay(employeeBirthDay.value);
+    employee.setEmail(employeeEmail.value);
+    employee.setAddress(employeeAddress.value);
+    employee.setEmployeePosition(employeePosition.value);
+    employeeForm.hidden = true;
+    updateEmployeeInfoButton.hidden = true;
+    addEmployeeToListButton.hidden = true;
+    employeeTable.hidden = false;
+    employeeTable.innerHTML = getEmployeeTableHTML();
+  };
+}
+
+function deleteEmployeeInfo(position) {
+  const employee = employeeList[position];
+  if (confirm(`Delete ${employee.getFullName()}?`)) {
+    employeeList.splice(position, 1);
+    employeeTable.innerHTML = getEmployeeTableHTML();
+  }
+}
