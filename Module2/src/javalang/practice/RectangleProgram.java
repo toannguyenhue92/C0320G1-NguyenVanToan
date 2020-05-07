@@ -4,14 +4,14 @@ import java.util.Scanner;
 
 public class RectangleProgram {
     public static void main(String[] args) {
-        float width;
-        float height;
+        double width;
+        double height;
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter width: ");
-        width = scanner.nextFloat();
+        width = scanner.nextDouble();
         System.out.print("Enter height: ");
-        height = scanner.nextFloat();
-        float area = width * height;
+        height = scanner.nextDouble();
+        double area = width * height;
         System.out.println("Area is: " + area);
     }
 }
