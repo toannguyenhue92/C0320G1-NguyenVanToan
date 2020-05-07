@@ -1,4 +1,4 @@
-package javalang.practice;
+package s01_java.practice;
 
 public class JavaDataType {
     public static void main(String[] args) {
