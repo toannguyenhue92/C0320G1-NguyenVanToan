@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class ConsoleMenu {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         int choice;
         Scanner scanner = new Scanner(System.in);
         do {
