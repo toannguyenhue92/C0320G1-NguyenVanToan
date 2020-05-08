@@ -1,4 +1,4 @@
-package s01_java.practice;
+package s01_java.tutorial;
 
 import java.util.Date;
 
