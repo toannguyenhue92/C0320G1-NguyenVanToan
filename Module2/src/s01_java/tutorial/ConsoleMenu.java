@@ -1,9 +1,10 @@
 package s01_java.tutorial;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class ConsoleMenu {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         int choice;
         Scanner scanner = new Scanner(System.in);
         do {
