@@ -2,9 +2,17 @@ package s01_java.exercise;
 
 public class PrimeNumbersLowerThan100 {
     public static void main(String[] args) {
+        System.out.println("Prime numbers lower than 100: ");
+        boolean isFirstNumber = true;
         for (int i = 0; i < 100; i++) {
             if (isPrimeNumber(i)) {
-                System.out.print(i + ", ");
+                if (isFirstNumber) {
+                    System.out.print(i);
+                    isFirstNumber = false;
+                } else {
+                    System.out.print(", " + i);
+                }
+
             }
         }
     }
