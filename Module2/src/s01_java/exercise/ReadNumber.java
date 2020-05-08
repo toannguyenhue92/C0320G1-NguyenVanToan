@@ -7,7 +7,7 @@ public class ReadNumber {
         System.out.print("Enter a number: ");
         Scanner scanner = new Scanner(System.in);
         int number = Integer.parseInt(scanner.nextLine());
-        System.out.println(readNumberFrom100To999(number));
+        System.out.println(readNumberFrom0To999(number));
     }
 
     public static String readOneDigit(int digit) {
@@ -164,6 +164,17 @@ public class ReadNumber {
                 return readOneDigit(hundreds) + " hundreds " + readNumberFrom0To99(number % 100);
             default:
                 return "";
+        }
+    }
+
+    public static String readNumberFrom0To999(int number) {
+        if (number >=0 && number <100){
+            return readNumberFrom0To99(number);
+        } else if (number < 1000) {
+            return readNumberFrom100To999(number);
+        } else {
+            System.out.println("readNumberFrom0To999: out of ability");
+            return "";
         }
     }
 }
