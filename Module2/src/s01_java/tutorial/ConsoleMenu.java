@@ -1,6 +1,5 @@
 package s01_java.tutorial;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 public class ConsoleMenu {
