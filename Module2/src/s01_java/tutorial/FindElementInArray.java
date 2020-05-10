@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class FindElementInArray {
     public static void main(String[] args) {
-        String[] students = {"Christian", "Michael", "Camila", "Sienna", "Tanya", "Connor", "Zachariah", "Mallory"};
+        String[] students = { "Christian", "Michael", "Camila", "Sienna", "Tanya", "Connor", "Zachariah", "Mallory" };
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter a name’s student:");
         String input_name = scanner.nextLine().trim();
@@ -18,5 +18,6 @@ public class FindElementInArray {
         }
         if (!isExist)
             System.out.println("Not found" + input_name + " in the list.");
+        scanner.close();
     }
 }

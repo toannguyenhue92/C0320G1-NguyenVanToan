@@ -21,5 +21,6 @@ public class GreatestCommonDivisor {
                 b = b - a;
         }
         System.out.println("Greatest common factor: " + a);
+        scanner.close();
     }
 }

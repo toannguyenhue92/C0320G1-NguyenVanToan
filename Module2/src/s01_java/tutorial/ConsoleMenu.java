@@ -40,11 +40,11 @@ public class ConsoleMenu {
                     System.out.println("* * * * * *");
                     break;
                 case 0:
+                    scanner.close();
                     System.exit(0);
                 default:
                     System.out.println("No choice!");
             }
         } while (choice != 0);
-
     }
 }

@@ -8,6 +8,7 @@ public class ReadNumber {
         Scanner scanner = new Scanner(System.in);
         int number = Integer.parseInt(scanner.nextLine());
         System.out.println(readNumberFrom0To999(number));
+        scanner.close();
     }
 
     public static String readOneDigit(int digit) {

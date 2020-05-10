@@ -21,5 +21,6 @@ public class LinearEquationResolver {
                 System.out.print("No solution!");
             }
         }
+        scanner.close();
     }
 }

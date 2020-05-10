@@ -1,0 +1,126 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Debug (Launch) - Current File",
+      "request": "launch",
+      "mainClass": "${file}"
+    },
+    {
+      "type": "java",
+      "name": "Debug (Launch)-PrimeNumbersLowerThan100<Module2_22fad187>",
+      "request": "launch",
+      "mainClass": "s01_java.exercise.PrimeNumbersLowerThan100",
+      "projectName": "Module2_22fad187"
+    },
+    {
+      "type": "java",
+      "name": "Debug (Launch)-ReadNumber<Module2_22fad187>",
+      "request": "launch",
+      "mainClass": "s01_java.exercise.ReadNumber",
+      "projectName": "Module2_22fad187"
+    },
+    {
+      "type": "java",
+      "name": "Debug (Launch)-SayHello<Module2_22fad187>",
+      "request": "launch",
+      "mainClass": "s01_java.exercise.SayHello",
+      "projectName": "Module2_22fad187"
+    },
+    {
+      "type": "java",
+      "name": "Debug (Launch)-_20FirstPrimeNumbers<Module2_22fad187>",
+      "request": "launch",
+      "mainClass": "s01_java.exercise._20FirstPrimeNumbers",
+      "projectName": "Module2_22fad187"
+    },
+    {
+      "type": "java",
+      "name": "Debug (Launch)-BMI<Module2_22fad187>",
+      "request": "launch",
+      "mainClass": "s01_java.tutorial.BMI",
+      "projectName": "Module2_22fad187"
+    },
+    {
+      "type": "java",
+      "name": "Debug (Launch)-CalculateSavingInterest<Module2_22fad187>",
+      "request": "launch",
+      "mainClass": "s01_java.tutorial.CalculateSavingInterest",
+      "projectName": "Module2_22fad187"
+    },
+    {
+      "type": "java",
+      "name": "Debug (Launch)-ConsoleMenu<Module2_22fad187>",
+      "request": "launch",
+      "mainClass": "s01_java.tutorial.ConsoleMenu",
+      "projectName": "Module2_22fad187"
+    },
+    {
+      "type": "java",
+      "name": "Debug (Launch)-DaysOfMonth<Module2_22fad187>",
+      "request": "launch",
+      "mainClass": "s01_java.tutorial.DaysOfMonth",
+      "projectName": "Module2_22fad187"
+    },
+    {
+      "type": "java",
+      "name": "Debug (Launch)-FindElementInArray<Module2_22fad187>",
+      "request": "launch",
+      "mainClass": "s01_java.tutorial.FindElementInArray",
+      "projectName": "Module2_22fad187"
+    },
+    {
+      "type": "java",
+      "name": "Debug (Launch)-GreatestCommonDivisor<Module2_22fad187>",
+      "request": "launch",
+      "mainClass": "s01_java.tutorial.GreatestCommonDivisor",
+      "projectName": "Module2_22fad187"
+    },
+    {
+      "type": "java",
+      "name": "Debug (Launch)-JavaDataType<Module2_22fad187>",
+      "request": "launch",
+      "mainClass": "s01_java.tutorial.JavaDataType",
+      "projectName": "Module2_22fad187"
+    },
+    {
+      "type": "java",
+      "name": "Debug (Launch)-LeapYear<Module2_22fad187>",
+      "request": "launch",
+      "mainClass": "s01_java.tutorial.LeapYear",
+      "projectName": "Module2_22fad187"
+    },
+    {
+      "type": "java",
+      "name": "Debug (Launch)-LinearEquationResolver<Module2_22fad187>",
+      "request": "launch",
+      "mainClass": "s01_java.tutorial.LinearEquationResolver",
+      "projectName": "Module2_22fad187"
+    },
+    {
+      "type": "java",
+      "name": "Debug (Launch)-PrimeNumber<Module2_22fad187>",
+      "request": "launch",
+      "mainClass": "s01_java.tutorial.PrimeNumber",
+      "projectName": "Module2_22fad187"
+    },
+    {
+      "type": "java",
+      "name": "Debug (Launch)-RectangleProgram<Module2_22fad187>",
+      "request": "launch",
+      "mainClass": "s01_java.tutorial.RectangleProgram",
+      "projectName": "Module2_22fad187"
+    },
+    {
+      "type": "java",
+      "name": "Debug (Launch)-SystemTime<Module2_22fad187>",
+      "request": "launch",
+      "mainClass": "s01_java.tutorial.SystemTime",
+      "projectName": "Module2_22fad187"
+    }
+  ]
+}

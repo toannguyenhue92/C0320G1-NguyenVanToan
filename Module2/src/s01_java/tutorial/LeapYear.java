@@ -27,5 +27,6 @@ public class LeapYear {
         } else {
             System.out.printf("%d is NOT a leap year", year);
         }
+        scanner.close();
     }
 }

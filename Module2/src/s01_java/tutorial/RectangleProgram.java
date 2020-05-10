@@ -13,5 +13,6 @@ public class RectangleProgram {
         height = scanner.nextDouble();
         double area = width * height;
         System.out.println("Area is: " + area);
+        scanner.close();
     }
 }

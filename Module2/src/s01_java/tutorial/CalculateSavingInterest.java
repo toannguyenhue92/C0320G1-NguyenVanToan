@@ -16,5 +16,6 @@ public class CalculateSavingInterest {
             total = money + money * (interestRate / 100) / 12 * month;
         }
         System.out.println("Total of interest: " + total);
+        scanner.close();
     }
 }

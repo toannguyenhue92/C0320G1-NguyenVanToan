@@ -30,5 +30,6 @@ public class DaysOfMonth {
                 System.out.print("Invalid input!");
                 break;
         }
+        scanner.close();
     }
 }
