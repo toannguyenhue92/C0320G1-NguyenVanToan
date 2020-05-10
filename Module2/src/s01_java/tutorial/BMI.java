@@ -6,10 +6,10 @@ public class BMI {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Your weight (in kilogram):");
+        System.out.print("Your weight (in kilogram): ");
         double weight = scanner.nextDouble();
 
-        System.out.print("Your height (in meter):");
+        System.out.print("Your height (in meter): ");
         double height = scanner.nextDouble();
 
         double bmi = weight / Math.pow(height, 2);
@@ -23,7 +23,6 @@ public class BMI {
             System.out.printf("%-20.2f%s", bmi, "Overweight");
         else
             System.out.printf("%-20.2f%s", bmi, "Obese");
-
         scanner.close();
     }
 }
