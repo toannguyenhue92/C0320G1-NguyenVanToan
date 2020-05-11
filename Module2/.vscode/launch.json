@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "CodeLens (Launch) - TemperatureConverter",
+      "request": "launch",
+      "mainClass": "s02_array_and_method.tutorial.TemperatureConverter",
+      "projectName": "Module2_22fad187"
+    },
+    {
+      "type": "java",
       "name": "Debug (Launch) - Current File",
       "request": "launch",
       "mainClass": "${file}"
