@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "CodeLens (Launch) - ArrayExample",
+      "request": "launch",
+      "mainClass": "s02_array_and_method.tutorial.ArrayExample",
+      "projectName": "Module2_22fad187"
+    },
+    {
+      "type": "java",
       "name": "CodeLens (Launch) - _2DArray",
       "request": "launch",
       "mainClass": "s02_array_and_method.exercise._2DArray",
