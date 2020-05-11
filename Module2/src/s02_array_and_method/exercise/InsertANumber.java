@@ -1,4 +1,4 @@
-package s02_array_and_method.e;
+package s02_array_and_method.exercise;
 
 import java.util.Scanner;
 
