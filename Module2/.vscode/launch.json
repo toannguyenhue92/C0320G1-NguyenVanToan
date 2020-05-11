@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "CodeLens (Launch) - InsertANumber",
+      "request": "launch",
+      "mainClass": "s02_array_and_method.exercise.InsertANumber",
+      "projectName": "Module2_22fad187"
+    },
+    {
+      "type": "java",
       "name": "CodeLens (Launch) - ReverseArray",
       "request": "launch",
       "mainClass": "s02_array_and_method.tutorial.ReverseArray",
