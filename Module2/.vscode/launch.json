@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "CodeLens (Launch) - DemoIllegalTriangleException",
+      "request": "launch",
+      "mainClass": "s02_array_and_method.exercise.illegal_triangle_exception.DemoIllegalTriangleException",
+      "projectName": "Module2_22fad187"
+    },
+    {
+      "type": "java",
       "name": "CodeLens (Launch) - DemoStopWatch",
       "request": "launch",
       "mainClass": "s03_class_and_object.exercise.stopwatch.DemoStopWatch",
