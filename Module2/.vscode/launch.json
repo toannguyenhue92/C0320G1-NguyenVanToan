@@ -8,6 +8,13 @@
       "type": "java",
       "name": "CodeLens (Launch) - QuadraticEquation",
       "request": "launch",
+      "mainClass": "s03_class_and_object.exercise.QuadraticEquation",
+      "projectName": "Module2_22fad187"
+    },
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - QuadraticEquation",
+      "request": "launch",
       "mainClass": "s03_access_modifier.exercise.QuadraticEquation",
       "projectName": "Module2_22fad187"
     },

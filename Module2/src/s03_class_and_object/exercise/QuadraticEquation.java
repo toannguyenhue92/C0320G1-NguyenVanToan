@@ -1,4 +1,4 @@
-package s03_access_modifier.exercise;
+package s03_class_and_object.exercise;
 
 import java.util.Scanner;
 

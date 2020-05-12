@@ -1,4 +1,4 @@
-package s03_access_modifier.tutorial;
+package s03_class_and_object.tutorial;
 
 import java.util.Scanner;
 
