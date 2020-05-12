@@ -6,6 +6,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "CodeLens (Launch) - DemoStopWatch",
+      "request": "launch",
+      "mainClass": "s03_class_and_object.exercise.stopwatch.DemoStopWatch",
+      "projectName": "Module2_22fad187"
+    },
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - DemoStopWatch",
+      "request": "launch",
+      "mainClass": "s03_class_and_object.exercise.DemoStopWatch",
+      "projectName": "Module2_22fad187"
+    },
+    {
+      "type": "java",
       "name": "CodeLens (Launch) - QuadraticEquation",
       "request": "launch",
       "mainClass": "s03_class_and_object.exercise.QuadraticEquation",

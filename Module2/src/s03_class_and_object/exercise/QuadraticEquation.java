@@ -64,8 +64,13 @@ public class QuadraticEquation {
     System.out.print("Enter c: ");
     double c = scanner.nextDouble();
     QuadraticEquation equation = new QuadraticEquation(a, b, c);
-    System.out.printf("%.5f\n", equation.getRoot1());
-    System.out.printf("%.5f\n", equation.getRoot2());
+    if (equation.getDiscriminant() > 0) {
+      System.out.printf("The equation has two roots: %.5f and %.5f.\n", equation.getRoot1(), equation.getRoot2());
+    } else if (equation.getDiscriminant() == 0) {
+      System.out.printf("The equation has one root: %.5f.\n", equation.getRoot1());
+    } else {
+      System.out.println("The equation has no real roots.");
+    }
     scanner.close();
   }
 }
