@@ -7,12 +7,14 @@ public class ArrayExample {
   public static void main(String[] args) {
     int[] arr = createRandom();
     Scanner scaner = new Scanner(System.in);
-    System.out.print("\nVui lòng nhập chỉ số của một phần tử bất kỳ: ");
-    int x = scaner.nextInt();
+    System.out.print("Please enter the index of a element (0-99): ");
     try {
-      System.out.println("Giá trị của phần tử có chỉ số " + x + " là " + arr[x]);
+      int index = Integer.parseInt(scaner.nextLine());
+      System.out.println("Value of element at index " + index + " is: " + arr[index]);
     } catch (IndexOutOfBoundsException e) {
-      System.err.println("Chỉ số vượt quá giới hạn của mảng");
+      System.err.println("Index out of bounds!");
+    } catch (NumberFormatException e) {
+      System.err.println("Please enter an integer!");
     }
     scaner.close();
   }
@@ -20,11 +22,12 @@ public class ArrayExample {
   public static int[] createRandom() {
     Random random = new Random();
     int[] array = new int[100];
-    System.out.println("Random array: ");
+    System.out.print("Random integers: ");
     for (int i = 0; i < array.length; i++) {
       array[i] = random.nextInt(100);
-      System.out.printf("%3d ", array[i]);
+      System.out.printf("%d ", array[i]);
     }
+    System.out.println();
     return array;
   }
 }

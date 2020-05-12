@@ -6,6 +6,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "CodeLens (Launch) - Rectangle",
+      "request": "launch",
+      "mainClass": "s03_access_modifier.tutorial.Rectangle",
+      "projectName": "Module2_22fad187"
+    },
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - TestModifier",
+      "request": "launch",
+      "mainClass": "s03_access_modifier.tutorial.TestModifier",
+      "projectName": "Module2_22fad187"
+    },
+    {
+      "type": "java",
       "name": "CodeLens (Launch) - InsertANumber",
       "request": "launch",
       "mainClass": "s02_array_and_method.exercise.InsertANumber",
