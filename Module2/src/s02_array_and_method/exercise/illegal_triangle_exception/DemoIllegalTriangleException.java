@@ -14,10 +14,19 @@ public class DemoIllegalTriangleException {
     } catch (IllegalTriangleException e) {
       System.out.printf("{ a: %d, b: %d, c: %d } is not a triangle!", a, b, c);
     }
+    System.out.println();
+  }
+
+  public static boolean isPositive(double number) {
+    return number > 0;
   }
 
   public static void checkTriagle(int a, int b, int c) throws IllegalTriangleException {
-    if (a > 0 && b > 0 && c > 0 && (a > b + c || b > a + c || c > a + b)) {
+    boolean aIsPositive = isPositive(a);
+    boolean bIsPositive = isPositive(b);
+    boolean cIsPositive = isPositive(c);
+    boolean isTriangle = (aIsPositive && bIsPositive && cIsPositive && (a > b + c || b > a + c || c > a + b));
+    if (!isTriangle) {
       throw new IllegalTriangleException();
     }
   }
