@@ -6,6 +6,48 @@
   "configurations": [
     {
       "type": "java",
+      "name": "CodeLens (Launch) - SquareTest",
+      "request": "launch",
+      "mainClass": "s04_inheritance_in_java.tutorial.geometric_objects.test.SquareTest",
+      "projectName": "Module2_22fad187"
+    },
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - RectangleTest",
+      "request": "launch",
+      "mainClass": "s04_inheritance_in_java.tutorial.geometric_objects.test.RectangleTest",
+      "projectName": "Module2_22fad187"
+    },
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - CircleTest",
+      "request": "launch",
+      "mainClass": "s04_inheritance_in_java.tutorial.geometric_objects.test.CircleTest",
+      "projectName": "Module2_22fad187"
+    },
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - ShapeTest",
+      "request": "launch",
+      "mainClass": "s04_inheritance_in_java.tutorial.geometric_objects.ShapeTest",
+      "projectName": "Module2_22fad187"
+    },
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - Demo",
+      "request": "launch",
+      "mainClass": "s04_inheritance_in_java.tutorial.a.Demo",
+      "projectName": "Module2_22fad187"
+    },
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - Demo",
+      "request": "launch",
+      "mainClass": "s04_inheritance_in_java.tutorial.Demo",
+      "projectName": "Module2_22fad187"
+    },
+    {
+      "type": "java",
       "name": "CodeLens (Launch) - DemoFan",
       "request": "launch",
       "mainClass": "s03_class_and_object.exercise.fan.DemoFan",

@@ -20,7 +20,7 @@ public class QuadraticEquation {
   public void setA(double a) {
     this.a = a;
   }
-
+  
   public double getB() {
     return this.b;
   }
