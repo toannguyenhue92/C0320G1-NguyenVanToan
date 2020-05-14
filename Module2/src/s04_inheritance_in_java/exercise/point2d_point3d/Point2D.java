@@ -34,10 +34,8 @@ public class Point2D {
   }
 
   public float[] getXY() {
-    float[] pair = new float[2];
-    pair[0] = x;
-    pair[1] = y;
-    return pair;
+    float[] xy = {x, y};
+    return xy;
   }
 
   @Override
