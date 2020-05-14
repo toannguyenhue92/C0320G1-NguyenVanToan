@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "CodeLens (Launch) - PointDemo2",
+      "request": "launch",
+      "mainClass": "s04_inheritance_in_java.exercise.moveable_point.PointDemo2",
+      "projectName": "Module2_22fad187"
+    },
+    {
+      "type": "java",
       "name": "CodeLens (Launch) - PointDemo",
       "request": "launch",
       "mainClass": "s04_inheritance_in_java.exercise.point2d_point3d.PointDemo",
