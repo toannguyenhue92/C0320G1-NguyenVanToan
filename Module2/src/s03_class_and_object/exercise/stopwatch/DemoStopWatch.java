@@ -10,7 +10,7 @@ public class DemoStopWatch {
     stopWatch.start();
     insertionSort(array);
     stopWatch.stop();
-    System.out.printf("It takes %d miliseconds to sort!", stopWatch.getElapsedTime());
+    System.out.printf("It takes %d miliseconds to sort!\n", stopWatch.getElapsedTime());
   }
 
   public static int[] randomIntegers(int size) {

@@ -1,26 +1,24 @@
 package s03_class_and_object.exercise.stopwatch;
 
-import java.util.Date;
-
 public class StopWatch {
   private long startTime;
   private long endTime;
 
   public StopWatch() {
-    this.startTime = new Date().getTime();
+    this.startTime = System.currentTimeMillis();
   }
 
   public void start() {
-    this.startTime = new Date().getTime();
+    this.startTime = System.currentTimeMillis();
   }
 
   public void stop() {
-    this.endTime = new Date().getTime();
+    this.endTime = System.currentTimeMillis();
   }
 
   public long getElapsedTime() {
     if (this.endTime == 0) {
-      this.endTime = new Date().getTime();
+      this.endTime = System.currentTimeMillis();
     }
     return endTime - startTime;
   }
