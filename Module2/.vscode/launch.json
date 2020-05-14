@@ -8,6 +8,13 @@
       "type": "java",
       "name": "CodeLens (Launch) - Demo",
       "request": "launch",
+      "mainClass": "s04_inheritance_in_java.exercise.circle_cylinder.Demo",
+      "projectName": "Module2_22fad187"
+    },
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - Demo",
+      "request": "launch",
       "mainClass": "s04_inheritance_in_java.tutorial.circle_cylinder.Demo",
       "projectName": "Module2_22fad187"
     },

@@ -1,4 +1,4 @@
-package s04_inheritance_in_java.tutorial.circle_cylinder;
+package s04_inheritance_in_java.exercise.circle_cylinder;
 
 public class Circle {
   private double radius = 1.0;

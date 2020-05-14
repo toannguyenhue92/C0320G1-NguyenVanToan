@@ -1,4 +1,4 @@
-package s04_inheritance_in_java.tutorial.circle_cylinder;
+package s04_inheritance_in_java.exercise.circle_cylinder;
 
 public class Cylinder extends Circle {
   private double height = 1.0;
@@ -26,16 +26,16 @@ public class Cylinder extends Circle {
   }
 
   public double getVolume() {
-    return Math.PI * Math.pow(getRadius(), 2.0) * this.height;
+    return Math.PI * Math.pow(getRadius(), 2.0) * height;
   }
 
   public double getSurfaceArea() {
-    return 2 * Math.PI * this.getRadius() * (this.getRadius() + this.height);
+    return 2 * Math.PI * getRadius() * (getRadius() + height);
   }
 
   @Override
   public String toString() {
-    return "A Cylinder with height = " + getHeight() + ", radius = " + this.getRadius()
+    return "A Cylinder with height = " + getHeight() + ", radius = " + getRadius()
         + ", which is a subclass of " + super.toString();
   }
 }

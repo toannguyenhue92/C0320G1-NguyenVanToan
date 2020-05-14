@@ -1,8 +1,8 @@
-package s04_inheritance_in_java.tutorial.circle_cylinder;
+package s04_inheritance_in_java.exercise.circle_cylinder;
 
 public class Demo {
   public static void main(String[] args) {
-    Cylinder cylinder = new Cylinder(5.0, 2.0);
+    Cylinder cylinder = new Cylinder(1.0, 1.0);
     printCylinderInfo(cylinder);
   }
 
