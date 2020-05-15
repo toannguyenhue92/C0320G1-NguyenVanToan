@@ -4,11 +4,11 @@ public class PointDemo2 {
   public static void main(String[] args) {
     MoveablePoint moveablePoint = new MoveablePoint(3f, 2.5f);
     System.out.println(moveablePoint);
-    moveablePoint = moveablePoint.move();
+    moveablePoint.move();
     System.out.println(moveablePoint);
-    moveablePoint = moveablePoint.move();
+    moveablePoint.move();
     System.out.println(moveablePoint);
-    moveablePoint = moveablePoint.move();
+    moveablePoint.move();
     System.out.println(moveablePoint);
   }
 }

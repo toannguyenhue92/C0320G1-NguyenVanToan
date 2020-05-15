@@ -47,14 +47,14 @@ public class MoveablePoint extends Point {
 
   @Override
   public String toString() {
-    return String.format("(%f,%f), speed=(%f,%f)", getX(), getY(), xSpeed, ySpeed);
+    return String.format("(%f, %f), speed=(%f, %f)", getX(), getY(), xSpeed, ySpeed);
   }
 
   public MoveablePoint move() {
     float xNew = getX() + xSpeed;
-    this.setX(xNew);
+    setX(xNew);
     float yNew = getY() + ySpeed;
-    this.setY(yNew);
+    setY(yNew);
     return this;
   }
 }
