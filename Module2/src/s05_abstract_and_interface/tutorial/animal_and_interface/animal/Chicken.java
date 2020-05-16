@@ -1,8 +1,8 @@
 package s05_abstract_and_interface.tutorial.animal_and_interface.animal;
 
-import s05_abstract_and_interface.tutorial.animal_and_interface.ediable.Ediable;
+import s05_abstract_and_interface.tutorial.animal_and_interface.ediable.Eatable;
 
-public class Chicken extends Animal implements Ediable {
+public class Chicken extends Animal implements Eatable {
 
   @Override
   public String makeSound() {
