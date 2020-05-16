@@ -1,4 +1,4 @@
-package s04_inheritance_in_java.tutorial.geometric_objects.classes;
+package s04_inheritance.tutorial.geometric.classes;
 
 public class Square extends Rectangle {
 

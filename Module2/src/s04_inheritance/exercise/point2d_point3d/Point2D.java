@@ -1,4 +1,4 @@
-package s04_inheritance_in_java.exercise.point2d_point3d;
+package s04_inheritance.exercise.point2d_point3d;
 
 public class Point2D {
   private float x = 0.0f;
@@ -34,8 +34,7 @@ public class Point2D {
   }
 
   public float[] getXY() {
-    float[] xy = {x, y};
-    return xy;
+    return new float[]{x, y};
   }
 
   @Override

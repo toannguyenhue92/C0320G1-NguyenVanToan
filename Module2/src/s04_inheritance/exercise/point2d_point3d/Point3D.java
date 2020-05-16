@@ -1,4 +1,4 @@
-package s04_inheritance_in_java.exercise.point2d_point3d;
+package s04_inheritance.exercise.point2d_point3d;
 
 public class Point3D extends Point2D {
   private float z = 0.0f;
@@ -25,8 +25,7 @@ public class Point3D extends Point2D {
   }
 
   public float[] getXYZ() {
-    float[] xyz = {getX(), getY(), z};
-    return xyz;
+    return new float[]{getX(), getY(), z};
   }
 
   @Override

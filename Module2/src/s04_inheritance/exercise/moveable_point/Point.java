@@ -1,4 +1,4 @@
-package s04_inheritance_in_java.exercise.moveable_point;
+package s04_inheritance.exercise.moveable_point;
 
 public class Point {
   private float x = 0.0f;
@@ -34,8 +34,7 @@ public class Point {
   }
 
   public float[] getXY() {
-    float[] xy = {x, y};
-    return xy;
+    return new float[]{x, y};
   }
 
   @Override

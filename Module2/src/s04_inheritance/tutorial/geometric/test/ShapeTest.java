@@ -1,6 +1,6 @@
-package s04_inheritance_in_java.tutorial.geometric_objects.test;
+package s04_inheritance.tutorial.geometric.test;
 
-import s04_inheritance_in_java.tutorial.geometric_objects.classes.Shape;
+import s04_inheritance.tutorial.geometric.classes.Shape;
 
 public class ShapeTest {
   public static void main(String[] args) {

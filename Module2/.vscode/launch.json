@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "CodeLens (Launch) - CircleComparatorTest",
+      "request": "launch",
+      "mainClass": "s05_abstract_and_interface.tutorial.custom_comparator.CircleComparatorTest",
+      "projectName": "Module2_22fad187"
+    },
+    {
+      "type": "java",
       "name": "CodeLens (Launch) - AbstractAndInterfaceTest",
       "request": "launch",
       "mainClass": "s05_abstract_and_interface.tutorial.animal_and_interface.AbstractAndInterfaceTest",
