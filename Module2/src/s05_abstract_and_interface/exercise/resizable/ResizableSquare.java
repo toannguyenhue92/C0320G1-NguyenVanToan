@@ -12,7 +12,7 @@ public class ResizableSquare extends Square implements Resizable {
     public void resize(double percent) {
         System.out.println("Before resize: " + this);
         System.out.println("Resize with percent = " + percent + "%");
-        this.setSide(this.getSide() * percent / 100);
+        this.setSide(this.getSide() * (1 + percent / 100));
         System.out.println("Before resize: " + this);
     }
 }

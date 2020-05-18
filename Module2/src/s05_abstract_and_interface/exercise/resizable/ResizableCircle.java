@@ -12,7 +12,7 @@ public class ResizableCircle extends Circle implements Resizable {
     public void resize(double percent) {
         System.out.println("Before resize: " + this);
         System.out.println("Resize with percent = " + percent + "%");
-        this.setRadius(this.getRadius() * percent / 100);
+        this.setRadius(this.getRadius() * (1 + percent / 100));
         System.out.println("Before resize: " + this);
     }
 }
