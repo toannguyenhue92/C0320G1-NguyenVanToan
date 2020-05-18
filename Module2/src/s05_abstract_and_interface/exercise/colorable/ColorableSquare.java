@@ -1,6 +1,6 @@
 package s05_abstract_and_interface.exercise.colorable;
 
-import s04_inheritance.tutorial.geometric.classes.Square;
+import s04_inheritance.tutorial.geometric.model.Square;
 
 public class ColorableSquare extends Square implements Colorable {
 
@@ -15,7 +15,7 @@ public class ColorableSquare extends Square implements Colorable {
 
     @Override
     public String toString() {
-        return "A ColorableSquare with side = " + getSide() + ", which is a subclass of " + super.toString()
-                + ", implements interface Colorable";
+        return "A ColorableSquare with side = " + getSide() + ", which is a subclass of "
+                + super.toString() + ", implements interface Colorable";
     }
 }

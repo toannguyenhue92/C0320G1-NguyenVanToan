@@ -1,4 +1,4 @@
-package s04_inheritance.tutorial.geometric.classes;
+package s04_inheritance.tutorial.geometric.model;
 
 public class Rectangle extends Shape {
   private double width = 1.0;

@@ -1,6 +1,6 @@
 package s04_inheritance.tutorial.geometric.test;
 
-import s04_inheritance.tutorial.geometric.classes.Square;
+import s04_inheritance.tutorial.geometric.model.Square;
 
 public class SquareTest {
   public static void main(String[] args) {

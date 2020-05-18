@@ -1,6 +1,6 @@
 package s04_inheritance.tutorial.geometric.test;
 
-import s04_inheritance.tutorial.geometric.classes.Circle;
+import s04_inheritance.tutorial.geometric.model.Circle;
 
 public class CircleTest {
   public static void main(String[] args) {

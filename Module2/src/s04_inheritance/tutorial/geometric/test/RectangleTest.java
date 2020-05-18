@@ -1,6 +1,6 @@
 package s04_inheritance.tutorial.geometric.test;
 
-import s04_inheritance.tutorial.geometric.classes.Rectangle;
+import s04_inheritance.tutorial.geometric.model.Rectangle;
 
 public class RectangleTest {
   public static void main(String[] args) {

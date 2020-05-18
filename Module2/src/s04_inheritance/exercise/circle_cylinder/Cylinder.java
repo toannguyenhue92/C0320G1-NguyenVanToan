@@ -1,6 +1,6 @@
 package s04_inheritance.exercise.circle_cylinder;
 
-import s04_inheritance.tutorial.geometric.classes.Circle;
+import s04_inheritance.tutorial.geometric.model.Circle;
 
 public class Cylinder extends Circle {
     private double height = 1.0;

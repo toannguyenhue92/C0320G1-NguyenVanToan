@@ -1,7 +1,7 @@
 package s05_abstract_and_interface.tutorial.circle_comparator;
 
 import java.util.Arrays;
-import s04_inheritance.tutorial.geometric.classes.Circle;
+import s04_inheritance.tutorial.geometric.model.Circle;
 
 public class CircleComparatorTest {
   public static void main(String[] args) {

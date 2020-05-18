@@ -1,6 +1,6 @@
 package s05_abstract_and_interface.exercise.resizable;
 
-import s04_inheritance.tutorial.geometric.classes.Square;
+import s04_inheritance.tutorial.geometric.model.Square;
 
 public class ResizableSquare extends Square implements Resizable {
 

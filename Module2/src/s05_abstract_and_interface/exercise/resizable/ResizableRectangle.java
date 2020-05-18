@@ -1,6 +1,6 @@
 package s05_abstract_and_interface.exercise.resizable;
 
-import s04_inheritance.tutorial.geometric.classes.Rectangle;
+import s04_inheritance.tutorial.geometric.model.Rectangle;
 
 public class ResizableRectangle extends Rectangle implements Resizable {
 

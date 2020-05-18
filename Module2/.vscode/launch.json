@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "CodeLens (Launch) - DemoColorable",
+      "request": "launch",
+      "mainClass": "s05_abstract_and_interface.exercise.colorable.DemoColorable",
+      "projectName": "Module2_22fad187"
+    },
+    {
+      "type": "java",
       "name": "CodeLens (Launch) - CircleComparatorTest",
       "request": "launch",
       "mainClass": "s05_abstract_and_interface.tutorial.custom_comparator.CircleComparatorTest",

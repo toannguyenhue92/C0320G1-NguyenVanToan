@@ -1,6 +1,6 @@
 package s05_abstract_and_interface.tutorial.comparable_circle;
 
-import s04_inheritance.tutorial.geometric.classes.Circle;
+import s04_inheritance.tutorial.geometric.model.Circle;
 
 public class ComparableCircle extends Circle implements Comparable<ComparableCircle> {
 

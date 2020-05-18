@@ -1,4 +1,4 @@
-package s04_inheritance.tutorial.geometric.classes;
+package s04_inheritance.tutorial.geometric.model;
 
 public class Shape {
   private String color = "green";

@@ -1,9 +1,9 @@
 package s05_abstract_and_interface.exercise.colorable;
 
-import s04_inheritance.tutorial.geometric.classes.Circle;
-import s04_inheritance.tutorial.geometric.classes.Rectangle;
-import s04_inheritance.tutorial.geometric.classes.Shape;
-import s04_inheritance.tutorial.geometric.classes.Square;
+import s04_inheritance.tutorial.geometric.model.Circle;
+import s04_inheritance.tutorial.geometric.model.Rectangle;
+import s04_inheritance.tutorial.geometric.model.Shape;
+import s04_inheritance.tutorial.geometric.model.Square;
 
 public class DemoColorable {
     public static void main(String[] args) {
@@ -36,8 +36,8 @@ public class DemoColorable {
                 System.out.println("Perimeter: " + square.getPerimeter());
             } else if (shape instanceof Rectangle) {
                 Rectangle rectangle = (Rectangle) shape;
-                System.out.println("Rectangle: width = " + rectangle.getWidth()
-                        + ", height = " + rectangle.getHeight());
+                System.out.println("Rectangle: width = " + rectangle.getWidth() + ", height = "
+                        + rectangle.getHeight());
                 System.out.println("Area: " + rectangle.getArea());
                 System.out.println("Perimeter: " + rectangle.getPerimeter());
             } else if (shape instanceof Circle) {

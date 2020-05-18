@@ -1,6 +1,6 @@
 package s05_abstract_and_interface.exercise.resizable;
 
-import s04_inheritance.tutorial.geometric.classes.Circle;
+import s04_inheritance.tutorial.geometric.model.Circle;
 
 public class ResizableCircle extends Circle implements Resizable {
 
