@@ -56,8 +56,8 @@ public class MyArrayList<E> {
         return true;
     }
 
-    public Object get(int index) {
-        return elements[index];
+    public E get(int index) {
+        return (E) elements[index];
     }
 
     public void add(int index, E e) {
@@ -75,7 +75,7 @@ public class MyArrayList<E> {
             Object[] remain = Arrays.copyOfRange(elements, index, size);
             elements[index] = e;
             for (int i = 0; i < remain.length; i++) {
-                elements[i + index + 1] = remain[i];
+                elements[index + 1 + i] = remain[i];
             }
             size++;
         }
@@ -90,9 +90,7 @@ public class MyArrayList<E> {
     }
 
     public void clear() {
-        for (int index = 0; index < this.size; index++) {
-            elements[index] = null;
-        }
+        elements = null;
         size = 0;
     }
 
