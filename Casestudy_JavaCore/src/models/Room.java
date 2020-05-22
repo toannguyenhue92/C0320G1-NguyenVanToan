@@ -22,6 +22,25 @@ public class Room extends Service {
 
     @Override
     public void showInformation() {
-        System.out.println("Room information");
+        String information = "Room information: " +
+                "id=" + getId() +
+                ", serviceName=" + getServiceName() +
+                ", areaInUse=" + getAreaInUse() +
+                ", rentalFee=" + getRentalFee() +
+                ", maxGuest=" + getMaxGuest() +
+                ", rentalType=" + getRentalType() +
+                ", freeAdditionService=" + freeAdditionService;
+        System.out.println(information);
+    }
+
+    @Override
+    public String toString() {
+        return getId() +
+                "," + getServiceName() +
+                "," + getAreaInUse() +
+                "," + getRentalFee() +
+                "," + getMaxGuest() +
+                "," + getRentalType() +
+                "," + freeAdditionService;
     }
 }
