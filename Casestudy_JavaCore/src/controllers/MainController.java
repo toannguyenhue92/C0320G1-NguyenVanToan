@@ -1,10 +1,7 @@
 package controllers;
 
 import commons.*;
-import models.Customer;
-import models.House;
-import models.Room;
-import models.Villa;
+import models.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -255,22 +252,40 @@ public class MainController {
         showServices();
     }
 
-    public void addNewVilla() {
-        System.out.println("New villa:");
-        Villa villa = new Villa();
-        String villaID = input.inputVillaID();
-        villa.setId(villaID);
+    public void inputCommonInformation(Service service) {
+        String s = "";
+        String id = "";
+        if (service instanceof Villa) {
+            s = "villa";
+            id = input.inputVillaID();
+        }
+        if (service instanceof House) {
+            s = "house";
+            id = input.inputHouseID();
+        }
+        if (service instanceof Room) {
+            s = "room";
+            id = input.inputRoomID();
+        }
+        service.setId(id);
         String serviceName = input.inputServiceName();
-        villa.setServiceName(serviceName);
-        double areaInUse = input.inputArea("villa");
-        villa.setAreaInUse(areaInUse);
+        service.setServiceName(serviceName);
+        double areaInUse = input.inputArea(s);
+        service.setAreaInUse(areaInUse);
         double rentalFee = input.inputRentalFee();
-        villa.setRentalFee(rentalFee);
+        service.setRentalFee(rentalFee);
         int maxGuest = input.inputMaxGuest();
-        villa.setMaxGuest(maxGuest);
+        service.setMaxGuest(maxGuest);
         System.out.print("Enter rental type: ");
         String rentalType = input.standardizedString(scanner.nextLine());
-        villa.setRentalType(rentalType);
+        service.setRentalType(rentalType);
+    }
+
+    public void addNewVilla() {
+        System.out.println();
+        System.out.println("New villa:");
+        Villa villa = new Villa();
+        inputCommonInformation(villa);
         System.out.print("Enter villa standard: ");
         String villaStandard = input.standardizedString(scanner.nextLine());
         villa.setVillaStandard(villaStandard);
@@ -291,21 +306,10 @@ public class MainController {
     }
 
     public void addNewHouse() {
+        System.out.println();
         System.out.println("New house:");
         House house = new House();
-        String houseID = input.inputHouseID();
-        house.setId(houseID);
-        String serviceName = input.inputServiceName();
-        house.setServiceName(serviceName);
-        double areaInUse = input.inputArea("house");
-        house.setAreaInUse(areaInUse);
-        double rentalFee = input.inputRentalFee();
-        house.setRentalFee(rentalFee);
-        int maxGuest = input.inputMaxGuest();
-        house.setMaxGuest(maxGuest);
-        System.out.print("Enter rental type: ");
-        String rentalType = input.standardizedString(scanner.nextLine());
-        house.setRentalType(rentalType);
+        inputCommonInformation(house);
         System.out.print("Enter house standard: ");
         String houseStandard = input.standardizedString(scanner.nextLine());
         house.setHouseStandard(houseStandard);
@@ -321,19 +325,10 @@ public class MainController {
     }
 
     public void addNewRoom() {
+        System.out.println();
         System.out.println("New room:");
         Room room = new Room();
-        String roomId = input.inputRoomID();
-        room.setId(roomId);
-        String serviceName = input.inputServiceName();
-        room.setServiceName(serviceName);
-        double areaInUse = input.inputArea("room");
-        room.setAreaInUse(areaInUse);
-        double rentalFee = input.inputRentalFee();
-        room.setRentalFee(rentalFee);
-        int maxGuest = input.inputMaxGuest();
-        room.setMaxGuest(maxGuest);
-        System.out.print("Enter rental type: ");
+        inputCommonInformation(room);
         String rentalType = input.standardizedString(scanner.nextLine());
         room.setRentalType(rentalType);
         System.out.print("Enter free addition service: ");

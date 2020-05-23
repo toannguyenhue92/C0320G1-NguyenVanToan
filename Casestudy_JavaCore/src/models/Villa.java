@@ -54,17 +54,17 @@ public class Villa extends Service implements Comparable<Villa> {
 
     @Override
     public void showInformation() {
-        String information = "Villa information: " +
-                "id=" + getId() +
-                ", serviceName=" + getServiceName() +
-                ", areaInUse=" + getAreaInUse() +
-                ", rentalFee=" + getRentalFee() +
-                ", maxGuest=" + getMaxGuest() +
-                ", rentalType=" + getRentalType() +
-                ", villaStandard=" + villaStandard +
-                ", villaDescription=" + villaDescription +
-                ", numberOfFloors=" + numberOfFloors +
-                ", poolArea=" + poolArea;
+        String information = "Villa {" +
+                "id = '" + getId() + "'" +
+                ", serviceName = '" + getServiceName() + "'" +
+                ", areaInUse = '" + getAreaInUse() + "'" +
+                ", rentalFee = '" + getRentalFee() + "'" +
+                ", maxGuest = '" + getMaxGuest() + "'" +
+                ", rentalType = '" + getRentalType() + "'" +
+                ", villaStandard ='" + villaStandard + "'" +
+                ", villaDescription ='" + villaDescription + "'" +
+                ", numberOfFloors ='" + numberOfFloors + "'" +
+                ", poolArea ='" + poolArea + "'}";
         System.out.println(information);
     }
 

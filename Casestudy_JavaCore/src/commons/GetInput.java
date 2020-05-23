@@ -249,7 +249,7 @@ public class GetInput {
         while (true) {
             System.out.print("Enter birthday (ex. dd/mm/yyyy): ");
             try {
-                return BirthdayException.inputBirtday(scanner);
+                return BirthdayException.inputBirthday(scanner);
             } catch (BirthdayException e) {
                 System.out.println(e.getMessage());
                 pauseConsole();
