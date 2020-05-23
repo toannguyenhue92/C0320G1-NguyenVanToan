@@ -1,6 +1,8 @@
 package models;
 
-public class Room extends Service {
+import java.util.Objects;
+
+public class Room extends Service implements Comparable<Room> {
     private String freeAdditionService;
 
     public Room() {
@@ -42,5 +44,24 @@ public class Room extends Service {
                 "," + getMaxGuest() +
                 "," + getRentalType() +
                 "," + freeAdditionService;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Room room = (Room) o;
+        return Objects.equals(freeAdditionService, room.freeAdditionService);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), freeAdditionService);
+    }
+
+    @Override
+    public int compareTo(Room o) {
+        return o.getId().compareTo(this.getId());
     }
 }

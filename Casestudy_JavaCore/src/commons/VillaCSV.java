@@ -21,7 +21,6 @@ public class VillaCSV {
             fileWriter.flush();
             fileWriter.close();
         } catch (IOException e) {
-            System.out.println("Can't save new villa information!");
             return false;
         }
         return true;

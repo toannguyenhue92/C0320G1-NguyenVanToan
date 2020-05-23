@@ -1,15 +1,15 @@
 package controllers;
 
-import commons.GetInput;
-import commons.HouseCSV;
-import commons.RoomCSV;
-import commons.VillaCSV;
+import commons.*;
+import models.Customer;
 import models.House;
 import models.Room;
 import models.Villa;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
+import java.util.TreeSet;
 
 public class MainController {
 
@@ -18,6 +18,7 @@ public class MainController {
     private VillaCSV villaCSV;
     private HouseCSV houseCSV;
     private RoomCSV roomCSV;
+    private CustomerCSV customerCSV;
 
     public MainController(Scanner scanner) {
         this.scanner = scanner;
@@ -25,6 +26,7 @@ public class MainController {
         villaCSV = new VillaCSV();
         houseCSV = new HouseCSV();
         roomCSV = new RoomCSV();
+        customerCSV = new CustomerCSV();
     }
 
     public void displayMainMenu() {
@@ -37,7 +39,6 @@ public class MainController {
         System.out.println("5. Add new booking");
         System.out.println("6. Show information of employee");
         System.out.println("7. Exit");
-        System.out.println();
         System.out.print("Enter your selection: ");
         String selection = scanner.nextLine();
         switch (selection) {
@@ -48,12 +49,10 @@ public class MainController {
                 showServices();
                 break;
             case "3":
-                System.out.println("3. Add new customer - Not available now!");
-                displayMainMenu();
+                addNewCustomer();
                 break;
             case "4":
-                System.out.println("4. Show information of customer - Not available now!");
-                displayMainMenu();
+                showCustomerInformation();
                 break;
             case "5":
                 System.out.println("5. Add new booking - Not available now!");
@@ -69,6 +68,49 @@ public class MainController {
                 showNotAvailableMessage();
                 displayMainMenu();
         }
+    }
+
+    private void showCustomerInformation() {
+        System.out.println();
+        System.out.println("Customer information:");
+        ArrayList<Customer> customers = customerCSV.getAllCustomers();
+        Collections.sort(customers);
+        for (Customer customer : customers) {
+            customer.showInformation();
+        }
+        System.out.println();
+        pauseConsole();
+        displayMainMenu();
+    }
+
+    private void addNewCustomer() {
+        System.out.println();
+        System.out.println("Add new customer:");
+        Customer customer = new Customer();
+        String name = input.inputName();
+        customer.setName(name);
+        String birthday = input.inputBirthDay();
+        customer.setBirthday(birthday);
+        String gender = input.inputGender();
+        customer.setGender(gender);
+        String idCardNumbers = input.inputIdCardNumbers();
+        customer.setIdCardNumbers(idCardNumbers);
+        String phoneNumber = input.inputPhoneNumber(scanner);
+        customer.setPhoneNumber(phoneNumber);
+        String email = input.inputEmail();
+        customer.setEmail(email);
+        String customerType = input.inputCustomerType(scanner);
+        customer.setCustomerType(customerType);
+        String address = input.inputAddress(scanner);
+        customer.setAddress(address);
+        if (customerCSV.saveNewCustomer(customer)) {
+            System.out.println("Successful add new customer!");
+            customer.showInformation();
+        } else {
+            System.out.println("Can't save new customer information!");
+        }
+        pauseConsole();
+        displayMainMenu();
     }
 
     public void displayAddNewServiceMenu() {
@@ -128,13 +170,13 @@ public class MainController {
                 showAllRooms();
                 break;
             case "4":
-                System.out.println("4. Show all name villas not duplicate - Not available now!");
+                showNotDuplicateVillas();
                 break;
             case "5":
-                System.out.println("5. Show all name houses not duplicate - Not available now!");
+                showNotDuplicateHouses();
                 break;
             case "6":
-                System.out.println("6. Show all name rooms not duplicate - Not available now!");
+                showNotDuplicateRooms();
                 break;
             case "7":
                 displayMainMenu();
@@ -145,6 +187,39 @@ public class MainController {
                 showNotAvailableMessage();
                 displayMainMenu();
         }
+    }
+
+    private void showNotDuplicateRooms() {
+        System.out.println();
+        System.out.println("Not duplicate rooms: ");
+        TreeSet<Room> rooms = new TreeSet<>(roomCSV.getAllRooms());
+        for (Room room : rooms) {
+            room.showInformation();
+        }
+        pauseConsole();
+        showServices();
+    }
+
+    private void showNotDuplicateHouses() {
+        System.out.println();
+        System.out.println("Not duplicate houses: ");
+        TreeSet<House> houses = new TreeSet<>(houseCSV.getAllHouses());
+        for (House house : houses) {
+            house.showInformation();
+        }
+        pauseConsole();
+        showServices();
+    }
+
+    private void showNotDuplicateVillas() {
+        System.out.println();
+        System.out.println("Not duplicate villas: ");
+        TreeSet<Villa> villas = new TreeSet<>(villaCSV.getAllVillas());
+        for (Villa villa : villas) {
+            villa.showInformation();
+        }
+        pauseConsole();
+        showServices();
     }
 
     private void showAllVillas() {
@@ -207,6 +282,9 @@ public class MainController {
         villa.setPoolArea(poolArea);
         if (villaCSV.saveNewVilla(villa)) {
             System.out.println("Successfully add new villa!");
+            villa.showInformation();
+        } else {
+            System.out.println("Can't save new villa information!");
         }
         pauseConsole();
         displayAddNewServiceMenu();
@@ -270,19 +348,17 @@ public class MainController {
 
     public void exit() {
         System.out.println();
-        System.out.println("See you soon!");
+        System.out.println("See you later!");
         System.exit(0);
     }
 
     private void showNotAvailableMessage() {
-        System.out.println();
-        System.out.print("Not available! Enter to continue ...");
+        System.out.print("Your choice is not available! Enter to continue...");
         scanner.nextLine();
     }
 
     private void pauseConsole() {
-        System.out.println();
-        System.out.print("Enter to continue!");
+        System.out.print("Enter to continue...");
         scanner.nextLine();
     }
 }

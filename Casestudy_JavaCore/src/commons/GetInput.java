@@ -1,5 +1,7 @@
 package commons;
 
+import exception.*;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -86,7 +88,6 @@ public class GetInput {
             }
         }
     }
-
 
     public String inputServiceName() {
         String regexp = "^[A-Z][a-z]+$";
@@ -182,22 +183,121 @@ public class GetInput {
 
     public String standardizedString(String str) {
         str = str.trim().toLowerCase();
-        String temporary = String.valueOf(str.charAt(0)).toUpperCase();
+        StringBuilder temporary = new StringBuilder(String.valueOf(str.charAt(0)).toUpperCase());
         for (int i = 1; i < str.length(); i++) {
             if (str.charAt(i) == ' ' && str.charAt(i - 1) == ' ') {
                 continue;
             }
             if (str.charAt(i - 1) == ' ') {
-                temporary += String.valueOf(str.charAt(i)).toUpperCase();
+                temporary.append(String.valueOf(str.charAt(i)).toUpperCase());
             } else {
-                temporary += str.charAt(i);
+                temporary.append(str.charAt(i));
             }
         }
-        return temporary;
+        return temporary.toString();
+    }
+
+    public String inputName() {
+        while (true) {
+            System.out.print("Enter name (ex. Abc Abc): ");
+            try {
+                return NameException.inputCustomerName(scanner);
+            } catch (NameException e) {
+                System.out.println(e.getMessage());
+                pauseConsole();
+            }
+        }
+    }
+
+    public String inputEmail() {
+        while (true) {
+            System.out.print("Enter email (ex. abc@abc.abc): ");
+            try {
+                return EmailException.inputCustomerEmail(scanner);
+            } catch (EmailException e) {
+                System.out.println(e.getMessage());
+                pauseConsole();
+            }
+        }
+    }
+
+    public String inputGender() {
+        while (true) {
+            System.out.print("Enter gender (ex. Female, Male, Unknown): ");
+            try {
+                return GenderException.inputGender(scanner);
+            } catch (GenderException e) {
+                System.out.println(e.getMessage());
+                pauseConsole();
+            }
+        }
+    }
+
+    public String inputIdCardNumbers() {
+        while (true) {
+            System.out.print("Enter ID Card Numbers (ex. XXX XXX XXX): ");
+            try {
+                return IdCardException.inputIdCardNumbers(scanner);
+            } catch (IdCardException e) {
+                System.out.println(e.getMessage());
+                pauseConsole();
+            }
+        }
+    }
+
+    public String inputBirthDay() {
+        while (true) {
+            System.out.print("Enter birthday (ex. dd/mm/yyyy): ");
+            try {
+                return BirthdayException.inputBirtday(scanner);
+            } catch (BirthdayException e) {
+                System.out.println(e.getMessage());
+                pauseConsole();
+            }
+        }
     }
 
     public void pauseConsole() {
-        System.out.print("Enter to continue!");
+        System.out.print("Enter to continue...");
         scanner.nextLine();
+    }
+
+    public String inputPhoneNumber(Scanner scanner) {
+        String regex = "\\+?\\d{9,15}";
+        while (true) {
+            System.out.print("Enter phone number (9-15 digits): ");
+            String phoneNumber = scanner.nextLine().trim();
+            if (phoneNumber.matches(regex)) {
+                return phoneNumber;
+            } else {
+                System.out.println("Wrong phone number format!");
+                pauseConsole();
+            }
+        }
+    }
+
+    public String inputCustomerType(Scanner scanner) {
+        while (true) {
+            System.out.print("Enter customer type: ");
+            String customerType = scanner.nextLine().trim();
+            if (customerType.contains(CustomerCSV.DELIMITER)) {
+                System.out.println("Don't use symbol '" + CustomerCSV.DELIMITER + "'");
+            } else {
+                return customerType;
+            }
+        }
+
+    }
+
+    public String inputAddress(Scanner scanner) {
+        while (true) {
+            System.out.print("Enter address: ");
+            String address = scanner.nextLine().trim();
+            if (address.contains(CustomerCSV.DELIMITER)) {
+                System.out.println("Don't use symbol '" + CustomerCSV.DELIMITER + "'");
+            } else {
+                return address;
+            }
+        }
     }
 }
