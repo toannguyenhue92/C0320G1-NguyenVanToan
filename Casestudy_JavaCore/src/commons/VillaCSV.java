@@ -2,19 +2,34 @@ package commons;
 
 import models.Villa;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 public class VillaCSV {
-    private static final String PATH = "src/data/villa.csv";
-    private static final String DELIMITER = ",";
-    private static final String NEW_LINE_CHARACTER = "\n";
+    public static final String PATH = "src/data/villa.csv";
+    public static final String DELIMITER = ",";
+    public static final String NEW_LINE_CHARACTER = "\n";
+    public static final String HEADER = "ID,Service's Name,Area in use,Rental Fee," +
+            "Max guest,Rental type, Standard, Description, Number of floors, Pool area";
+
+    private void createFileIfNotExist() {
+        try {
+            File file = new File(VillaCSV.PATH);
+            if (file.createNewFile()) {
+                FileWriter fileWriter = new FileWriter(VillaCSV.PATH);
+                fileWriter.append(VillaCSV.HEADER);
+                fileWriter.append(VillaCSV.NEW_LINE_CHARACTER);
+                fileWriter.flush();
+                fileWriter.close();
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
     public boolean saveNewVilla(Villa villa) {
         try {
+            createFileIfNotExist();
             FileWriter fileWriter = new FileWriter(PATH, true);
             fileWriter.append(villa.toString());
             fileWriter.append(NEW_LINE_CHARACTER);
@@ -33,7 +48,7 @@ public class VillaCSV {
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String line = bufferedReader.readLine();
             while (line != null) {
-                if (line.isEmpty()) {
+                if (line.isEmpty() || line.equals(VillaCSV.HEADER)) {
                     line = bufferedReader.readLine();
                     continue;
                 }

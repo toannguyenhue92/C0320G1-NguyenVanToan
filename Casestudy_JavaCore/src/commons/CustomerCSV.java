@@ -1,25 +1,22 @@
 package commons;
 
 import models.Customer;
-import models.Room;
-import models.Villa;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 public class CustomerCSV {
-    private static final String PATH = "src/data/customer.csv";
+    public static final String PATH = "src/data/customer.csv";
     public static final String DELIMITER = ",";
     public static final String NEW_LINE_CHARACTER = "\n";
+    public static final String HEADER = "Name,Birthday,Gender,ID Card Numbers,Phone number,Email,Type,Address";
 
     public boolean saveNewCustomer(Customer customer) {
         try {
-            FileWriter fileWriter = new FileWriter(PATH, true);
+            createFileIfNotExist();
+            FileWriter fileWriter = new FileWriter(CustomerCSV.PATH, true);
             fileWriter.append(customer.toString());
-            fileWriter.append(NEW_LINE_CHARACTER);
+            fileWriter.append(CustomerCSV.NEW_LINE_CHARACTER);
             fileWriter.flush();
             fileWriter.close();
         } catch (IOException e) {
@@ -28,14 +25,29 @@ public class CustomerCSV {
         return true;
     }
 
+    private void createFileIfNotExist() {
+        try {
+            File file = new File(CustomerCSV.PATH);
+            if (file.createNewFile()) {
+                FileWriter fileWriter = new FileWriter(CustomerCSV.PATH);
+                fileWriter.append(CustomerCSV.HEADER);
+                fileWriter.append(CustomerCSV.NEW_LINE_CHARACTER);
+                fileWriter.flush();
+                fileWriter.close();
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     public ArrayList<Customer> getAllCustomers() {
         ArrayList<Customer> customers = new ArrayList<>();
         try {
-            FileReader fileReader = new FileReader(PATH);
+            FileReader fileReader = new FileReader(CustomerCSV.PATH);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String line = bufferedReader.readLine();
             while (line != null) {
-                if (line.isEmpty()) {
+                if (line.isEmpty() || line.equals(CustomerCSV.HEADER)) {
                     line = bufferedReader.readLine();
                     continue;
                 }

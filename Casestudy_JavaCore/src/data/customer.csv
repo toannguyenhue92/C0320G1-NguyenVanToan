@@ -1,4 +1,2 @@
-Toan,24/04/1992,Male,123 456 789,0123456789,toan@gmail.com,VVIP,Hue
-Toan,24/04/1991,Male,123 456 789,0123456789,toan@gmail.com,VVIP,Hue
-Toan,24/02/1992,Male,123 456 789,0123456789,toan@gmail.com,VVIP,Hue
-Hieu,19/02/1999,Female,123 456 789,1234567890,hieu@hotmail.com,2,Ha Noi
+Name,Birthday,Gender,ID Card Numbers,Phone number,Email,Type,Address
+Toan Nguyen,23/01/1994,Male,123 456 789,0123456789,toan@gmail.com,Silver,Hue

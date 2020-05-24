@@ -31,18 +31,18 @@ public class GetInput {
 
     public double inputDouble() {
         try {
-            return Double.parseDouble(scanner.nextLine());
+            return Double.parseDouble(scanner.nextLine().trim());
         } catch (NumberFormatException ex) {
-            System.out.print("Please enter a double number: ");
+            System.out.println("Please enter a double number!");
             return Double.NaN;
         }
     }
 
     public Integer getIntegerInput() {
         try {
-            return Integer.parseInt(scanner.nextLine());
+            return Integer.parseInt(scanner.nextLine().trim());
         } catch (NumberFormatException ex) {
-            System.out.print("Please enter an integer number: ");
+            System.out.println("Please enter an integer number!");
             return null;
         }
     }
@@ -51,7 +51,7 @@ public class GetInput {
         String regexp = "^SVVL-[0-9]{4}$";
         while (true) {
             System.out.print("Enter Room ID (SVVL-YYYY, Y is 0-9): ");
-            String roomID = scanner.nextLine();
+            String roomID = scanner.nextLine().trim();
             if (roomID.matches(regexp)) {
                 return roomID;
             } else {
@@ -65,7 +65,7 @@ public class GetInput {
         String regexp = "^SVHO-[0-9]{4}$";
         while (true) {
             System.out.print("Enter Room ID (SVHO-YYYY, Y is 0-9): ");
-            String roomID = scanner.nextLine();
+            String roomID = scanner.nextLine().trim();
             if (roomID.matches(regexp)) {
                 return roomID;
             } else {
@@ -79,7 +79,7 @@ public class GetInput {
         String regexp = "^SVRO-[0-9]{4}$";
         while (true) {
             System.out.print("Enter Room ID (SVRO-YYYY, Y is 0-9): ");
-            String roomID = scanner.nextLine();
+            String roomID = scanner.nextLine().trim();
             if (roomID.matches(regexp)) {
                 return roomID;
             } else {
@@ -93,7 +93,7 @@ public class GetInput {
         String regexp = "^[A-Z][a-z]+$";
         while (true) {
             System.out.print("Enter service's name (ex. Tiger): ");
-            String serviceName = scanner.nextLine();
+            String serviceName = scanner.nextLine().trim();
             if (serviceName.matches(regexp)) {
                 return serviceName;
             } else {
@@ -107,6 +107,9 @@ public class GetInput {
         while (true) {
             System.out.print("Enter area of " + service + " (0-30 m2): ");
             double area = inputDouble();
+            if (Double.isNaN(area)) {
+                continue;
+            }
             if (area > 0 && area <= 30) {
                 return area;
             } else {
@@ -120,6 +123,9 @@ public class GetInput {
         while (true) {
             System.out.print("Enter rental fee: ");
             double rentalFee = inputDouble();
+            if (Double.isNaN(rentalFee)) {
+                continue;
+            }
             if (rentalFee > 0) {
                 return rentalFee;
             } else {
@@ -132,11 +138,12 @@ public class GetInput {
     public int inputMaxGuest() {
         while (true) {
             System.out.print("Enter max guest (1-19): ");
-            Integer rentalFee = getIntegerInput();
-            if (rentalFee != null) {
-                if (rentalFee > 0 && rentalFee < 20) {
-                    return rentalFee;
-                }
+            Integer maxGuest = getIntegerInput();
+            if (maxGuest == null) {
+                continue;
+            }
+            if (maxGuest > 0 && maxGuest < 20) {
+                return maxGuest;
             } else {
                 System.out.println("Max guest is from 1 - 19!");
                 pauseConsole();
@@ -144,7 +151,7 @@ public class GetInput {
         }
     }
 
-    public String inputAdditionServices() {
+    public String inputAdditionService() {
         while (true) {
             System.out.println("List of addition services:");
             for (int i = 0; i < ADDITION_SERVICES.size(); i++) {
@@ -170,10 +177,11 @@ public class GetInput {
         while (true) {
             System.out.print("Enter number of floors: ");
             Integer numberOfFloors = getIntegerInput();
-            if (numberOfFloors != null) {
-                if (numberOfFloors > 0) {
-                    return numberOfFloors;
-                }
+            if (numberOfFloors == null) {
+                continue;
+            }
+            if (numberOfFloors > 0) {
+                return numberOfFloors;
             } else {
                 System.out.println("Number of floors must be greater than 0!");
                 pauseConsole();
@@ -183,18 +191,18 @@ public class GetInput {
 
     public String standardizedString(String str) {
         str = str.trim().toLowerCase();
-        StringBuilder temporary = new StringBuilder(String.valueOf(str.charAt(0)).toUpperCase());
+        StringBuilder result = new StringBuilder(String.valueOf(str.charAt(0)).toUpperCase());
         for (int i = 1; i < str.length(); i++) {
             if (str.charAt(i) == ' ' && str.charAt(i - 1) == ' ') {
                 continue;
             }
             if (str.charAt(i - 1) == ' ') {
-                temporary.append(String.valueOf(str.charAt(i)).toUpperCase());
+                result.append(String.valueOf(str.charAt(i)).toUpperCase());
             } else {
-                temporary.append(str.charAt(i));
+                result.append(str.charAt(i));
             }
         }
-        return temporary.toString();
+        return result.toString();
     }
 
     public String inputName() {
@@ -262,7 +270,7 @@ public class GetInput {
         scanner.nextLine();
     }
 
-    public String inputPhoneNumber(Scanner scanner) {
+    public String inputPhoneNumber() {
         String regex = "\\+?\\d{9,15}";
         while (true) {
             System.out.print("Enter phone number (9-15 digits): ");
@@ -276,12 +284,13 @@ public class GetInput {
         }
     }
 
-    public String inputCustomerType(Scanner scanner) {
+    public String inputCustomerType() {
         while (true) {
             System.out.print("Enter customer type: ");
             String customerType = scanner.nextLine().trim();
             if (customerType.contains(CustomerCSV.DELIMITER)) {
                 System.out.println("Don't use symbol '" + CustomerCSV.DELIMITER + "'");
+                pauseConsole();
             } else {
                 return customerType;
             }
@@ -289,15 +298,85 @@ public class GetInput {
 
     }
 
-    public String inputAddress(Scanner scanner) {
+    public String inputAddress() {
         while (true) {
             System.out.print("Enter address: ");
             String address = scanner.nextLine().trim();
             if (address.contains(CustomerCSV.DELIMITER)) {
                 System.out.println("Don't use symbol '" + CustomerCSV.DELIMITER + "'");
+                pauseConsole();
             } else {
                 return address;
             }
         }
+    }
+
+    public String inputDescription() {
+        while (true) {
+            System.out.print("Enter description: ");
+            String description = scanner.nextLine().trim();
+            if (description.contains(CustomerCSV.DELIMITER)) {
+                System.out.println("Don't use symbol '" + CustomerCSV.DELIMITER + "'");
+                pauseConsole();
+            } else {
+                return description;
+            }
+        }
+    }
+
+    public String inputRentalType() {
+        while (true) {
+            System.out.print("Enter rental type: ");
+            String rentalType = scanner.nextLine().trim();
+            if (rentalType.contains(CustomerCSV.DELIMITER)) {
+                System.out.println("Don't use symbol '" + CustomerCSV.DELIMITER + "'");
+                pauseConsole();
+            } else {
+                return standardizedString(rentalType);
+            }
+        }
+    }
+
+    public String inputStandard() {
+        while (true) {
+            System.out.print("Enter standard: ");
+            String standard = scanner.nextLine().trim();
+            if (standard.contains(CustomerCSV.DELIMITER)) {
+                System.out.println("Don't use symbol '" + CustomerCSV.DELIMITER + "'");
+                pauseConsole();
+            } else {
+                return standardizedString(standard);
+            }
+        }
+    }
+
+    public String inputFreeAdditionService() {
+        while (true) {
+            System.out.print("Enter free addition service: ");
+            String freeAdditionService = scanner.nextLine().trim();
+            if (freeAdditionService.contains(CustomerCSV.DELIMITER)) {
+                System.out.println("Don't use symbol '" + RoomCSV.DELIMITER + "'");
+                pauseConsole();
+            } else {
+                return freeAdditionService;
+            }
+        }
+    }
+
+    public int selectOneOnList(int size) {
+        while (true) {
+            System.out.printf("Enter your selection (1-%d): ", size);
+            Integer selection = getIntegerInput();
+            if (selection == null) {
+                continue;
+            }
+            if (selection < 1 || selection > size) {
+                System.out.print("Your choice is not available! Enter to continue...");
+                scanner.nextLine();
+                continue;
+            }
+            return selection - 1;
+        }
+
     }
 }

@@ -13,7 +13,8 @@ public abstract class Service {
     public Service() {
     }
 
-    public Service(String id, String serviceName, double areaInUse, double rentalFee, int maxGuest, String rentalType) {
+    public Service(String id, String serviceName, double areaInUse,
+                   double rentalFee, int maxGuest, String rentalType) {
         this.id = id;
         this.serviceName = serviceName;
         this.areaInUse = areaInUse;

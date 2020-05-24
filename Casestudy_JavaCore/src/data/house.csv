@@ -1,4 +1,3 @@
-SVHO-8765,Cat,25.0,20.4,2,Day,Vvip,very luxury,3
-SVHO-8766,Mouse,25.0,20.4,2,Day,Vvip,very luxury,3
-SVHO-8767,Lion,25.0,20.4,2,Day,Vvip,very luxury,3
-SVHO-2321,Bird,20.99,26.53,1,Day,Low,,1
+ID,Service's Name,Area in use,Rental Fee,Max guest,Rental type, Standard, Description, Number of floors
+SVHO-1222,House,28.5,199.0,3,Day,Full,free drinks,2
+SVHO-5232,House,28.0,225.0,4,Day,Good,,3

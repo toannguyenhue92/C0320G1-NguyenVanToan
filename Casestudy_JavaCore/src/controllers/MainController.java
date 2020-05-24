@@ -16,6 +16,7 @@ public class MainController {
     private HouseCSV houseCSV;
     private RoomCSV roomCSV;
     private CustomerCSV customerCSV;
+    private BookingCSV bookingCSV;
 
     public MainController(Scanner scanner) {
         this.scanner = scanner;
@@ -24,6 +25,7 @@ public class MainController {
         houseCSV = new HouseCSV();
         roomCSV = new RoomCSV();
         customerCSV = new CustomerCSV();
+        bookingCSV = new BookingCSV();
     }
 
     public void displayMainMenu() {
@@ -52,8 +54,7 @@ public class MainController {
                 showCustomerInformation();
                 break;
             case "5":
-                System.out.println("5. Add new booking - Not available now!");
-                displayMainMenu();
+                addNewBooking();
                 break;
             case "6":
                 System.out.println("6. Show information of employee - Not available now!");
@@ -67,10 +68,80 @@ public class MainController {
         }
     }
 
+    private void addNewBooking() {
+        System.out.println();
+        System.out.println("Customer information:");
+        ArrayList<Customer> customers = customerCSV.getAllCustomers();
+        if (customers.size() == 0) {
+            System.out.println("We have 0 customer!");
+            return;
+        }
+        Collections.sort(customers);
+        for (int index = 0; index < customers.size(); index++) {
+            System.out.print((index + 1) + ". ");
+            customers.get(index).showInformation();
+        }
+        int selectedCustomer = input.selectOneOnList(customers.size());
+        Customer customer = customers.get(selectedCustomer);
+        Service selectedService = selectService();
+        customer.setService(selectedService);
+        if (bookingCSV.saveNewCustomer(customer)){
+            System.out.println("Add new booking Successfully!");
+        } else {
+            System.out.println("Add new booking failed!");
+        }
+        pauseConsole();
+        displayMainMenu();
+    }
+
+    private Service selectService() {
+        boolean flag = true;
+        ArrayList<Service> services = new ArrayList<>();
+        while (flag) {
+            System.out.println("1. Villa");
+            System.out.println("2. House");
+            System.out.println("3. Room");
+            System.out.print("Enter your selection: ");
+            String selection = scanner.nextLine();
+            switch (selection) {
+                case "1":
+                    ArrayList<Villa> villas = villaCSV.getAllVillas();
+                    services.addAll(villas);
+                    System.out.println("All villas:");
+                    flag = false;
+                    break;
+                case "2":
+                    ArrayList<House> houses = houseCSV.getAllHouses();
+                    services.addAll(houses);
+                    System.out.println("All houses:");
+                    flag = false;
+                    break;
+                case "3":
+                    ArrayList<Room> rooms = roomCSV.getAllRooms();
+                    services.addAll(rooms);
+                    System.out.println("All rooms:");
+                    flag = false;
+                    break;
+                default:
+                    showNotAvailableMessage();
+            }
+        }
+        for (int index = 0; index < services.size(); index++) {
+            System.out.print((index + 1) + ". ");
+            services.get(index).showInformation();
+        }
+        int selectedService = input.selectOneOnList(services.size());
+        return services.get(selectedService);
+    }
+
     private void showCustomerInformation() {
         System.out.println();
         System.out.println("Customer information:");
         ArrayList<Customer> customers = customerCSV.getAllCustomers();
+        if (customers.size() == 0) {
+            System.out.println("We have 0 customer!");
+            return;
+        }
         Collections.sort(customers);
         for (Customer customer : customers) {
             customer.showInformation();
@@ -92,13 +163,13 @@ public class MainController {
         customer.setGender(gender);
         String idCardNumbers = input.inputIdCardNumbers();
         customer.setIdCardNumbers(idCardNumbers);
-        String phoneNumber = input.inputPhoneNumber(scanner);
+        String phoneNumber = input.inputPhoneNumber();
         customer.setPhoneNumber(phoneNumber);
         String email = input.inputEmail();
         customer.setEmail(email);
-        String customerType = input.inputCustomerType(scanner);
+        String customerType = input.inputCustomerType();
         customer.setCustomerType(customerType);
-        String address = input.inputAddress(scanner);
+        String address = input.inputAddress();
         customer.setAddress(address);
         if (customerCSV.saveNewCustomer(customer)) {
             System.out.println("Successful add new customer!");
@@ -276,8 +347,7 @@ public class MainController {
         service.setRentalFee(rentalFee);
         int maxGuest = input.inputMaxGuest();
         service.setMaxGuest(maxGuest);
-        System.out.print("Enter rental type: ");
-        String rentalType = input.standardizedString(scanner.nextLine());
+        String rentalType = input.inputRentalType();
         service.setRentalType(rentalType);
     }
 
@@ -286,11 +356,10 @@ public class MainController {
         System.out.println("New villa:");
         Villa villa = new Villa();
         inputCommonInformation(villa);
-        System.out.print("Enter villa standard: ");
-        String villaStandard = input.standardizedString(scanner.nextLine());
+        String villaStandard = input.inputStandard();
         villa.setVillaStandard(villaStandard);
-        System.out.print("Enter description: ");
-        villa.setVillaDescription(scanner.nextLine());
+        String villaDescription = input.inputDescription();
+        villa.setVillaDescription(villaDescription);
         int numberOfFloors = input.inputNumberOfFloors();
         villa.setNumberOfFloors(numberOfFloors);
         double poolArea = input.inputArea("pool");
@@ -310,15 +379,17 @@ public class MainController {
         System.out.println("New house:");
         House house = new House();
         inputCommonInformation(house);
-        System.out.print("Enter house standard: ");
-        String houseStandard = input.standardizedString(scanner.nextLine());
+        String houseStandard = input.inputStandard();
         house.setHouseStandard(houseStandard);
-        System.out.print("Enter description: ");
-        house.setHouseDescription(scanner.nextLine());
+        String houseDescription = input.inputDescription();
+        house.setHouseDescription(houseDescription);
         int numberOfFloors = input.inputNumberOfFloors();
         house.setNumberOfFloors(numberOfFloors);
-        if (HouseCSV.saveNewHouse(house)) {
+        if (houseCSV.saveNewHouse(house)) {
             System.out.println("Successfully add new house!");
+            house.showInformation();
+        } else {
+            System.out.println("Can't save new house information!");
         }
         pauseConsole();
         displayAddNewServiceMenu();
@@ -329,13 +400,13 @@ public class MainController {
         System.out.println("New room:");
         Room room = new Room();
         inputCommonInformation(room);
-        String rentalType = input.standardizedString(scanner.nextLine());
-        room.setRentalType(rentalType);
-        System.out.print("Enter free addition service: ");
-        String additionService = scanner.nextLine().toLowerCase();
-        room.setFreeAdditionService(additionService);
-        if (RoomCSV.saveNewRoom(room)) {
+        String freeAdditionService = input.inputFreeAdditionService();
+        room.setFreeAdditionService(freeAdditionService);
+        if (roomCSV.saveNewRoom(room)) {
             System.out.println("Successfully add new room!");
+            room.showInformation();
+        } else {
+            System.out.println("Can't save new room information!");
         }
         pauseConsole();
         displayAddNewServiceMenu();

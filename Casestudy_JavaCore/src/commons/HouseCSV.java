@@ -2,19 +2,19 @@ package commons;
 
 import models.House;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 public class HouseCSV {
-    private static final String PATH = "src/data/house.csv";
-    private static final String DELIMITER = ",";
-    private static final String NEW_LINE_CHARACTER = "\n";
+    public static final String PATH = "src/data/house.csv";
+    public static final String DELIMITER = ",";
+    public static final String NEW_LINE_CHARACTER = "\n";
+    public static final String HEADER = "ID,Service's Name,Area in use,Rental Fee," +
+            "Max guest,Rental type, Standard, Description, Number of floors";
 
-    public static boolean saveNewHouse(House house) {
+    public boolean saveNewHouse(House house) {
         try {
+            createFileIfNotExist();
             FileWriter fileWriter = new FileWriter(PATH, true);
             fileWriter.append(house.toString());
             fileWriter.append(NEW_LINE_CHARACTER);
@@ -27,6 +27,21 @@ public class HouseCSV {
         return true;
     }
 
+    private void createFileIfNotExist() {
+        try {
+            File file = new File(HouseCSV.PATH);
+            if (file.createNewFile()) {
+                FileWriter fileWriter = new FileWriter(HouseCSV.PATH);
+                fileWriter.append(HouseCSV.HEADER);
+                fileWriter.append(HouseCSV.NEW_LINE_CHARACTER);
+                fileWriter.flush();
+                fileWriter.close();
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     public ArrayList<House> getAllHouses() {
         ArrayList<House> houses = new ArrayList<>();
         try {
@@ -34,7 +49,7 @@ public class HouseCSV {
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String line = bufferedReader.readLine();
             while (line != null) {
-                if (line.isEmpty()) {
+                if (line.isEmpty()|| line.equals(HouseCSV.HEADER)) {
                     line = bufferedReader.readLine();
                     continue;
                 }

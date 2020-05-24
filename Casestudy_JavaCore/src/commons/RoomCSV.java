@@ -2,19 +2,19 @@ package commons;
 
 import models.Room;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 public class RoomCSV {
-    private static final String PATH = "src/data/room.csv";
-    private static final String DELIMITER = ",";
-    private static final String NEW_LINE_CHARACTER = "\n";
+    public static final String PATH = "src/data/room.csv";
+    public static final String DELIMITER = ",";
+    public static final String NEW_LINE_CHARACTER = "\n";
+    public static final String HEADER = "ID,Service's Name,Area in use,Rental Fee," +
+            "Max guest,Rental type,Free addition service";
 
-    public static boolean saveNewRoom(Room room) {
+    public boolean saveNewRoom(Room room) {
         try {
+            createFileIfNotExist();
             FileWriter fileWriter = new FileWriter(PATH, true);
             fileWriter.append(room.toString());
             fileWriter.append(NEW_LINE_CHARACTER);
@@ -27,6 +27,21 @@ public class RoomCSV {
         return true;
     }
 
+    private void createFileIfNotExist() {
+        try {
+            File file = new File(RoomCSV.PATH);
+            if (file.createNewFile()) {
+                FileWriter fileWriter = new FileWriter(RoomCSV.PATH);
+                fileWriter.append(RoomCSV.HEADER);
+                fileWriter.append(RoomCSV.NEW_LINE_CHARACTER);
+                fileWriter.flush();
+                fileWriter.close();
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     public ArrayList<Room> getAllRooms() {
         ArrayList<Room> rooms = new ArrayList<>();
         try {
@@ -34,7 +49,7 @@ public class RoomCSV {
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String line = bufferedReader.readLine();
             while (line != null) {
-                if (line.isEmpty()) {
+                if (line.isEmpty() || line.equals(RoomCSV.HEADER)) {
                     line = bufferedReader.readLine();
                     continue;
                 }
