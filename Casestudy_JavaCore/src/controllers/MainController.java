@@ -76,13 +76,13 @@ public class MainController {
 
     private void findEmployeeFile() {
         Stack<EmployeeFile> employeeFiles = new Stack<>();
-        employeeFiles.add(new EmployeeFile("Toan", "ABC"));
-        employeeFiles.add(new EmployeeFile("Mau", "ABC"));
-        employeeFiles.add(new EmployeeFile("Long", "ABC"));
-        employeeFiles.add(new EmployeeFile("Bach", "ABC"));
-        employeeFiles.add(new EmployeeFile("Thien", "ABC"));
-        employeeFiles.add(new EmployeeFile("Hung", "ABC"));
-        employeeFiles.add(new EmployeeFile("Cuong", "ABC"));
+        employeeFiles.push(new EmployeeFile("Toan", "ABC"));
+        employeeFiles.push(new EmployeeFile("Mau", "ABC"));
+        employeeFiles.push(new EmployeeFile("Long", "ABC"));
+        employeeFiles.push(new EmployeeFile("Bach", "ABC"));
+        employeeFiles.push(new EmployeeFile("Thien", "ABC"));
+        employeeFiles.push(new EmployeeFile("Hung", "ABC"));
+        employeeFiles.push(new EmployeeFile("Cuong", "ABC"));
         System.out.println();
         System.out.print("Enter employee's name: ");
         String name = scanner.nextLine();
@@ -126,7 +126,7 @@ public class MainController {
 
     private void showAllEmployees() {
         System.out.println();
-        TreeMap<String, Employee> employeeMap = employeeCSV.getAllEmployees();
+        TreeMap<String, Employee> employeeMap = new TreeMap<>(employeeCSV.getAllEmployees());
         if (employeeMap.isEmpty()) {
             System.out.println("We have 0 employee!");
             return;
@@ -176,19 +176,19 @@ public class MainController {
             String selection = scanner.nextLine();
             switch (selection) {
                 case "1":
-                    ArrayList<Villa> villas = villaCSV.getAllVillas();
+                    ArrayList<Villa> villas = new ArrayList<>(villaCSV.getAllVillas());
                     services.addAll(villas);
                     System.out.println("All villas:");
                     flag = false;
                     break;
                 case "2":
-                    ArrayList<House> houses = houseCSV.getAllHouses();
+                    ArrayList<House> houses = new ArrayList<>(houseCSV.getAllHouses());
                     services.addAll(houses);
                     System.out.println("All houses:");
                     flag = false;
                     break;
                 case "3":
-                    ArrayList<Room> rooms = roomCSV.getAllRooms();
+                    ArrayList<Room> rooms = new ArrayList<>(roomCSV.getAllRooms());
                     services.addAll(rooms);
                     System.out.println("All rooms:");
                     flag = false;
@@ -364,7 +364,7 @@ public class MainController {
     private void showAllVillas() {
         System.out.println();
         System.out.println("All villas: ");
-        ArrayList<Villa> villas = villaCSV.getAllVillas();
+        ArrayList<Villa> villas = new ArrayList<>(villaCSV.getAllVillas());
         for (Villa villa : villas) {
             villa.showInformation();
         }
@@ -375,7 +375,7 @@ public class MainController {
     private void showAllHouses() {
         System.out.println();
         System.out.println("All houses: ");
-        ArrayList<House> houses = houseCSV.getAllHouses();
+        ArrayList<House> houses = new ArrayList<>(houseCSV.getAllHouses());
         for (House house : houses) {
             house.showInformation();
         }
@@ -386,7 +386,7 @@ public class MainController {
     private void showAllRooms() {
         System.out.println();
         System.out.println("All rooms: ");
-        ArrayList<Room> rooms = roomCSV.getAllRooms();
+        ArrayList<Room> rooms = new ArrayList<>(roomCSV.getAllRooms());
         for (Room room : rooms) {
             room.showInformation();
         }

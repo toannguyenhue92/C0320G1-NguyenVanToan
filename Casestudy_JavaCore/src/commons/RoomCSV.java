@@ -4,6 +4,7 @@ import models.Room;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class RoomCSV {
     public static final String PATH = "src/data/room.csv";
@@ -42,7 +43,7 @@ public class RoomCSV {
         }
     }
 
-    public ArrayList<Room> getAllRooms() {
+    public List<Room> getAllRooms() {
         ArrayList<Room> rooms = new ArrayList<>();
         try {
             FileReader fileReader = new FileReader(PATH);

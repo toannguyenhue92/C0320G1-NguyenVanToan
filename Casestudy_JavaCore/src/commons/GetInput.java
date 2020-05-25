@@ -266,6 +266,7 @@ public class GetInput {
     }
 
     public void pauseConsole() {
+        System.out.println();
         System.out.print("Enter to continue...");
         scanner.nextLine();
     }

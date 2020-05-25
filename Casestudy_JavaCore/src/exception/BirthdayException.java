@@ -30,7 +30,7 @@ public class BirthdayException extends Exception {
             }
             LocalDate localDate = LocalDate.now();
             LocalDate birthDate = LocalDate.of(year, month, day);
-            Period period = Period.between(localDate, birthDate);
+            Period period = Period.between(birthDate, localDate);
             if (year > 1900 && period.getYears() >= 18) {
                 return birthday;
             } else {

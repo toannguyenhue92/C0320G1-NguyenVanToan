@@ -57,6 +57,7 @@ public class Employee {
     }
 
     public void showInformation() {
+        System.out.println();
         String information = "Employee {" +
                 "id = '" + id + '\'' +
                 ", name = '" + name + '\'' +

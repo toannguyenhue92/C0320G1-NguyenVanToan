@@ -4,6 +4,7 @@ import models.House;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class HouseCSV {
     public static final String PATH = "src/data/house.csv";
@@ -42,14 +43,14 @@ public class HouseCSV {
         }
     }
 
-    public ArrayList<House> getAllHouses() {
+    public List<House> getAllHouses() {
         ArrayList<House> houses = new ArrayList<>();
         try {
             FileReader fileReader = new FileReader(PATH);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String line = bufferedReader.readLine();
             while (line != null) {
-                if (line.isEmpty()|| line.equals(HouseCSV.HEADER)) {
+                if (line.isEmpty() || line.equals(HouseCSV.HEADER)) {
                     line = bufferedReader.readLine();
                     continue;
                 }

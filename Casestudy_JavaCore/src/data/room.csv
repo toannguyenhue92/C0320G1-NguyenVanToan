@@ -1,3 +1,4 @@
 ID,Service's Name,Area in use,Rental Fee,Max guest,Rental type,Free addition service
 SVRO-4234,Room,20.0,109.0,2,Day,wifi
 SVRO-7788,Room,25.0,200.0,2,Month,wifi
+SVRO-3332,Room,30.0,199.0,2,Day,wifi

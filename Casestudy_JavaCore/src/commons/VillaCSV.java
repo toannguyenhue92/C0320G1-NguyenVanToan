@@ -4,6 +4,7 @@ import models.Villa;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class VillaCSV {
     public static final String PATH = "src/data/villa.csv";
@@ -41,7 +42,7 @@ public class VillaCSV {
         return true;
     }
 
-    public ArrayList<Villa> getAllVillas() {
+    public List<Villa> getAllVillas() {
         ArrayList<Villa> villas = new ArrayList<>();
         try {
             FileReader fileReader = new FileReader(PATH);

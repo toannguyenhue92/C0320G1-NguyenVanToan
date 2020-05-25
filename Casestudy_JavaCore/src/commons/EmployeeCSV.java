@@ -6,14 +6,15 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.TreeMap;
+import java.util.Map;
 
 public class EmployeeCSV {
     public static final String PATH = "src/data/employee.csv";
     public static final String DELIMITER = ",";
     public static final String HEADER = "ID,Name,Age,Address";
 
-    public TreeMap<String, Employee> getAllEmployees() {
-        TreeMap<String, Employee> employees = new TreeMap<>();
+    public Map<String, Employee> getAllEmployees() {
+        Map<String, Employee> employees = new TreeMap<>();
         try {
             FileReader fileReader = new FileReader(PATH);
             BufferedReader bufferedReader = new BufferedReader(fileReader);

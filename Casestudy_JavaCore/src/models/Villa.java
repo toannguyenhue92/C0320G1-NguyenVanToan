@@ -54,6 +54,7 @@ public class Villa extends Service implements Comparable<Villa> {
 
     @Override
     public void showInformation() {
+        System.out.println();
         String information = "Villa {" +
                 "id = '" + getId() + "'" +
                 ", serviceName = '" + getServiceName() + "'" +
