@@ -24,7 +24,6 @@ public class Room extends Service implements Comparable<Room> {
 
     @Override
     public void showInformation() {
-        System.out.println();
         String information = "Room {" +
                 "id = '" + getId() + "'" +
                 ", serviceName = '" + getServiceName() + "'" +

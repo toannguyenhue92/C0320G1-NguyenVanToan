@@ -133,6 +133,7 @@ public class MainController {
         }
         System.out.println("All employees:");
         for (String key : employeeMap.keySet()) {
+            System.out.println();
             employeeMap.get(key).showInformation();
         }
         pauseConsole();
@@ -149,6 +150,7 @@ public class MainController {
         }
         Collections.sort(customers);
         for (int index = 0; index < customers.size(); index++) {
+            System.out.println();
             System.out.print((index + 1) + ". ");
             customers.get(index).showInformation();
         }
@@ -169,6 +171,7 @@ public class MainController {
         boolean flag = true;
         ArrayList<Service> services = new ArrayList<>();
         while (flag) {
+            System.out.println();
             System.out.println("1. Villa");
             System.out.println("2. House");
             System.out.println("3. Room");
@@ -198,6 +201,7 @@ public class MainController {
             }
         }
         for (int index = 0; index < services.size(); index++) {
+            System.out.println();
             System.out.print((index + 1) + ". ");
             services.get(index).showInformation();
         }
@@ -215,9 +219,9 @@ public class MainController {
         }
         Collections.sort(customers);
         for (Customer customer : customers) {
+            System.out.println();
             customer.showInformation();
         }
-        System.out.println();
         pauseConsole();
         displayMainMenu();
     }
@@ -333,6 +337,7 @@ public class MainController {
         System.out.println("Not duplicate rooms: ");
         TreeSet<Room> rooms = new TreeSet<>(roomCSV.getAllRooms());
         for (Room room : rooms) {
+            System.out.println();
             room.showInformation();
         }
         pauseConsole();
@@ -344,6 +349,7 @@ public class MainController {
         System.out.println("Not duplicate houses: ");
         TreeSet<House> houses = new TreeSet<>(houseCSV.getAllHouses());
         for (House house : houses) {
+            System.out.println();
             house.showInformation();
         }
         pauseConsole();
@@ -355,6 +361,7 @@ public class MainController {
         System.out.println("Not duplicate villas: ");
         TreeSet<Villa> villas = new TreeSet<>(villaCSV.getAllVillas());
         for (Villa villa : villas) {
+            System.out.println();
             villa.showInformation();
         }
         pauseConsole();
@@ -366,6 +373,7 @@ public class MainController {
         System.out.println("All villas: ");
         ArrayList<Villa> villas = new ArrayList<>(villaCSV.getAllVillas());
         for (Villa villa : villas) {
+            System.out.println();
             villa.showInformation();
         }
         pauseConsole();
@@ -377,6 +385,7 @@ public class MainController {
         System.out.println("All houses: ");
         ArrayList<House> houses = new ArrayList<>(houseCSV.getAllHouses());
         for (House house : houses) {
+            System.out.println();
             house.showInformation();
         }
         pauseConsole();
@@ -388,6 +397,7 @@ public class MainController {
         System.out.println("All rooms: ");
         ArrayList<Room> rooms = new ArrayList<>(roomCSV.getAllRooms());
         for (Room room : rooms) {
+            System.out.println();
             room.showInformation();
         }
         pauseConsole();
@@ -495,6 +505,7 @@ public class MainController {
     }
 
     private void pauseConsole() {
+        System.out.println();
         System.out.print("Enter to continue...");
         scanner.nextLine();
     }

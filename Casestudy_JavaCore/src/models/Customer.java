@@ -99,7 +99,6 @@ public class Customer implements Comparable<Customer> {
     }
 
     public void showInformation() {
-        System.out.println();
         String information = "Customer {" +
                 "name = '" + name + '\'' +
                 ", birthday = '" + birthday + '\'' +

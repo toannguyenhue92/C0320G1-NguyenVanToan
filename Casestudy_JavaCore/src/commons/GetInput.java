@@ -2,26 +2,9 @@ package commons;
 
 import exception.*;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GetInput {
-    public static final String MASSAGE = "massage";
-    public static final String KARAOKE = "karaoke";
-    public static final String FOOD = "food";
-    public static final String DRINK = "drink";
-    public static final String CAR = "car";
-
-    public static ArrayList<String> ADDITION_SERVICES;
-
-    static {
-        ADDITION_SERVICES = new ArrayList<>();
-        ADDITION_SERVICES.add(MASSAGE);
-        ADDITION_SERVICES.add(KARAOKE);
-        ADDITION_SERVICES.add(FOOD);
-        ADDITION_SERVICES.add(DRINK);
-        ADDITION_SERVICES.add(CAR);
-    }
 
     private Scanner scanner;
 
@@ -105,15 +88,15 @@ public class GetInput {
 
     public double inputArea(String service) {
         while (true) {
-            System.out.print("Enter area of " + service + " (0-30 m2): ");
+            System.out.print("Enter area of " + service + " (equal or greater than 30 m2): ");
             double area = inputDouble();
             if (Double.isNaN(area)) {
                 continue;
             }
-            if (area > 0 && area <= 30) {
+            if (area < 30) {
                 return area;
             } else {
-                System.out.println("Area is from 0 to 30 m2!");
+                System.out.println("Area is equal or greater than 30 m2!");
                 pauseConsole();
             }
         }
@@ -146,28 +129,6 @@ public class GetInput {
                 return maxGuest;
             } else {
                 System.out.println("Max guest is from 1 - 19!");
-                pauseConsole();
-            }
-        }
-    }
-
-    public String inputAdditionService() {
-        while (true) {
-            System.out.println("List of addition services:");
-            for (int i = 0; i < ADDITION_SERVICES.size(); i++) {
-                if (i == ADDITION_SERVICES.size() - 1) {
-                    System.out.print(ADDITION_SERVICES.get(i));
-                } else {
-                    System.out.print(ADDITION_SERVICES.get(i) + ", ");
-                }
-            }
-            System.out.println();
-            System.out.print("Enter addition service: ");
-            String additionService = scanner.nextLine().toLowerCase();
-            if (ADDITION_SERVICES.contains(additionService)) {
-                return additionService;
-            } else {
-                System.out.println("Not in list!");
                 pauseConsole();
             }
         }
@@ -266,7 +227,6 @@ public class GetInput {
     }
 
     public void pauseConsole() {
-        System.out.println();
         System.out.print("Enter to continue...");
         scanner.nextLine();
     }
@@ -366,6 +326,7 @@ public class GetInput {
 
     public int selectOneOnList(int size) {
         while (true) {
+            System.out.println();
             System.out.printf("Enter your selection (1-%d): ", size);
             Integer selection = getIntegerInput();
             if (selection == null) {
