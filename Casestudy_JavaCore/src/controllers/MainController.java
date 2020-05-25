@@ -3,29 +3,28 @@ package controllers;
 import commons.*;
 import models.*;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
-import java.util.TreeSet;
+import java.util.*;
 
 public class MainController {
 
     private Scanner scanner;
-    private GetInput input;
+    private GetInput getInput;
     private VillaCSV villaCSV;
     private HouseCSV houseCSV;
     private RoomCSV roomCSV;
     private CustomerCSV customerCSV;
     private BookingCSV bookingCSV;
+    private EmployeeCSV employeeCSV;
 
     public MainController(Scanner scanner) {
         this.scanner = scanner;
-        input = new GetInput(scanner);
+        getInput = new GetInput(scanner);
         villaCSV = new VillaCSV();
         houseCSV = new HouseCSV();
         roomCSV = new RoomCSV();
         customerCSV = new CustomerCSV();
         bookingCSV = new BookingCSV();
+        employeeCSV = new EmployeeCSV();
     }
 
     public void displayMainMenu() {
@@ -37,7 +36,9 @@ public class MainController {
         System.out.println("4. Show information of customer");
         System.out.println("5. Add new booking");
         System.out.println("6. Show information of employee");
-        System.out.println("7. Exit");
+        System.out.println("7. Cinema 4D");
+        System.out.println("8. Employee File");
+        System.out.println("9. Exit");
         System.out.print("Enter your selection: ");
         String selection = scanner.nextLine();
         switch (selection) {
@@ -57,15 +58,85 @@ public class MainController {
                 addNewBooking();
                 break;
             case "6":
-                System.out.println("6. Show information of employee - Not available now!");
-                displayMainMenu();
+                showAllEmployees();
                 break;
             case "7":
+                bookingCinema4D();
+                break;
+            case "8":
+                findEmployeeFile();
+                break;
+            case "9":
                 exit();
             default:
                 showNotAvailableMessage();
                 displayMainMenu();
         }
+    }
+
+    private void findEmployeeFile() {
+        Stack<EmployeeFile> employeeFiles = new Stack<>();
+        employeeFiles.add(new EmployeeFile("Toan", "ABC"));
+        employeeFiles.add(new EmployeeFile("Mau", "ABC"));
+        employeeFiles.add(new EmployeeFile("Long", "ABC"));
+        employeeFiles.add(new EmployeeFile("Bach", "ABC"));
+        employeeFiles.add(new EmployeeFile("Thien", "ABC"));
+        employeeFiles.add(new EmployeeFile("Hung", "ABC"));
+        employeeFiles.add(new EmployeeFile("Cuong", "ABC"));
+        System.out.println();
+        System.out.print("Enter employee's name: ");
+        String name = scanner.nextLine();
+        boolean found = false;
+        while (!employeeFiles.isEmpty()) {
+            EmployeeFile employeeFile = employeeFiles.pop();
+            System.out.println("Pop file of " + employeeFile.getName());
+            if (employeeFile.getName().equals(name)) {
+                System.out.println("Found!");
+                System.out.println("Description: " + employeeFile.getDescription());
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            System.out.println("Can't find employee " + name);
+        }
+        pauseConsole();
+        displayMainMenu();
+    }
+
+    private void bookingCinema4D() {
+        System.out.println();
+        int size = 5;
+        System.out.printf("We have %d tickets!\n", size);
+        ArrayDeque<String> queue = new ArrayDeque<>();
+        for (int index = 0; index < size; index++) {
+            System.out.printf("Enter name (%d): ", index + 1);
+            String name = scanner.nextLine();
+            queue.add(name);
+        }
+        System.out.println("All tickets had sold!");
+        int counter = 1;
+        while (!queue.isEmpty()) {
+            System.out.println(counter + ". " + queue.pop());
+            counter++;
+        }
+        pauseConsole();
+        displayMainMenu();
+    }
+
+    private void showAllEmployees() {
+        System.out.println();
+        TreeMap<String, Employee> employeeMap = employeeCSV.getAllEmployees();
+        if (employeeMap.isEmpty()) {
+            System.out.println("We have 0 employee!");
+            return;
+        }
+        System.out.println("All employees:");
+        for (String key : employeeMap.keySet()) {
+            employeeMap.get(key).showInformation();
+        }
+        pauseConsole();
+        displayMainMenu();
     }
 
     private void addNewBooking() {
@@ -81,11 +152,11 @@ public class MainController {
             System.out.print((index + 1) + ". ");
             customers.get(index).showInformation();
         }
-        int selectedCustomer = input.selectOneOnList(customers.size());
+        int selectedCustomer = getInput.selectOneOnList(customers.size());
         Customer customer = customers.get(selectedCustomer);
         Service selectedService = selectService();
         customer.setService(selectedService);
-        if (bookingCSV.saveNewCustomer(customer)){
+        if (bookingCSV.saveNewCustomer(customer)) {
             System.out.println("Add new booking Successfully!");
         } else {
             System.out.println("Add new booking failed!");
@@ -130,7 +201,7 @@ public class MainController {
             System.out.print((index + 1) + ". ");
             services.get(index).showInformation();
         }
-        int selectedService = input.selectOneOnList(services.size());
+        int selectedService = getInput.selectOneOnList(services.size());
         return services.get(selectedService);
     }
 
@@ -155,21 +226,21 @@ public class MainController {
         System.out.println();
         System.out.println("Add new customer:");
         Customer customer = new Customer();
-        String name = input.inputName();
+        String name = getInput.inputName();
         customer.setName(name);
-        String birthday = input.inputBirthDay();
+        String birthday = getInput.inputBirthDay();
         customer.setBirthday(birthday);
-        String gender = input.inputGender();
+        String gender = getInput.inputGender();
         customer.setGender(gender);
-        String idCardNumbers = input.inputIdCardNumbers();
+        String idCardNumbers = getInput.inputIdCardNumbers();
         customer.setIdCardNumbers(idCardNumbers);
-        String phoneNumber = input.inputPhoneNumber();
+        String phoneNumber = getInput.inputPhoneNumber();
         customer.setPhoneNumber(phoneNumber);
-        String email = input.inputEmail();
+        String email = getInput.inputEmail();
         customer.setEmail(email);
-        String customerType = input.inputCustomerType();
+        String customerType = getInput.inputCustomerType();
         customer.setCustomerType(customerType);
-        String address = input.inputAddress();
+        String address = getInput.inputAddress();
         customer.setAddress(address);
         if (customerCSV.saveNewCustomer(customer)) {
             System.out.println("Successful add new customer!");
@@ -328,26 +399,26 @@ public class MainController {
         String id = "";
         if (service instanceof Villa) {
             s = "villa";
-            id = input.inputVillaID();
+            id = getInput.inputVillaID();
         }
         if (service instanceof House) {
             s = "house";
-            id = input.inputHouseID();
+            id = getInput.inputHouseID();
         }
         if (service instanceof Room) {
             s = "room";
-            id = input.inputRoomID();
+            id = getInput.inputRoomID();
         }
         service.setId(id);
-        String serviceName = input.inputServiceName();
+        String serviceName = getInput.inputServiceName();
         service.setServiceName(serviceName);
-        double areaInUse = input.inputArea(s);
+        double areaInUse = getInput.inputArea(s);
         service.setAreaInUse(areaInUse);
-        double rentalFee = input.inputRentalFee();
+        double rentalFee = getInput.inputRentalFee();
         service.setRentalFee(rentalFee);
-        int maxGuest = input.inputMaxGuest();
+        int maxGuest = getInput.inputMaxGuest();
         service.setMaxGuest(maxGuest);
-        String rentalType = input.inputRentalType();
+        String rentalType = getInput.inputRentalType();
         service.setRentalType(rentalType);
     }
 
@@ -356,13 +427,13 @@ public class MainController {
         System.out.println("New villa:");
         Villa villa = new Villa();
         inputCommonInformation(villa);
-        String villaStandard = input.inputStandard();
+        String villaStandard = getInput.inputStandard();
         villa.setVillaStandard(villaStandard);
-        String villaDescription = input.inputDescription();
+        String villaDescription = getInput.inputDescription();
         villa.setVillaDescription(villaDescription);
-        int numberOfFloors = input.inputNumberOfFloors();
+        int numberOfFloors = getInput.inputNumberOfFloors();
         villa.setNumberOfFloors(numberOfFloors);
-        double poolArea = input.inputArea("pool");
+        double poolArea = getInput.inputArea("pool");
         villa.setPoolArea(poolArea);
         if (villaCSV.saveNewVilla(villa)) {
             System.out.println("Successfully add new villa!");
@@ -379,11 +450,11 @@ public class MainController {
         System.out.println("New house:");
         House house = new House();
         inputCommonInformation(house);
-        String houseStandard = input.inputStandard();
+        String houseStandard = getInput.inputStandard();
         house.setHouseStandard(houseStandard);
-        String houseDescription = input.inputDescription();
+        String houseDescription = getInput.inputDescription();
         house.setHouseDescription(houseDescription);
-        int numberOfFloors = input.inputNumberOfFloors();
+        int numberOfFloors = getInput.inputNumberOfFloors();
         house.setNumberOfFloors(numberOfFloors);
         if (houseCSV.saveNewHouse(house)) {
             System.out.println("Successfully add new house!");
@@ -400,7 +471,7 @@ public class MainController {
         System.out.println("New room:");
         Room room = new Room();
         inputCommonInformation(room);
-        String freeAdditionService = input.inputFreeAdditionService();
+        String freeAdditionService = getInput.inputFreeAdditionService();
         room.setFreeAdditionService(freeAdditionService);
         if (roomCSV.saveNewRoom(room)) {
             System.out.println("Successfully add new room!");

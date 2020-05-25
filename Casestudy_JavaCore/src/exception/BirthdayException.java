@@ -1,6 +1,7 @@
 package exception;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.Scanner;
 
 public class BirthdayException extends Exception {
@@ -28,7 +29,9 @@ public class BirthdayException extends Exception {
                 throw new BirthdayException("'" + birthday + "' is not a real date!");
             }
             LocalDate localDate = LocalDate.now();
-            if (year > 1900 && localDate.getYear() - year >= 18) {
+            LocalDate birthDate = LocalDate.of(year, month, day);
+            Period period = Period.between(localDate, birthDate);
+            if (year > 1900 && period.getYears() >= 18) {
                 return birthday;
             } else {
                 throw new BirthdayException();
