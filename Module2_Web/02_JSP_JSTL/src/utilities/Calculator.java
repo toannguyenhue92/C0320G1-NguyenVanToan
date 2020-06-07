@@ -1,3 +1,5 @@
+package utilities;
+
 public class Calculator {
     public double calculate(double firstOperand, double secondOperand, char operator)
             throws RuntimeException {
