@@ -2,8 +2,8 @@
 <html>
 <style type="text/css">
     .login {
-        /*height: 180px;*/
-        /*width: 230px;*/
+        height: 180px;
+        width: 280px;
         margin: 0;
         padding: 10px;
         border: 1px #CCC solid;
