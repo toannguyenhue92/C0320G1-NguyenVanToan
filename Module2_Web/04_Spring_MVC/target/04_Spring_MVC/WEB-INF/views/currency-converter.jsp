@@ -16,5 +16,6 @@
     <input type="number" name="usd" id="usd" value="100">
     <input type="submit" value="Tính toán">
 </form>
+<p>VND ${vnd}</p>
 </body>
 </html>

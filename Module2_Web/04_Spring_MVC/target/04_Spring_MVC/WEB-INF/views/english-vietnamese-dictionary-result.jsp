@@ -14,7 +14,7 @@
     <p>Không tìm thấy!</p>
 </c:if>
 <c:if test="${result!=null}">
-    <p>${result}}</p>
+    <p>${result}</p>
 </c:if>
 </body>
 </html>
